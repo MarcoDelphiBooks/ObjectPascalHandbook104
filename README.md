@@ -4,4 +4,4 @@ Object Pascal Handbook for Delphi 10.4 Sydney demos source code
 The book content is copyright 2015-2020 Marco Cantu, www.marcocantu.com. 
 The demo source code copy is copyrighted by Marco, but can be used freely in your own applications, free and commercial.
 
-The ebook will be available from Embarcadero and directly form me, the printed version will follow shortly.
+The ebook will be available from Embarcadero and directly from me, the printed version will follow shortly.
