@@ -1,0 +1,51 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 3
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Align = Client
+    Size.Width = 384.000000000000000000
+    Size.Height = 435.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Viewport.Width = 376.000000000000000000
+    Viewport.Height = 427.000000000000000000
+  end
+  object BtnWrong: TButton
+    Align = Top
+    Size.Width = 384.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Wrong'
+    OnClick = BtnWrongClick
+  end
+  object BtnFinally: TButton
+    Align = Top
+    Position.Y = 44.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Finally'
+    OnClick = BtnFinallyClick
+  end
+  object BtnTryTry: TButton
+    Align = Top
+    Position.Y = 88.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Try Try'
+    OnClick = BtnTryTryClick
+  end
+end

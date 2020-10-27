@@ -1,0 +1,61 @@
+object FormExceptions: TFormExceptions
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 3
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Align = Client
+    Size.Width = 384.000000000000000000
+    Size.Height = 391.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Viewport.Width = 384.000000000000000000
+    Viewport.Height = 391.000000000000000000
+  end
+  object BtnTraditional: TButton
+    Align = Top
+    Size.Width = 384.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Traditional'
+    OnClick = BtnTraditionalClick
+  end
+  object BtnCallNested: TButton
+    Align = Top
+    Position.Y = 44.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'Call Nested'
+    OnClick = BtnCallNestedClick
+  end
+  object BtnTwoNested: TButton
+    Align = Top
+    Position.Y = 88.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Two Nested'
+    OnClick = BtnTwoNestedClick
+  end
+  object BtnRaising: TButton
+    Align = Top
+    Position.Y = 132.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Raising'
+    OnClick = BtnRaisingClick
+  end
+end
