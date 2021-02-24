@@ -7,7 +7,7 @@ var
 
 begin
   StrMessage := 'Hello, World';
-  writeln (StrMessage);
+  Writeln(StrMessage);
   // wait until the Enter key is pressed
-  readln;
+  Readln;
 end.

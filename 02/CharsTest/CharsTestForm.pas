@@ -38,8 +38,8 @@ var
   Ch: Char;
 begin
   Ch := 'a';
-  Show (BoolToStr(Ch.IsLetter, True));
-  Show (Ch.ToUpper);
+  Show(BoolToStr(Ch.IsLetter, True));
+  Show(Ch.ToUpper);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -48,14 +48,14 @@ var
   Str1: string;
 begin
   Ch := 'a';
-  Show (Ch);
-  Inc (Ch, 100);
-  Show (Ch);
+  Show(Ch);
+  Inc(Ch, 100);
+  Show(Ch);
 
   Str1 := '';
   for Ch := #32 to #1024 do
     Str1 := Str1 + Ch;
-  Show (Str1)
+  Show(Str1)
 end;
 
 procedure TForm1.Show(const Msg: string);

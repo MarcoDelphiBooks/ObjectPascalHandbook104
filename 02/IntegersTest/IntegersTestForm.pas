@@ -20,7 +20,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -35,35 +35,35 @@ var
   N: Integer;
 begin
   N := 10;
-  Show (N.ToString);
+  Show(N.ToString);
 
   // display a constant
-  Show (33.ToString);
+  Show(33.ToString);
 
   // type operation, show the bytes required to store the type
-  Show (Integer.Size.ToString);
+  Show(Integer.Size.ToString);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 var
   N: UInt16;
 begin
-  N := Low (UInt16);
-  Inc (N);
-  Show (N.ToString);
-  Inc (N, 10);
-  Show (N.ToString);
-  if Odd (N) then
-    Show (N.ToString + ' is odd');
+  N := Low(UInt16);
+  Inc(N);
+  Show(N.ToString);
+  Inc(N, 10);
+  Show(N.ToString);
+  if Odd(N) then
+    Show(N.ToString + ' is odd');
 
-  // N := 100 + High (N);
-  Inc (N, High (N));
-  Show (N.ToString);
+  // N := 100 + High(N);
+  Inc(N, High (N));
+  Show(N.ToString);
 end;
 
-procedure TForm1.Show(const msg: string);
+procedure TForm1.Show(const Msg: string);
 begin
-  Memo1.Lines.Add(msg);
+  Memo1.Lines.Add(Msg);
 end;
 
 end.

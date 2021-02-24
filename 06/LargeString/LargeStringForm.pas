@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -32,7 +32,7 @@ uses
   Diagnostics;
 
 const
-  MaxLoop = 2000000; // two million
+  MaxLoop = 2000000; // Two million
 
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -63,7 +63,7 @@ begin
   Str1 := 'Marco ';
   Str2 := 'Cantu ';
   T1 := TStopwatch.StartNew;
-  SBuilder := TStringBuilder.Create (Str1);
+  SBuilder := TStringBuilder.Create(Str1);
   try
     for I := 1 to MaxLoop do
       SBuilder.Append(Str2);
@@ -72,8 +72,8 @@ begin
     SBuilder.Free;
   end;
   T1.Stop;
-  Show('Length: ' + IntToStr (Str1.Length));
-  Show('StringBuilder: ' + IntToStr (T1.ElapsedMilliseconds));
+  Show('Length: ' + IntToStr(Str1.Length));
+  Show('StringBuilder: ' + IntToStr(T1.ElapsedMilliseconds));
 end;
 
 procedure TForm1.Show(const Msg: string);

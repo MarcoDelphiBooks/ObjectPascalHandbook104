@@ -14,6 +14,7 @@ type
     class var
       NTimerCount: Integer;
   public
+    procedure AddToList (const AMessage: string);
     class procedure TimerCallBack (hwnd: THandle; uMsg, idEvent, dwTime: Cardinal); static; stdcall;
   end;
 
@@ -26,6 +27,11 @@ implementation
 
 const
   TIMERID = 100;
+
+procedure TFormCallBack.AddToList(const AMessage: string);
+begin
+  ListBox1.Items.Add (AMessage);
+end;
 
 procedure TFormCallBack.FormCreate(Sender: TObject);
 var
@@ -41,7 +47,7 @@ class procedure TFormCallBack.TimerCallBack(hwnd: THandle; uMsg, idEvent,
 begin
   try
     Inc (NTimerCount);
-    FormCallBack.ListBox1.Items.Add (
+    FormCallBack.AddToList (
       IntToStr (NTimerCount) + ' at ' + TimeToStr(Now));
   except on E: Exception do
     Application.HandleException(nil);

@@ -10,10 +10,10 @@ type
   private
     FX, FY: Integer;
   public
-    procedure SetValue (X1, Y1: Integer);
-    class operator Add (A, B: TPointRecord): TPointRecord;
-    class operator Explicit (A: TPointRecord) : string;
-    class operator Implicit (X1: Integer): TPointRecord;
+    procedure SetValue(X1, Y1: Integer);
+    class operator Add(A, B: TPointRecord): TPointRecord;
+    class operator Explicit(A: TPointRecord) : string;
+    class operator Implicit(X1: Integer): TPointRecord;
   end;
 
 type
@@ -21,11 +21,11 @@ type
   private
     FX, FY: Integer;
   public
-    class operator Explicit (A: TPointRecord2) : string;
-    procedure SetValue (X1, Y1: Integer);
-    // commutativity
-    class operator Add (A: TPointRecord2; B: Integer): TPointRecord2;
-    class operator Add (B: Integer; A: TPointRecord2): TPointRecord2;
+    class operator Explicit(A: TPointRecord2) : string;
+    procedure SetValue(X1, Y1: Integer);
+    // Commutativity
+    class operator Add(A: TPointRecord2; B: Integer): TPointRecord2;
+    class operator Add(B: Integer; A: TPointRecord2): TPointRecord2;
   end;
 
 

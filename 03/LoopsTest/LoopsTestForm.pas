@@ -26,7 +26,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -44,7 +44,7 @@ var
   I: Integer;
 begin
   for I := 1 to 20 do
-    Show ('Number ' + IntToStr (I));
+    Show('Number ' + I.ToString);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -54,8 +54,8 @@ begin
   I := 1;
   while I <= 20 do
   begin
-    Show ('Number ' + IntToStr (I));
-    Inc (I, 2)
+    Show('Number ' + I.ToString);
+    Inc(I, 2)
   end;
 end;
 
@@ -69,8 +69,8 @@ begin
   I := 1;
   while I < 500 do
   begin
-    Show ('Random Number: ' + IntToStr (I));
-    I := I + Random (100);
+    Show('Random Number: ' + IntToStr(I));
+    I := I + Random(100);
   end;
 end;
 
@@ -97,28 +97,28 @@ begin
   for I := 1 to 30000000 do
   begin
     // take the first char of the number
-    S := S + IntToStr (I).Chars [1];
+    S := S + I.ToString.Chars [1];
   end;
 
   SW := TStopWatch.StartNew;
   Total := 0;
   for I := Low(S) to High(S) do
   begin
-    Total := Total + Ord (S[I]);
+    Total := Total + Ord(S[I]);
   end;
   SW.Stop;
-  Show ('for ' + Total.ToString +
-      ' [' + SW.ElapsedMilliseconds.ToString + '] ');
+  Show('For ' + Total.ToString +
+    ' [' + SW.ElapsedMilliseconds.ToString + '] ');
 
   SW := TStopWatch.StartNew;
   Total := 0;
   for Ch in S do
   begin
-    Total := Total + Ord (Ch);
+    Total := Total + Ord(Ch);
   end;
   SW.Stop;
-  Show ('for ' + Total.ToString +
-      ' [' + SW.ElapsedMilliseconds.ToString + '] ');
+  Show('For ' + Total.ToString +
+    ' [' + SW.ElapsedMilliseconds.ToString + '] ');
 
 end;
 

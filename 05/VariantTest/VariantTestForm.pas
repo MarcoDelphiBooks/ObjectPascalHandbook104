@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -36,15 +36,15 @@ begin
   V := 10;
   S := v;
   V := V + S;
-  Show (V);
+  Show(V);
 
   V := 'Hello, World';
   V := V + S;
-  Show (V);
+  Show(V);
 
   V := 45.55;
   V := V + S;
-  Show (V);
+  Show(V);
 end;
 
 const
@@ -63,14 +63,14 @@ begin
   while N1 < Maxno do
   begin
     N2 := N2 + N1;
-    Inc (N1);
+    Inc(N1);
   end;
 
   // we must use the result
   Time2 := Now;
 
-  Show (N2);
-  Show ('Variants: ' + FormatDateTime (
+  Show(N2);
+  Show('Variants: ' + FormatDateTime(
     'ss.zzz', Time2-Time1) + ' seconds');
 
   /// now use integers
@@ -81,13 +81,13 @@ begin
   while I1 < Maxno do
   begin
     I2 := I2 + I1;
-    Inc (I1);
+    Inc(I1);
   end;
 
   // we must use the result
   Time2 := Now;
-  Show (I2.ToString);
-  Show ('Integers: ' + FormatDateTime (
+  Show(I2.ToString);
+  Show('Integers: ' + FormatDateTime(
     'ss.zzz', Time2-Time1) + ' seconds');
 
 end;

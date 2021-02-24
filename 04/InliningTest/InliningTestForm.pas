@@ -22,7 +22,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -35,13 +35,13 @@ implementation
 uses
   System.Math, System.Diagnostics;
 
-procedure Show (const Msg: string);
+procedure Show(const Msg: string);
 begin
   Form1.Show(Msg)
 end;
 
 const
-  LoopCount = 20000000; // twenty millions
+  LoopCount = 20000000; // Twenty millions
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
@@ -51,10 +51,10 @@ begin
   J := 0;
   SW := TStopWatch.StartNew;
   for I := 0 to LoopCount do
-    J := Max (I, J);
+    J := Max(I, J);
   SW.Stop;
-  Show ('Max on ' + J.ToString +
-      ' [' + SW.ElapsedMilliseconds.ToString + '] ');
+  Show('Max on ' + J.ToString +
+    ' [' + SW.ElapsedMilliseconds.ToString + '] ');
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
@@ -67,10 +67,10 @@ begin
   Ssample:= 'sample string';
   SW := TStopWatch.StartNew;
   for I := 0 to LoopCount do
-    Inc (J, Length(Ssample));
+    Inc(J, Length(Ssample));
   SW.Stop;
-  Show ('Length inlined ' + IntToStr (J) +
-      ' [' + IntToStr (SW.ElapsedMilliseconds) + '] ');
+  Show('Length inlined ' + J.ToString +
+    ' [' + IntToStr (SW.ElapsedMilliseconds) + '] ');
 end;
 
 {$INLINE OFF}
@@ -82,10 +82,10 @@ begin
   J := 0;
   SW := TStopWatch.StartNew;
   for I := 0 to LoopCount do
-    J := Max (I, J);
+    J := Max(I, J);
   SW.Stop;
-  Show ('Max off ' + J.ToString +
-      ' [' + SW.ElapsedMilliseconds.ToString + '] ');
+  Show('Max off ' + J.ToString +
+    ' [' + SW.ElapsedMilliseconds.ToString + '] ');
 end;
 {$INLINE ON}
 
@@ -101,10 +101,10 @@ begin
   Sample:= 'sample string';
   SW := TStopWatch.StartNew;
   for I := 0 to LoopCount do
-    Inc (J, Length(Sample));
+    Inc(J, Length(Sample));
   SW.Stop;
-  Show ('Length not inlined ' + IntToStr (J) +
-      ' [' + IntToStr (SW.ElapsedMilliseconds) + '] ');
+  Show('Length not inlined ' + J.ToString +
+    ' [' + IntToStr (SW.ElapsedMilliseconds) + '] ');
 end;
 {$INLINE ON}
 

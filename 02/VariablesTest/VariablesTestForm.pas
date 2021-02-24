@@ -36,7 +36,7 @@ procedure TForm1.Button1Click(Sender: TObject);
 var
   Value: Integer;
 begin
-  ShowMessage (Value.ToString); // X is indefined
+  ShowMessage(Value.ToString); // X is indefined
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -46,15 +46,15 @@ var
   A, B: Char;
   S: string;
 begin
-  // literal value: string including a '
+  // Literal value: string including a '
   S := 'Marco Cantu''';
 
-  // legal asssignments
+  // Legal asssignments
   Value := 10;
   Value := Value + 10;
   IsCorrect := True;
 
-  // illegal assignment
+  // Illegal assignment
   // Value := IsCorrect; // error
 
 end;
@@ -65,7 +65,7 @@ const
 resourcestring
   StrAuthorName = 'Marco';
 begin
-  ShowMessage (StrAuthorname);
+  ShowMessage(StrAuthorname);
 end;
 
 const
@@ -75,7 +75,5 @@ const
 
 const
   ThousandAgain: Integer = 1000;
-
-
 
 end.

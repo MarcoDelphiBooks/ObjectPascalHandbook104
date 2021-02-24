@@ -24,7 +24,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -43,38 +43,38 @@ var
 begin
   IsChecked := CheckBox1.IsChecked;
   if IsChecked then
-    Show ('Checkbox is checked');
+    Show('Checkbox is checked');
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-  // if-then-else statement
+  // If-then-else statement
   if CheckBox1.IsChecked then
-    Show ('Checkbox is checked')
+    Show('Checkbox is checked')
   else
-    Show ('Checkbox is not checked');
+    Show('Checkbox is not checked');
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
 var
   AChar: Char;
 begin
-  /// multiple nested if statements
+  /// Multiple nested if statements
   if Edit1.Text.Length > 0 then
   begin
     AChar := Edit1.Text.Chars[0];
 
-    // checks for a lowercase char (two conditions)
+    // Checks for a lowercase char (two conditions)
     if (AChar >= 'a') and (AChar <= 'z') then
-      Show ('char is lowercase');
+      Show('Char is lowercase');
 
-    // follow up conditions
+    // Follow up conditions
     if AChar <= Char(47) then
-      Show ('char is lower symbol')
+      Show('Char is lower symbol')
     else if (AChar >= '0') and (AChar <= '9') then
-      Show ('char is a number')
+      Show('Char is a number')
     else
-      Show ('char is not a number or lower symbol');
+      Show('Char is not a number or lower symbol');
   end;
 end;
 

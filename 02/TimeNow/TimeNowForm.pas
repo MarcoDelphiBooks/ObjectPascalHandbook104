@@ -22,7 +22,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -37,8 +37,8 @@ var
   StartTime: TDateTime;
 begin
   StartTime := Now;
-  Show ('Time is ' + TimeToStr (StartTime));
-  Show ('Date is ' + DateToStr (StartTime));
+  Show('Time is ' + TimeToStr(StartTime));
+  Show('Date is ' + DateToStr(StartTime));
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -53,7 +53,7 @@ end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
-  Show ('Time is ' + TimeToStr (Now));
+  Show('Time is ' + TimeToStr(Now));
 end;
 
 end.

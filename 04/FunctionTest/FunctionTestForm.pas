@@ -24,7 +24,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -34,26 +34,26 @@ implementation
 
 {$R *.fmx}
 
-// simple procedure
+// Simple procedure
 procedure Hello;
 begin
-  Form1.Show ('Hello world!');
+  Form1.Show('Hello world!');
 end;
 
-// alternative code (uncomment, and comment the previous version)
+// Alternative code (uncomment, and comment the previous version)
 //procedure Hello;
 //begin
-//  Form1.Show ('Hello world, again!');
+//  Form1.Show('Hello world, again!');
 //end;
 
 // classic style function (assign result to function name)
-function DoubleOld (Value: Integer) : Integer;
+function DoubleOld(Value: Integer): Integer;
 begin
   DoubleOld := Value * 2;
 end;
 
 // functions with modern alternative coding (use Result)
-function Double (Value: Integer) : Integer;
+function Double(Value: Integer): Integer;
 begin
   Result := Value * 2;
 end;
@@ -62,13 +62,11 @@ procedure DoubleHello; forward;
 
 procedure NewHello;
 begin
-  if MessageDlg ('Do you want a double message?',
-      TMsgDlgType.mtConfirmation,
-      [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],
-      0) = mrYes then
+  if MessageDlg('Do you want a double message?', TMsgDlgType.mtConfirmation,
+      [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) = mrYes then
     DoubleHello
   else
-    ShowMessage ('Hello');
+    ShowMessage('Hello');
 end;
 
 procedure DoubleHello;
@@ -77,7 +75,7 @@ begin
   NewHello;
 end;
 
-function PowerL (Base, Exp: Integer): Integer;
+function PowerL(Base, Exp: Integer): Integer;
 var
   I: Integer;
 begin
@@ -86,12 +84,12 @@ begin
     Result := Result * Base;
 end;
 
-function PowerR (Base, Exp: Integer): Integer;
+function PowerR(Base, Exp: Integer): Integer;
 begin
   if Exp = 0 then
     Result := 1
   else
-    Result := Base * PowerR (Base, Exp - 1);
+    Result := Base * PowerR(Base, Exp - 1);
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -103,16 +101,16 @@ procedure TForm1.Button2Click(Sender: TObject);
 var
   X, Y: Integer;
 begin
-  // call the function
-  X := Double (100);
-  Y := Double (X);
-  Show (Y.ToString);
+  // Call the function
+  X := Double(100);
+  Y := Double(X);
+  Show(Y.ToString);
 
-  // error: wrong type
-  // Double (10.0);
+  // Error: wrong type
+  // Double(10.0);
 end;
 
-{works also with $ZEROBASEDSTRINGS ON}
+{Works also with $ZEROBASEDSTRINGS ON}
 
 procedure TForm1.Button3Click(Sender: TObject);
 begin
@@ -121,8 +119,8 @@ end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
-  Show(PowerL (2,3).ToString);
-  Show(PowerR (2,3).ToString);
+  Show(PowerL(2,3).ToString);
+  Show(PowerR(2,3).ToString);
 end;
 
 procedure TForm1.Show(const Msg: string);

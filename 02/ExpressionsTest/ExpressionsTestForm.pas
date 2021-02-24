@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -30,10 +30,10 @@ implementation
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  Show (IntToStr (20 * 5));
-  Show (IntToStr (30 + 222));
-  Show (BoolToStr (3 < 30, True));
-  Show (BoolToStr (12 = 10, True));
+  Show(IntToStr(20 * 5));
+  Show(IntToStr(30 + 222));
+  Show(BoolToStr(3 < 30, True));
+  Show(BoolToStr(12 = 10, True));
 end;
 
 procedure TForm1.Show(const Msg: string);

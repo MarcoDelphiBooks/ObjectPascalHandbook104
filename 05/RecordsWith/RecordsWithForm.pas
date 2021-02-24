@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const msg: string);
+    procedure Show(const msg: string);
   end;
 
 var
@@ -35,16 +35,16 @@ type
     FDay: Byte;
   end;
 
-function MyDateToString (MyDate: TMyDate): string;
+function MyDateToString(MyDate: TMyDate): string;
 begin
   Result := MyDate.FYear.ToString + '.' +
     MyDate.FMonth.ToString + '.' +
     MyDate.FDay.ToString;
 end;
 
-procedure IncreaseYear (var MyDate: TMyDate);
+procedure IncreaseYear(var MyDate: TMyDate);
 begin
-  Inc (MyDate.FYear);
+  Inc(MyDate.FYear);
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -56,10 +56,10 @@ begin
     FYear := 1997;
     FMonth := 2;
     FDay := 14;
-    Show ('Born in year ' + FYear.ToString);
+    Show('Born in year ' + FYear.ToString);
   end;
 
-  Show ('Record size is ' + SizeOf (BirthDay).ToString);
+  Show('Record size is ' + SizeOf(BirthDay).ToString);
 end;
 
 type
@@ -79,7 +79,7 @@ begin
   end;
 
   with Record1 do
-    Show (FMyName + ': ' + FMyValue.ToString);
+    Show(FMyName + ': ' + FMyValue.ToString);
 end;
 
 procedure TForm1.Show(const msg: string);

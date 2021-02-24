@@ -19,7 +19,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -33,7 +33,7 @@ uses
   System.Diagnostics;
 
 const
-  MaxLoop = 5000000; // five million
+  MaxLoop = 5000000; // Five million
 
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -51,10 +51,10 @@ begin
   N2 := 16;
   N3 := 256;
 
-  Show (Format ('Format string: %s', [StrFmt]));
-  Show (Format ('Input data: [%d, %d, %d]', [N1, N2, N3]));
-  Show (Format ('Output: %s', [Format (StrFmt, [N1, N2, N3])]));
-  Show (''); // blank line
+  Show(Format('Format string: %s', [StrFmt]));
+  Show(Format('Input data: [%d, %d, %d]', [N1, N2, N3]));
+  Show(Format('Output: %s', [Format(StrFmt, [N1, N2, N3])]));
+  Show(''); // blank line
 end;
 
 procedure TForm1.Show(const Msg: string);

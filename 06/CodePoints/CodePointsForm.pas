@@ -17,7 +17,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -33,7 +33,7 @@ var
   S1: String;
 begin
   S1 := #$0061 + #$0300;
-  ShowMessage (S1);
+  ShowMessage(S1);
 end;
 
 procedure TForm1.Show(const Msg: string);

@@ -20,7 +20,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -38,7 +38,7 @@ var
   S1: Single;
 begin
   S1 := 0.5 * 0.2;
-  Show (S1.ToString);
+  Show(S1.ToString);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -46,7 +46,7 @@ var
   D1: Double;
 begin
   D1 := 0.5 * 0.2;
-  Show (D1.ToString);
+  Show(D1.ToString);
 end;
 
 procedure TForm1.Show(const Msg: string);

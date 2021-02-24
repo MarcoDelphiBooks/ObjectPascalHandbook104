@@ -8,7 +8,7 @@ uses
 type
   TDate = class (TComponent)
   private
-    fDate: TDateTime;
+    FDate: TDateTime;
     FOnChange: TNotifyEvent;
     function GetYear: Integer;
     function GetDay: Integer;

@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -29,14 +29,14 @@ implementation
 {$R *.fmx}
 
 type
-  TIntProc = procedure (var Num: Integer);
+  TIntProc = procedure(var Num: Integer);
 
-procedure DoubleTheValue (var Value: Integer);
+procedure DoubleTheValue(var Value: Integer);
 begin
   Value := Value * 2;
 end;
 
-procedure TripleTheValue (var Value: Integer);
+procedure TripleTheValue(var Value: Integer);
 begin
   Value := Value * 3;
 end;
@@ -47,8 +47,8 @@ var
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  IntProc (Value);
-  Show (Value.ToString);
+  IntProc(Value);
+  Show(Value.ToString);
 end;
 
 procedure TForm1.CheckBox1Change(Sender: TObject);

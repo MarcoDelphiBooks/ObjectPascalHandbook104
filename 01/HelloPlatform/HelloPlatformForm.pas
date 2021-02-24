@@ -27,15 +27,15 @@ implementation
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   {$IFDEF IOS}
-    ShowMessage ('Running on iOS');
+    ShowMessage('Running on iOS');
   {$ENDIF}
 
   {$IFDEF ANDROID}
-    ShowMessage ('Running on Android');
+    ShowMessage('Running on Android');
   {$ENDIF}
 
   {$IFDEF MSWINDOWS}
-    ShowMessage ('Running on Windows');
+    ShowMessage('Running on Windows');
   {$ENDIF}
 end;
 

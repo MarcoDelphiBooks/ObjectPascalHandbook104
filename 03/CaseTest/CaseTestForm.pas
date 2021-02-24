@@ -22,7 +22,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -55,7 +55,7 @@ var
   AChar: Char;
   AText: string;
 begin
-  /// multiple nested if statements
+  // Multiple nested if statements
   if Edit1.Text.Length > 0 then
   begin
     AChar := Edit1.Text.Chars[0];

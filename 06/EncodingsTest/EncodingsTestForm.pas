@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -35,31 +35,32 @@ var
   UniBytes: TBytes;
   AByte: Byte;
 begin
-  // process Utf8data
-  SetLength (Utf8string, 3);
-  Utf8string[0] := Ord ('a'); // single byte ANSI char < 128
-  Utf8string[1] := $c9; // double byte reversed latin a
+  // Process Utf8data
+  SetLength(Utf8string, 3);
+  Utf8string[0] := Ord ('a'); // Single byte ANSI char < 128
+  Utf8string[1] := $c9; // Double byte reversed latin a
   Utf8string[2] := $90;
 
   Utf16string := TEncoding.UTF8.GetString(Utf8string);
-  Show ('Unicode: ' + Utf16string);
+  Show('Unicode: ' + Utf16string);
 
-  Show ('Utf8 bytes:');
+  Show('Utf8 bytes:');
   for AByte in Utf8String do
-    Show (AByte.ToString);
+    Show(AByte.ToString);
 
-  Show ('Utf16 bytes:');
-  UniBytes := TEncoding.Unicode.GetBytes (Utf16string);
+  Show('Utf16 bytes:');
+  UniBytes := TEncoding.Unicode.GetBytes(Utf16string);
   for AByte in UniBytes do
-    Show (AByte.ToString);
+    Show(AByte.ToString);
 
-  // error: cannot use char > 128
+  // Error: cannot use char > 128
   Utf8string[0] := Ord ('à');
   Utf16string := TEncoding.UTF8.GetString(Utf8string);
-  Show ('Wrong high ANSI: ' + Utf16string);
-  // try different conversion
+  Show('Wrong high ANSI: ' + Utf16string);
+
+  // Try different conversion
   Utf16string := TEncoding.ANSI.GetString(Utf8string);
-  Show ('Wrong double byte: ' + Utf16string);
+  Show('Wrong double byte: ' + Utf16string);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -69,14 +70,14 @@ var
   I: Integer;
 begin
   Utf16string := 'This is my nice string with à and Æ';
-  Show ('Initial: ' + Utf16string);
+  Show('Initial: ' + Utf16string);
 
   Utf8string := TEncoding.UTF8.GetBytes(Utf16string);
   for I := 0 to High(Utf8string) do
     if Utf8string[I] = Ord('i') then
       Utf8string[I] := Ord('I');
   Utf16string := TEncoding.UTF8.GetString(Utf8string);
-  Show ('Final: ' + Utf16string);
+  Show('Final: ' + Utf16string);
 end;
 
 procedure TForm1.Show(const Msg: string);

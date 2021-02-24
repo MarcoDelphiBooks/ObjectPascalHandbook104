@@ -28,14 +28,14 @@ type
 var
   Form5: TForm5;
 
-  procedure Log (const StrMessage: string);
+procedure Log(const StrMessage: string);
 
 implementation
 
 {$R *.dfm}
 
 var
-  recNo: Integer = 0;
+  RecNo: Integer = 0;
 
 type
   TMyRecord = record
@@ -43,7 +43,7 @@ type
     FNumber: Integer;
   public
     Value: Integer;
-    class operator Initialize (out Dest: TMyRecord);
+    class operator Initialize(out Dest: TMyRecord);
     class operator Finalize(var Dest: TMyRecord);
     class operator Assign (var Dest: TMyRecord;
  		  const [ref] Src: TMyRecord);
@@ -53,24 +53,23 @@ type
 
 class operator TMyRecord.Initialize (out Dest: TMyRecord);
 begin
-  Inc (recNo);
-  Dest.FNumber := recNo;
+  Inc (RecNo);
+  Dest.FNumber := RecNo;
   Dest.Value := 10;
-  Log('created ' + Dest.FNumber.ToString + ' ' + IntToHex (Integer(Pointer(@Dest))));
+  Log('Created ' + Dest.FNumber.ToString + ' ' + IntToHex(Integer(Pointer(@Dest))));
 end;
 
 class operator TMyRecord.Assign (var Dest: TMyRecord; const [ref] Src: TMyRecord);
 begin
   Dest.Value := Src.Value;
   // do not copy recNo!
-  Log (Src.FNumber.ToString + ' copied to ' + Dest.FNumber.ToString);
+  Log(Src.FNumber.ToString + ' copied to ' + Dest.FNumber.ToString);
 end;
 
 class operator TMyRecord.Finalize(var Dest: TMyRecord);
 begin
-  Log('destroyed ' + Dest.FNumber.ToString + ' ' + IntToHex (Integer(Pointer(@Dest))));
+  Log('Destroyed ' + Dest.FNumber.ToString + ' ' + IntToHex(Integer(Pointer(@Dest))));
 end;
-
 
 
 procedure LocalVarTest;
@@ -107,52 +106,52 @@ end;
 
 procedure ParByValue (rec: TMyRecord);
 begin
-  Log ('ParByValue');
+  Log('ParByValue');
  //  Rec.Value := 100;
 end;
 
 procedure ParByConstValue (const Rec: TMyRecord);
 begin
-  Log ('ParByConstValue');
-  // Rec.Value := 100; // cannot assign to const
+  Log('ParByConstValue');
+  // Rec.Value := 100; // Cannot assign to const
 end;
 
 procedure ParByRef (var Rec: TMyRecord);
 begin
-  Log ('ParByRef');
+  Log('ParByRef');
   Rec.Value := 100;
 end;
 
 procedure ParByConstRef (const Rec: TMyRecord);
 begin
-  Log ('ParByConstRef');
-  // Rec.Value := 100; // cannot assign to const
+  Log('ParByConstRef');
+  // Rec.Value := 100; // Cannot assign to const
 end;
 
 function ParReturned: TMyRecord;
 begin
-  Log ('ParReturned');
+  Log('ParReturned');
   Result.Value := 42;
 end;
 
 
 procedure TForm5.Button1Click(Sender: TObject);
 begin
-  Log ('LocalVarTest');
+  Log('LocalVarTest');
   LocalVarTest;
-  Log ('');
+  Log('');
 
-  Log ('InlineVarTest');
+  Log('InlineVarTest');
   InlineVarTest;
-  Log ('');
+  Log('');
 
-  Log ('SimpleAssign');
+  Log('SimpleAssign');
   SimpleAssign;
-  Log ('');
+  Log('');
 
-  Log ('InlineVarTest2');
+  Log('InlineVarTest2');
   InlineVarTest2;
-  Log ('');
+  Log('');
 end;
 
 
@@ -166,13 +165,13 @@ var
   My1: TMyRecord;
 begin
   Log(My1.Value.ToString);
-  ParByValue (My1);
+  ParByValue(My1);
   Log(My1.Value.ToString);
-  ParByConstValue (My1);
+  ParByConstValue(My1);
   Log(My1.Value.ToString);
-  ParByRef (My1);
+  ParByRef(My1);
   Log(My1.Value.ToString);
-  ParByConstRef (My1);
+  ParByConstRef(My1);
   Log(My1.Value.ToString);
   My1 := ParReturned;
   Log(My1.Value.ToString);
@@ -190,14 +189,14 @@ type
 
   class operator TMRException.Initialize(out Dest: TMRException);
   begin
-    Log('created ' + IntToHex (Integer(Pointer(@Dest))));
+    Log('Created ' + IntToHex(Integer(Pointer(@Dest))));
     if fRaise then
       raise Exception.Create('Error Message');
   end;
 
   class operator TMRException.Finalize(var Dest: TMRException);
   begin
-    Log('destroyed ' + IntToHex (Integer(Pointer(@Dest))));
+    Log('Destroyed ' + IntToHex(Integer(Pointer(@Dest))));
   end;
 
 procedure ExceptionTest;
@@ -211,9 +210,9 @@ end;
 
 procedure ExceptionInConstructor;
 begin
-  Log ('ExceptionInConstructor');
+  Log('ExceptionInConstructor');
   FRaise := True;
-  var d: TMRException;
+  var D: TMRException;
 end;
 
 procedure TForm5.Button4Click(Sender: TObject);
@@ -236,19 +235,19 @@ procedure ArrOfRec;
 var
   A1: array [1..5] of TMyRecord;
 begin
-  Log ('ArrOfRec');
-  // use array
-  for var I := Low(A1) to High (A1) do
-    Log (A1[I].Value.ToString);
+  Log('ArrOfRec');
+  // Use array
+  for var I := Low(A1) to High(A1) do
+    Log(A1[I].Value.ToString);
 end;
 
 procedure ArrOfDyn;
 var
   A2: array of TMyRecord;
 begin
-  Log ('ArrOfDyn');
+  Log('ArrOfDyn');
   SetLength(A2, 5);
-  for var I := Low(A2) to High (A2) do
+  for var I := Low(A2) to High(A2) do
     Log (A2[I].Value.ToString);
 
 end;
@@ -262,29 +261,29 @@ end;
 type
   TMyRec4 = record
     FX: Integer;
-    constructor Create (const recc: TMyRec4);
+    constructor Create(const Recc: TMyRec4);
   end;
 
-  constructor TMyRec4.Create (const recc: TMyRec4);
+  constructor TMyRec4.Create(const Recc: TMyRec4);
   begin
-    Log ('copy 4 onstructor');
+    Log ('Copy Constructor');
   end;
 
 type
   TMyRec5 = record
     FX: Integer;
     class operator Initialize(out Dest: TMyRec5);
-    constructor Create (const recc: TMyRec5);
+    constructor Create (const Recc: TMyRec5);
   end;
 
   class operator TMyRec5.Initialize(out Dest: TMyRec5);
   begin
-    Log ('regular 5 constructor');
+    Log('regular 5 constructor');
   end;
 
-  constructor TMyRec5.Create (const recc: TMyRec5);
+  constructor TMyRec5.Create (const Recc: TMyRec5);
   begin
-    Log ('MR 5 copy constructor');
+    Log('MR 5 copy constructor');
   end;
 
 
@@ -296,18 +295,18 @@ var
   Mrc2: TMyRec5;
 begin
   // copy constructor called twice
-  var Mr1 := TMyRec4.Create (Mr2);
+  var Mr1 := TMyRec4.Create(Mr2);
 
   if RC.GetType(TypeInfo(TMyRec4)).TypeKind = tkMRecord then
-    Log ('managed record')
+    Log('Managed record')
   else if RC.GetType(TypeInfo(TMyRec4)).TypeKind = tkRecord then
-    Log ('regular record');
+    Log('Regular record');
 
-  var mrc55 :=  TMyRec5.Create (Mrc2);
+  var mrc55 :=  TMyRec5.Create(Mrc2);
   if RC.GetType(TypeInfo(TMyRec5)).TypeKind = tkMRecord then
-    Log ('managed record')
+    Log('Managed record')
   else if RC.GetType(TypeInfo(TMyRec5)).TypeKind = tkRecord then
-    Log ('regular record');
+    Log('Regular record');
 
   var Mrc56 := Mrc2;
 end;

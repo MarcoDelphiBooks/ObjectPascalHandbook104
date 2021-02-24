@@ -24,7 +24,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -37,7 +37,7 @@ implementation
 type
   TIntegersArray = array of Integer;
 
-function Sum (const A: array of Integer): Integer;
+function Sum(const A: array of Integer): Integer;
 var
   I: Integer;
 begin
@@ -52,8 +52,8 @@ var
 begin
   Y := 10;
   I := 1;
-  X := Sum ([10, Y, 27*I]);
-  Show (X.ToString);
+  X := Sum([10, Y, 27*I]);
+  Show(X.ToString);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -62,12 +62,12 @@ var
   X, I: Integer;
 begin
   // initialize the array
-  SetLength (List, 10);
-  for I := Low (List) to High (List) do
+  SetLength(List, 10);
+  for I := Low(List) to High(List) do
     List [I] := I * 2;
   // call
-  X := Sum (List);
-  Show (X.ToString);
+  X := Sum(List);
+  Show(X.ToString);
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
@@ -76,16 +76,16 @@ var
   X, I: Integer;
 begin
   // initialize the array
-  for I := Low (List) to High (List) do
+  for I := Low(List) to High(List) do
     List [I] := I * 2;
 
   // call
-  X := Sum (List);
-  Show (X.ToString);
+  X := Sum(List);
+  Show(X.ToString);
 
   // pass portion of the array
-  X := Sum (Slice (List, 5));
-  Show (X.ToString);
+  X := Sum(Slice (List, 5));
+  Show(X.ToString);
 end;
 
 procedure TForm1.Button4Click(Sender: TObject);
@@ -95,29 +95,29 @@ var
 begin
   N := 20;
   S := 'Total:';
-  Show (Format ('Total: %d', [N]));
-  Show (Format ('Int: %d, Float: %f', [N, 12.4]));
-  Show (Format ('%s %d', [S, N * 2]));
+  Show(Format ('Total: %d', [N]));
+  Show(Format ('Int: %d, Float: %f', [N, 12.4]));
+  Show(Format ('%s %d', [S, N * 2]));
 end;
 
-function SumAll (const Args: array of const): Extended;
+function SumAll(const Args: array of const): Extended;
 var
   I: Integer;
 begin
   Result := 0;
-  for I := Low(Args) to High (Args) do
-    case Args [I].VType of
+  for I := Low(Args) to High(Args) do
+    case Args[I].VType of
       vtInteger: Result :=
         Result + Args [I].VInteger;
       vtBoolean:
-        if Args [I].VBoolean then
+        if Args[I].VBoolean then
           Result := Result + 1;
       vtExtended:
-        Result := Result + Args [I].VExtended^;
+        Result := Result + Args[I].VExtended^;
       vtWideChar:
-        Result := Result + Ord (Args [I].VWideChar);
+        Result := Result + Ord(Args[I].VWideChar);
       vtCurrency:
-        Result := Result + Args [I].VCurrency^;
+        Result := Result + Args[I].VCurrency^;
     end; // case
 end;
 
@@ -127,8 +127,8 @@ var
   Y: Integer;
 begin
   Y := 10;
-  X := SumAll ([Y * Y, 'k', True, 10.34]);
-  Show ('SumAll: ' + X.ToString);
+  X := SumAll([Y * Y, 'k', True, 10.34]);
+  Show('SumAll: ' + X.ToString);
 end;
 
 procedure TForm1.Show(const Msg: string);

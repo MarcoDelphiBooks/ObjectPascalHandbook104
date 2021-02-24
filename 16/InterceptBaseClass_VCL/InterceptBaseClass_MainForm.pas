@@ -30,8 +30,8 @@ type
     procedure BtnInterceptClick(Sender: TObject);
     procedure BtnDisconnectClick(Sender: TObject);
   private
-    Person1: TPerson;
-    Vmi: TVirtualMethodInterceptor;
+    FPerson1: TPerson;
+    FVmi: TVirtualMethodInterceptor;
   public
     procedure Log (const StrMsg: string);
   end;
@@ -49,13 +49,13 @@ uses
 procedure TFormIntercept.BtnDisconnectClick(Sender: TObject);
 begin
   // PPointer(Person1)^ := vmi.OriginalClass;
-  Vmi.Unproxify(Person1); // xe2 only
+  FVmi.Unproxify(FPerson1); // xe2 only
 end;
 
 procedure TFormIntercept.BtnInterceptClick(Sender: TObject);
 begin
-  Vmi := TVirtualMethodInterceptor.Create(TPerson);
-  Vmi.OnBefore := procedure(Instance: TObject; Method: TRttiMethod;
+  FVmi := TVirtualMethodInterceptor.Create(TPerson);
+  FVmi.OnBefore := procedure(Instance: TObject; Method: TRttiMethod;
       const Args: TArray<TValue>; out DoInvoke: Boolean; out Result: TValue)
     begin
       Log('Before calling ' + Method.Name);
@@ -65,21 +65,21 @@ begin
         DoInvoke := False;
       end;
     end;
-  Vmi.OnAfter := procedure(Instance: TObject; Method: TRttiMethod;
+  FVmi.OnAfter := procedure(Instance: TObject; Method: TRttiMethod;
       const Args: TArray<TValue>; var Result: TValue)
     begin
       Log('After calling ' + Method.Name);
     end;
-  Vmi.Proxify(Person1);
+  FVmi.Proxify(FPerson1);
 end;
 
 procedure TFormIntercept.BtnUseClick(Sender: TObject);
 begin
   // use object
-  Log ('Age: ' + IntToStr (Person1.Age));
-  Log ('Person: ' + Person1.ToString);
-  Log ('Class: ' + Person1.ClassName);
-  Log ('Base Class: ' + Person1.ClassParent.ClassName);
+  Log ('Age: ' + IntToStr (FPerson1.Age));
+  Log ('Person: ' + FPerson1.ToString);
+  Log ('Class: ' + FPerson1.ClassName);
+  Log ('Base Class: ' + FPerson1.ClassParent.ClassName);
 end;
 
 { TPerson }
@@ -106,9 +106,9 @@ end;
 
 procedure TFormIntercept.FormCreate(Sender: TObject);
 begin
-  Person1 := TPerson.Create;
-  Person1.Name := 'Mark';
-  Person1.BirthDate := EncodeDate (1984, 5, 14);
+  FPerson1 := TPerson.Create;
+  FPerson1.Name := 'Mark';
+  FPerson1.BirthDate := EncodeDate (1984, 5, 14);
 end;
 
 procedure TFormIntercept.Log(const StrMsg: string);

@@ -24,7 +24,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -49,7 +49,7 @@ var
   AChar: Char;
 begin
   for AChar := 'a' to 'z' do
-    Show (AChar);
+    Show(AChar);
 end;
 
 {works also with $ZEROBASEDSTRINGS ON}
@@ -60,7 +60,7 @@ var
   I: Integer;
 begin
   S := 'Hello world';
-  for I := Low (S) to High (S) do
+  for I := Low(S) to High(S) do
     Show(S[I]);
 end;
 

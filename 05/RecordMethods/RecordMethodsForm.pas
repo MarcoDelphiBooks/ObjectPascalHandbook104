@@ -20,7 +20,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -38,8 +38,8 @@ type
     FSomeChar: Char;
   public
     function ToString: string;
-    procedure SetValue (NewString: string);
-    procedure Init (NewValue: Integer);
+    procedure SetValue(NewString: string);
+    procedure Init(NewValue: Integer);
   end;
 
 type
@@ -49,10 +49,10 @@ type
     FValue: Integer;
     FSomeChar: Char;
   public
-    constructor Create (NewString: string);
+    constructor Create(NewString: string);
     function ToString: string;
-    procedure SetValue (NewString: string);
-    procedure Init (NewValue: Integer);
+    procedure SetValue(NewString: string);
+    procedure Init(NewValue: Integer);
   end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -60,27 +60,27 @@ var
   MyRec: TMyRecord;
 begin
   MyRec.Init(10);
-  MyRec.SetValue ('hello');
-  Show (MyRec.ToString);
-  MyRec.FValue := 20; // actually works!
+  MyRec.SetValue('hello');
+  Show(MyRec.ToString);
+  MyRec.FValue := 20; // Actually works!
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 var
   MyRec: TMyRecord;
 begin
-  Show (MyRec.ToString);
+  Show(MyRec.ToString);
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
 var
   MyRec, MyRec2: TMyNewRecord;
 begin
-  MyRec := TMyNewRecord.Create ('Myself');
-  MyRec2.Create ('Myself');
+  MyRec := TMyNewRecord.Create('Myself');
+  MyRec2.Create('Myself');
 
-  Show (MyRec.ToString);
-  Show (MyRec2.ToString);
+  Show(MyRec.ToString);
+  Show(MyRec2.ToString);
 end;
 
 procedure TForm1.Show(const Msg: string);
@@ -108,10 +108,10 @@ end;
 
 { TMyNewRecord }
 
-constructor TMyNewRecord.Create (NewString: string);
+constructor TMyNewRecord.Create(NewString: string);
 begin
   FName := NewString;
-  Init (0);
+  Init(0);
 end;
 
 procedure TMyNewRecord.Init(NewValue: Integer);

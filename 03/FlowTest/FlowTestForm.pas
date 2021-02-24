@@ -22,7 +22,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -40,10 +40,10 @@ var
 begin
   S := 'Hello World';
   Found := False;
-  for I := Low (S) to High (S) do
+  for I := Low(S) to High(S) do
     if (S[I]) = 'o' then
       Found := True;
-  Show ('Found : ' + BoolToStr (Found, True));
+  Show('Found : ' + BoolToStr(Found, True));
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -54,14 +54,14 @@ var
 begin
   S := 'Hello World';
   Found := False;
-  I := Low (S);
+  I := Low(S);
   while not Found and (I <= High(S)) do
   begin
     if (S[I]) = 'o' then
       Found := True;
-    Inc (I);
+    Inc(I);
   end;
-  Show ('Found : ' + BoolToStr (Found, True));
+  Show('Found : ' + BoolToStr(Found, True));
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
@@ -72,13 +72,13 @@ var
 begin
   S := 'Hello World';
   Found := False;
-  for I := Low (S) to High (S) do
+  for I := Low(S) to High(S) do
     if (S[I]) = 'o' then
     begin
       Found := True;
       Break; // jumps out of the for loop
     end;
-  Show ('Found : ' + BoolToStr (Found, True));
+  Show('Found : ' + BoolToStr(Found, True));
 end;
 
 procedure TForm1.Show(const Msg: string);

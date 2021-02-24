@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -39,13 +39,13 @@ begin
   for I := 1 to 10 do
     Str1 := Str1 + 'Object ';
 
-  Str2:= string.Copy (Str1);
-  Str1 := Str2 + 'Pascal ' + Str2.Substring (10, 30);
+  Str2:= string.Copy(Str1);
+  Str1 := Str2 + 'Pascal ' + Str2.Substring(10, 30);
   Show(Str1);
 
   // find substring
   Show('Pascal at: ' +
-    Str1.IndexOf ('Pascal').ToString);
+    Str1.IndexOf('Pascal').ToString);
 
   // count occurrences
   I := -1;
@@ -53,11 +53,10 @@ begin
   repeat
     I := Str1.IndexOf('O', I + 1); // search from next element
     if I >= 0 then
-      Inc (NCount); // found one
+      Inc(NCount); // found one
   until I < 0;
 
-  Show('O found: ' +
-    NCount.ToString + ' times');
+  Show('O found: ' + NCount.ToString + ' times');
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -67,23 +66,23 @@ var
 begin
   Str1 := '';
 
-  // create string
+  // Create string
   for I := 1 to 10 do
     Str1 := Str1 + 'Object ';
 
-  Str2:= string.Copy (Str1);
-  Str1 := Str2 + 'Pascal ' + Str2.Substring (10, 30);
+  Str2:= string.Copy(Str1);
+  Str1 := Str2 + 'Pascal ' + Str2.Substring(10, 30);
   Show(Str1);
 
-  // single replace
-  NIndex := Str1.IndexOf ('Pascal');
+  // Single replace
+  NIndex := Str1.IndexOf('Pascal');
   Str1 := Str1.Substring(0, NIndex) + 'Object' +
     Str1.Substring(NIndex + ('Pascal').Length);
-  Show (Str1);
+  Show(Str1);
 
-  // multi-replace
+  // Multi-replace
   Str1 := Str1.Replace('O', 'o', [rfReplaceAll]);
-  Show (Str1);
+  Show(Str1);
 end;
 
 procedure TForm1.Show(const Msg: string);

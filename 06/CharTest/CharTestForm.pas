@@ -22,8 +22,8 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
-    procedure ShowBool (Value: Boolean);
+    procedure Show(const Msg: string);
+    procedure ShowBool(Value: Boolean);
   end;
 
 var
@@ -41,24 +41,24 @@ uses
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
-  ch1: Char;
+  Ch1: Char;
 begin
-  ch1 := 'ù';
-  Show ('UpCase ù: ' + UpCase(ch1));
-  Show ('ToUpper ù: ' + ch1.ToUpper);
+  Ch1 := 'ù';
+  Show('UpCase ù: ' + UpCase(Ch1));
+  Show('ToUpper ù: ' + Ch1.ToUpper);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 var
   Str1: string;
 begin
-  Str1 := '1.' + #9 + Char.ConvertFromUtf32 (128) +
+  Str1 := '1.' + #9 + Char.ConvertFromUtf32(128) +
     Char.ConvertFromUtf32($1D11E);
-  ShowBool (Str1.Chars[0].IsNumber);
-  ShowBool (Str1.Chars[1].IsPunctuation);
-  ShowBool (Str1.Chars[2].IsWhiteSpace);
-  ShowBool (Str1.Chars[3].IsControl);
-  ShowBool (Str1.Chars[4].IsSurrogate);
+  ShowBool(Str1.Chars[0].IsNumber);
+  ShowBool(Str1.Chars[1].IsPunctuation);
+  ShowBool(Str1.Chars[2].IsWhiteSpace);
+  ShowBool(Str1.Chars[3].IsControl);
+  ShowBool(Str1.Chars[4].IsSurrogate);
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
@@ -66,7 +66,7 @@ var
   Str1: string;
 begin
   Str1 := #$80;
-  Show (Str1 + ' - ' + IntToStr (Ord (Str1.Chars[0])));
+  Show(Str1 + ' - ' + IntToStr(Ord(Str1.Chars[0])));
 end;
 
 procedure TForm1.Button4Click(Sender: TObject);
@@ -74,8 +74,8 @@ var
   Str1: string;
 begin
   Str1 := #$3042#$3044;
-  Show (Str1 + ' - ' + IntToStr (Ord (Str1.Chars[0])) +
-    ' - ' + IntToStr (Ord (Str1.Chars[1])));
+  Show(Str1 + ' - ' + IntToStr(Ord(Str1.Chars[0])) +
+    ' - ' + IntToStr(Ord(Str1.Chars[1])));
 end;
 
 procedure TForm1.Show(const Msg: string);
@@ -85,7 +85,7 @@ end;
 
 procedure TForm1.ShowBool(Value: Boolean);
 begin
-  Show(BoolToStr (Value, True));
+  Show(BoolToStr(Value, True));
 end;
 
 end.

@@ -32,7 +32,7 @@ object FormIntercept: TFormIntercept
   end
   object BtnIntercept: TButton
     Left = 31
-    Top = 78
+    Top = 85
     Width = 138
     Height = 33
     Margins.Left = 4

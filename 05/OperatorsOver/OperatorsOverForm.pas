@@ -20,7 +20,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -40,7 +40,7 @@ begin
   A.SetValue(10, 10);
   B := 30;
   C := A + B;
-  Show (string(C));
+  Show(string(C));
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -50,7 +50,7 @@ begin
   A.SetValue(10, 20);
   A := A + 10;
   A := 30 + A;
-  Show (string(A));
+  Show(string(A));
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
@@ -60,13 +60,13 @@ begin
   A := 50;
 
   C := A + 30;
-  Show (string(C));
+  Show(string(C));
 
   C := 50 + 30;
-  Show (string(C));
+  Show(string(C));
 
   C := 50 + TPointRecord(30);
-  Show (string(C));
+  Show(string(C));
 
 end;
 

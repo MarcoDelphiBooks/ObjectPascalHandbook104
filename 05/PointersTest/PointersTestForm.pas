@@ -20,7 +20,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -40,24 +40,24 @@ var
 begin
   X := 10;
   P := @X;
-  // change the value of X using the pointer
+  // Change the value of X using the pointer
   P^ := 20;
-  Show ('X: ' + X.ToString);
-  Show ('P^: ' + P^.ToString);
-  Show ('P: ' + UIntPtr(P).ToHexString (8));
+  Show('X: ' + X.ToString);
+  Show('P^: ' + P^.ToString);
+  Show('P: ' + UIntPtr(P).ToHexString (8));
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 var
   P: ^Integer;
 begin
-  // initialization
-  New (P);
-  // operations
+  // Initialization
+  New(P);
+  // Operations
   P^ := 20;
-  Show (P^.ToString);
-  // termination
-  Dispose (P);
+  Show(P^.ToString);
+  // Termination
+  Dispose(P);
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
@@ -65,8 +65,8 @@ var
   P: ^Integer;
 begin
   P := nil;
-  // if Assigned (P) then
-    Show (P^.ToString);
+  // if Assigned(P) then
+    Show(P^.ToString);
 end;
 
 procedure TForm1.Show(const Msg: string);

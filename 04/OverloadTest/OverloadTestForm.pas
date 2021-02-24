@@ -22,7 +22,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -35,71 +35,70 @@ implementation
 uses
   System.Math;
 
-procedure Show (Msg: string);
+procedure Show(Msg: string);
 begin
   Form1.Show(Msg)
 end;
 
-procedure ShowMsg (Str: string); overload;
+procedure ShowMsg(Str: string); overload;
 begin
-  Show ('Message: ' + Str);
+  Show('Message: ' + Str);
 end;
 
 procedure ShowMsg (FormatStr: string;
   Params: array of const); overload;
 begin
-  Show ('Message: ' + Format (FormatStr, Params));
+  Show('Message: ' + Format(FormatStr, Params));
 end;
 
-procedure ShowMsg (I: Integer; Str: string); overload;
+procedure ShowMsg(I: Integer; Str: string); overload;
 begin
-  ShowMsg (I.ToString + ' ' + Str);
+  ShowMsg(I.ToString + ' ' + Str);
 end;
 
-function Add (N: Integer; S: Single): Single; overload;
-begin
-  Result := N + S;
-end;
-
-function Add (S: Single; N: Integer): Single; overload;
+function Add(N: Integer; S: Single): Single; overload;
 begin
   Result := N + S;
 end;
 
-procedure NewMessage (Msg: string;
-  Caption: string = 'Message';
+function Add(S: Single; N: Integer): Single; overload;
+begin
+  Result := N + S;
+end;
+
+procedure NewMessage(Msg: string; Caption: string = 'Message';
   Separator: string = ': '); overload;
 begin
-  Show (Caption + Separator + Msg);
+  Show(Caption + Separator + Msg);
 end;
 
-// uncommenting this overloaded procedure will cause an ambiguous call
-//procedure NewMessage (Str: string; I: Integer = 0); overload;
+// Uncommenting this overloaded procedure will cause an ambiguous call
+//procedure NewMessage(Str: string; I: Integer = 0); overload;
 //begin
-//  writeln (Str + ': ' + IntToStr (I))
+//  Writeln (Str + ': ' + IntToStr (I))
 //end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  ShowMsg ('Hello');
-  ShowMsg ('Total = %d.', [100]);
-  ShowMsg (10, 'MBytes');
-  // ShowMsg (10.0, 'Hello');
+  ShowMsg('Hello');
+  ShowMsg('Total = %d.', [100]);
+  ShowMsg(10, 'MBytes');
+  // ShowMsg(10.0, 'Hello');
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-  Show (Add (10, 10.0).ToString);
-  Show (Add (10.0, 10).ToString);
-  // Show (Add (10, 10).ToString); // ambiguous call
-  Show (Add (10, 10.ToSingle).ToString);
+  Show(Add(10, 10.0).ToString);
+  Show(Add(10.0, 10).ToString);
+  // Show(Add(10, 10).ToString); // Ambiguous call
+  Show(Add(10, 10.ToSingle).ToString);
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
 begin
-  NewMessage ('Something wrong here!');
-  NewMessage ('Something wrong here!', 'Attention');
-  NewMessage ('Hello', 'Message', '--');
+  NewMessage('Something wrong here!');
+  NewMessage('Something wrong here!', 'Attention');
+  NewMessage('Hello', 'Message', '--');
 end;
 
 procedure TForm1.Show(const Msg: string);

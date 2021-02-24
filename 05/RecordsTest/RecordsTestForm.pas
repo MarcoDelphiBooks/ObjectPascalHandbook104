@@ -22,7 +22,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -39,16 +39,16 @@ type
     FDay: Byte;
   end;
 
-function MyDateToString (MyDate: TMyDate): string;
+function MyDateToString(MyDate: TMyDate): string;
 begin
   Result := MyDate.FYear.ToString + '.' +
     MyDate.FMonth.ToString + '.' +
     MyDate.FDay.ToString;
 end;
 
-procedure IncreaseYear (var MyDate: TMyDate);
+procedure IncreaseYear(var MyDate: TMyDate);
 begin
-  Inc (MyDate.FYear);
+  Inc(MyDate.FYear);
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -59,8 +59,8 @@ begin
   BirthDay.FMonth := 2;
   BirthDay.FDay := 14;
 
-  Show ('Born in year ' + BirthDay.FYear.ToString);
-  Show ('Record size is ' + SizeOf (BirthDay).ToString);
+  Show('Born in year ' + BirthDay.FYear.ToString);
+  Show('Record size is ' + SizeOf(BirthDay).ToString);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -75,8 +75,8 @@ begin
   ADay := Birthday;
   ADay.FYear := 2008;
 
-  Show (MyDateToString (BirthDay));
-  Show (MyDateToString (ADay));
+  Show(MyDateToString(BirthDay));
+  Show(MyDateToString(ADay));
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
@@ -87,8 +87,8 @@ begin
   ADay.FMonth := 3;
   ADay.FDay := 18;
 
-  Increaseyear (ADay);
-  Show (MyDateToString (ADay));
+  IncreaseYear(ADay);
+  Show(MyDateToString(ADay));
 end;
 
 procedure TForm1.Button4Click(Sender: TObject);
@@ -96,21 +96,20 @@ var
   DatesList: array of TMyDate;
   I: Integer;
 begin
-  // allocate array elements
-  SetLength (DatesList, 5);
+  // Allocate array elements
+  SetLength(DatesList, 5);
 
-  // assign random values
+  // Assign random values
   for I := Low(DatesList) to High(DatesList) do
   begin
-    DatesList[I].FYear := 2000 + Random (50);
-    DatesList[I].FMonth := 1 + Random (12);
-    DatesList[I].FDay := 1 + Random (27);
+    DatesList[I].FYear := 2000 + Random(50);
+    DatesList[I].FMonth := 1 + Random(12);
+    DatesList[I].FDay := 1 + Random(27);
   end;
 
-  // display the values
+  // Display the values
   for I := Low(DatesList) to High(DatesList) do
-    Show (I.ToString + ': ' +
-      MyDateToString (DatesList[I]));
+    Show(I.ToString + ': ' + MyDateToString(DatesList[I]));
 end;
 
 procedure TForm1.Show(const Msg: string);

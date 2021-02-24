@@ -29,7 +29,7 @@ var
   StrMessage: string;
 begin
   StrMessage := 'Hello, World';
-  ShowMessage (StrMessage);
+  ShowMessage(StrMessage);
 end;
 
 end.

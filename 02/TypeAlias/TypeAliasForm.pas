@@ -15,7 +15,7 @@ type
   private
     { Private declarations }
   public
-    procedure Log (const StrMessage: string);
+    procedure Log(const StrMessage: string);
   end;
 
 var
@@ -29,7 +29,7 @@ type
   TNewInt = Integer;
   TNewInt2 = type Integer;
 
-procedure Test (var N: Integer);
+procedure Test(var N: Integer);
 begin
 
 end;
@@ -45,12 +45,12 @@ begin
   NI2 := I;
 
   Test(I);
-  Test (NI);
-//  Test (NI2); // error
+  Test(NI);
+//  Test(NI2); // Error
 
-  ShowMessage (I.ToString);
-  ShowMessage (NI.ToString);
-//  ShowMessage (NI2.ToString); // error
+  ShowMessage(I.ToString);
+  ShowMessage(NI.ToString);
+//  ShowMessage(NI2.ToString); // Error
 
 end;
 

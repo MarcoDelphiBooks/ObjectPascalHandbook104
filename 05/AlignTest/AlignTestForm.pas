@@ -16,7 +16,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -29,31 +29,31 @@ implementation
 {$ALIGN 16}
 type
   TMyRecord16 = record
-    c: AnsiChar;
-    w: Word;
-    b: Boolean;
+    C: AnsiChar;
+    W: Word;
+    B: Boolean;
     I: Integer;
-    d: Double;
+    D: Double;
   end;
 
 {$ALIGN 4}
 type
   TMyRecord4 = record
-    c: AnsiChar;
-    w: Word;
-    b: Boolean;
+    C: AnsiChar;
+    W: Word;
+    B: Boolean;
     I: Integer;
-    d: Double;
+    D: Double;
   end;
 
 {$ALIGN 1}
 type
   TMyRecord1 = record
-    c: AnsiChar;
-    w: Word;
-    b: Boolean;
+    C: AnsiChar;
+    W: Word;
+    B: Boolean;
     I: Integer;
-    d: Double;
+    D: Double;
   end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -62,26 +62,26 @@ var
   MyRec4: TMyRecord4;
   MyRec16: TMyRecord16;
 begin
-  Show ('ALIGN 1 -- sizeof: ' + IntToStr (sizeof(TMyRecord1)));
-  Show ('c: ' + IntToStr (Integer(@MyRec1.c) - Integer(@MyRec1)) +
-    ' w: ' + IntToStr (Integer(@MyRec1.w) - Integer(@MyRec1)) +
-    ' b: ' + IntToStr (Integer(@MyRec1.b) - Integer(@MyRec1)) +
-    ' i: ' + IntToStr (Integer(@MyRec1.i) - Integer(@MyRec1)) +
-    ' d: ' + IntToStr (Integer(@MyRec1.d) - Integer(@MyRec1)));
+  Show('ALIGN 1 -- sizeof: ' + IntToStr(sizeof(TMyRecord1)));
+  Show('C: ' + IntToStr(Integer(@MyRec1.C) - Integer(@MyRec1)) +
+    ' W: ' + IntToStr(Integer(@MyRec1.W) - Integer(@MyRec1)) +
+    ' B: ' + IntToStr(Integer(@MyRec1.B) - Integer(@MyRec1)) +
+    ' I: ' + IntToStr(Integer(@MyRec1.i) - Integer(@MyRec1)) +
+    ' D: ' + IntToStr(Integer(@MyRec1.D) - Integer(@MyRec1)));
 
-  Show ('ALIGN 4 -- sizeof: ' + IntToStr (sizeof(TMyRecord4)));
-  Show ('c: ' + IntToStr (Integer(@MyRec4.c) - Integer(@MyRec4)) +
-    ' w: ' + IntToStr (Integer(@MyRec4.w) - Integer(@MyRec4)) +
-    ' b: ' + IntToStr (Integer(@MyRec4.b) - Integer(@MyRec4)) +
-    ' i: ' + IntToStr (Integer(@MyRec4.i) - Integer(@MyRec4)) +
-    ' d: ' + IntToStr (Integer(@MyRec4.d) - Integer(@MyRec4)));
+  Show('ALIGN 4 -- sizeof: ' + IntToStr (sizeof(TMyRecord4)));
+  Show('C: ' + IntToStr(Integer(@MyRec4.C) - Integer(@MyRec4)) +
+    ' W: ' + IntToStr(Integer(@MyRec4.W) - Integer(@MyRec4)) +
+    ' B: ' + IntToStr(Integer(@MyRec4.B) - Integer(@MyRec4)) +
+    ' I: ' + IntToStr(Integer(@MyRec4.i) - Integer(@MyRec4)) +
+    ' D: ' + IntToStr(Integer(@MyRec4.D) - Integer(@MyRec4)));
 
-  Show ('ALIGN 16 -- sizeof: ' + IntToStr (sizeof(TMyRecord16)));
-  Show ('c: ' + IntToStr (Integer(@MyRec16.c) - Integer(@MyRec16)) +
-    ' w: ' + IntToStr (Integer(@MyRec16.w) - Integer(@MyRec16)) +
-    ' b: ' + IntToStr (Integer(@MyRec16.b) - Integer(@MyRec16)) +
-    ' i: ' + IntToStr (Integer(@MyRec16.i) - Integer(@MyRec16)) +
-    ' d: ' + IntToStr (Integer(@MyRec16.d) - Integer(@MyRec16)));
+  Show('ALIGN 16 -- sizeof: ' + IntToStr (sizeof(TMyRecord16)));
+  Show('C: ' + IntToStr(Integer(@MyRec16.C) - Integer(@MyRec16)) +
+    ' W: ' + IntToStr(Integer(@MyRec16.W) - Integer(@MyRec16)) +
+    ' B: ' + IntToStr(Integer(@MyRec16.B) - Integer(@MyRec16)) +
+    ' I: ' + IntToStr(Integer(@MyRec16.i) - Integer(@MyRec16)) +
+    ' D: ' + IntToStr(Integer(@MyRec16.D) - Integer(@MyRec16)));
 end;
 
 procedure TForm1.Show(const Msg: string);

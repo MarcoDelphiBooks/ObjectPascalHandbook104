@@ -58,12 +58,12 @@ uses
   StrUtils, Character;
 
 // helper function
-function GetCharDescr (NChar: Integer): string;
+function GetCharDescr(NChar: Integer): string;
 begin
   if Char(NChar).IsControl then
-    Result := 'Char #' + IntToStr (NChar) + ' [  ]'
+    Result := 'Char #' + IntToStr(NChar) + ' [  ]'
   else
-    Result := 'Char #' + IntToStr (NChar) + ' [' + Char (NChar) + ']';
+    Result := 'Char #' + IntToStr(NChar) + ' [' + Char(NChar) + ']';
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);
@@ -91,8 +91,8 @@ begin
   NStart := AItem.Tag  * 256;
   for I := 0 to 255 do
   begin
-    StringGrid1.Cells [I mod 16, I div 16] :=
-      IfThen (not Char(I + NStart).IsControl, Char (I + NStart), '');
+    StringGrid1.Cells[I mod 16, I div 16] :=
+      IfThen(not Char(I + NStart).IsControl, Char(I + NStart), '');
   end;
   TabControl1.ActiveTab := TabItem2;
   BackBtn.Visible := True;

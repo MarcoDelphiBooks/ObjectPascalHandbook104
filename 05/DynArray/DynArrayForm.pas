@@ -22,7 +22,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -42,20 +42,20 @@ procedure TForm1.Button1Click(Sender: TObject);
 var
   Array1: array of Integer;
 begin
-  // would cause a runtime Range Check error
-  // Array1 [1] := 100;
-  SetLength (Array1, 10);
-  Array1 [1] := 100; // this is OK
-  Show (Array1 [1].ToString);
+  // Would cause a runtime Range Check error
+  // Array1[1] := 100;
+  SetLength(Array1, 10);
+  Array1[1] := 100; // This is OK
+  Show(Array1[1].ToString);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 var
   I: Integer;
 begin
-  SetLength (IntArray1, 20);
-  for I := Low (IntArray1) to High (IntArray1) do
-    IntArray1 [I] := I;
+  SetLength(IntArray1, 20);
+  for I := Low(IntArray1) to High(IntArray1) do
+    IntArray1[I] := I;
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
@@ -66,10 +66,10 @@ begin
   Total := 0;
   for I := Low(IntArray1) to High(IntArray1) do
   begin
-    Inc (Total, IntArray1[I]);
-    Show (I.ToString + ': ' + IntArray1[I].ToString);
+    Inc(Total, IntArray1[I]);
+    Show(I.ToString + ': ' + IntArray1[I].ToString);
   end;
-  Show ('Average: ' + (Total / Length(IntArray1)).ToString);
+  Show('Average: ' + (Total / Length(IntArray1)).ToString);
 end;
 
 procedure TForm1.Button4Click(Sender: TObject);
@@ -81,17 +81,17 @@ begin
   IntArray2 := IntArray1;
 
   // separate copy
-  IntArray3 := Copy (IntArray1, Low(IntArray1), Length(IntArray1));
+  IntArray3 := Copy(IntArray1, Low(IntArray1), Length(IntArray1));
 
   // modify items
-  IntArray2 [1] := 100;
-  IntArray3 [2] := 100;
+  IntArray2[1] := 100;
+  IntArray3[2] := 100;
 
   // check values for each array
-  Show (Format ('[%d] %d -- %d -- %d',
-    [1, IntArray1 [1], IntArray2 [1], IntArray3 [1]]));
-  Show (Format ('[%d] %d -- %d -- %d',
-    [2, IntArray1 [2], IntArray2 [2], IntArray3 [2]]));
+  Show(Format('[%d] %d -- %d -- %d',
+    [1, IntArray1 [1], IntArray2[1], IntArray3[1]]));
+  Show(Format('[%d] %d -- %d -- %d',
+    [2, IntArray1 [2], IntArray2[2], IntArray3[2]]));
 end;
 
 procedure TForm1.Show(const Msg: string);

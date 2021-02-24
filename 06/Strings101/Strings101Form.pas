@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const msg: string);
+    procedure Show(const msg: string);
   end;
 
 var
@@ -32,7 +32,7 @@ uses
   System.Diagnostics;
 
 const
-  MaxLoop = 5000000; // five million
+  MaxLoop = 5000000; // Five million
 
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -50,8 +50,8 @@ begin
   StrFinal := Str1;
 
   T1.Stop;
-  Show('Length: ' + IntToStr (StrFinal.Length));
-  Show('Concatenation: ' + IntToStr (T1.ElapsedMilliseconds));
+  Show('Length: ' + IntToStr(StrFinal.Length));
+  Show('Concatenation: ' + IntToStr(T1.ElapsedMilliseconds));
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -63,15 +63,15 @@ begin
   Str1 := 'Marco ';
   Str2 := 'Cantu ';
 
-  SetLength (Str1, MaxLoop * 6);
+  SetLength(Str1, MaxLoop * 6);
   T1 := TStopwatch.StartNew;
   for I := 1 to MaxLoop do
     Str1 := Str1 + Str2;
   StrFinal := Str1;
 
   T1.Stop;
-  Show('Length: ' + IntToStr (StrFinal.Length));
-  Show('Concatenation: ' + IntToStr (T1.ElapsedMilliseconds));
+  Show('Length: ' + IntToStr(StrFinal.Length));
+  Show('Concatenation: ' + IntToStr(T1.ElapsedMilliseconds));
 end;
 
 procedure TForm1.Show(const Msg: string);
