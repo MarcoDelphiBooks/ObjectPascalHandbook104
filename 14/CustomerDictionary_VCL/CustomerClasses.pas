@@ -57,7 +57,7 @@ type
     procedure Init;
     procedure EnforceInit;
   public
-    constructor Create (ACustKey: TCustomerKey);
+    constructor Create(ACustKey: TCustomerKey);
     property CustKey: TCustomerKey read FCustKey write SetCustKey;
   published
     property CustNo: Double read GetCustNo write SetCustNo;
@@ -74,9 +74,9 @@ type
     RefDataSet: TDataSet;
   end;
 
-  TCustomerDictionary = class (TObjectDictionary <TCustomerKey, TCustomer>)
+  TCustomerDictionary = class(TObjectDictionary<TCustomerKey, TCustomer>)
   public
-    procedure LoadFromDataSet (ADataset: TDataSet);
+    procedure LoadFromDataSet(ADataset: TDataSet);
   end;
 
 {$M-}
@@ -161,17 +161,17 @@ procedure TCustomer.Init;
 begin
   RefDataSet.Locate('custno', CustKey.CustNo, []);
   // could also load each published field via RTTI
-  FCustNo := RefDataSet.FieldByName ('CustNo').AsFloat;
-  FFAX := RefDataSet.FieldByName ('FAX').AsString;
-  FZip := RefDataSet.FieldByName ('Zip').AsString;
-  FState := RefDataSet.FieldByName ('State').AsString;
-  FCompany := RefDataSet.FieldByName ('Company').AsString;
-  FPhone := RefDataSet.FieldByName ('Phone').AsString;
+  FCustNo := RefDataSet.FieldByName('CustNo').AsFloat;
+  FFAX := RefDataSet.FieldByName('FAX').AsString;
+  FZip := RefDataSet.FieldByName('Zip').AsString;
+  FState := RefDataSet.FieldByName('State').AsString;
+  FCompany := RefDataSet.FieldByName('Company').AsString;
+  FPhone := RefDataSet.FieldByName('Phone').AsString;
   FCountry := RefDataSet.FieldByName ('Country').AsString;
-  FAddr1 := RefDataSet.FieldByName ('Addr1').AsString;
-  FCity := RefDataSet.FieldByName ('City').AsString;
-  FContact := RefDataSet.FieldByName ('Contact').AsString;
-  fInitDone := True;
+  FAddr1 := RefDataSet.FieldByName('Addr1').AsString;
+  FCity := RefDataSet.FieldByName('City').AsString;
+  FContact := RefDataSet.FieldByName('Contact').AsString;
+  FInitDone := True;
 end;
 
 procedure TCustomer.SetAddr1(const Value: string);
@@ -253,9 +253,9 @@ begin
   while not ADataset.EOF do
   begin
     CustKey := TCustomerKey.Create;
-    CustKey.CustNo := ADataset ['CustNo'];
-    CustKey.Company := ADataset ['Company'];
-    self.Add(CustKey, TCustomer.Create (CustKey));
+    CustKey.CustNo := ADataset['CustNo'];
+    CustKey.Company := ADataset['Company'];
+    self.Add(CustKey, TCustomer.Create(CustKey));
     ADataset.Next;
   end;
 end;

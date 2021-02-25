@@ -8,11 +8,11 @@ uses
 type
   TDescriptionAttrKind = (dakClass, dakDescription, dakId);
 
-  DescriptionAttribute = class (TCustomAttribute)
+  DescriptionAttribute = class(TCustomAttribute)
   private
     FDak: TDescriptionAttrKind;
   public
-    constructor Create (ADak: TDescriptionAttrKind = dakClass);
+    constructor Create(ADak: TDescriptionAttrKind = dakClass);
     property Kind: TDescriptionAttrKind read FDak;
   end;
 
@@ -28,9 +28,9 @@ type
     procedure SetCountry(const Value: string);
     procedure SetName(const Value: string);
   public
-    [Description (dakDescription)]
+    [Description(dakDescription)]
     function GetName: string;
-    [Description (dakID)]
+    [Description(dakID)]
     function GetStringCode: Integer;
   published
     property Name: string read GetName write SetName;
@@ -47,9 +47,9 @@ type
     procedure SetName(const Value: string);
     procedure SetID(const Value: string);
   public
-    [Description (dakDescription)]
+    [Description(dakDescription)]
     function GetName: string;
-    [Description (dakID)]
+    [Description(dakID)]
     function GetID: string;
   published
     property Name: string read GetName write SetName;

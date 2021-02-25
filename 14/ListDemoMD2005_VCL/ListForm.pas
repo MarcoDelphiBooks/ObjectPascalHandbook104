@@ -24,7 +24,7 @@ type
     procedure ButtonSortClick(Sender: TObject);
     procedure ButtonAnonSortClick(Sender: TObject);
   private
-    ListDate: TList <TDate>;
+    ListDate: TList<TDate>;
   public
     { Public declarations }
   end;
@@ -42,19 +42,19 @@ uses
 procedure TForm1.ButtonAddClick(Sender: TObject);
 begin
   // OK, quite ugly, but I've decided to keep it as it was
-  ListDate.Add (TDate.Create (
-    1900 + Random (200), 1 + Random (12), 1 + Random (30)));
+  ListDate.Add(TDate.Create(
+    1900 + Random(200), 1 + Random(12), 1 + Random(30)));
 end;
 
 function DoCompare (const Left, Right: TDate): Integer;
 var
-  ldate, rDate: TDateTime;
+  LDate, RDate: TDateTime;
 begin
-  lDate := EncodeDate(Left.Year, Left.Month, Left.Day);
-  rDate := EncodeDate(Right.Year, Right.Month, Right.Day);
-  if lDate = rDate then
+  LDate := EncodeDate(Left.Year, Left.Month, Left.Day);
+  RDate := EncodeDate(Right.Year, Right.Month, Right.Day);
+  if LDate = RDate then
     Result := 0
-  else if lDate < rDate then
+  else if LDate < RDate then
     Result := -1
   else
     Result := 1;
@@ -63,19 +63,19 @@ end;
 procedure TForm1.ButtonAnonSortClick(Sender: TObject);
 begin
   // passes method as parameter
-  ListDate.Sort (TComparer<TDate>.Construct (DoCompare));
+  ListDate.Sort(TComparer<TDate>.Construct (DoCompare));
 
 // in line version
-//  ListDate.Sort (TComparer<TDate>.Construct (
-//    function (const Left, Right: TDate): Integer
+//  ListDate.Sort(TComparer<TDate>.Construct (
+//    function(const Left, Right: TDate): Integer
 //    var
-//      ldate, rDate: TDateTime;
+//      LDate, RDate: TDateTime;
 //    begin
-//      lDate := EncodeDate(Left.Year, Left.Month, Left.Day);
-//      rDate := EncodeDate(Right.Year, Right.Month, Right.Day);
-//      if lDate = rDate then
+//      LDate := EncodeDate(Left.Year, Left.Month, Left.Day);
+//      RDate := EncodeDate(Right.Year, Right.Month, Right.Day);
+//      if LDate = RDate then
 //        Result := 0
-//      else if lDate < rDate then
+//      else if LDate < RDate then
 //        Result := -1
 //      else
 //        Result := 1;
@@ -88,7 +88,7 @@ var
 begin
   for ADate in ListDate do
   begin
-    Listbox1.Items.Add (ADate.Text);
+    Listbox1.Items.Add(ADate.Text);
   end;
 end;
 
@@ -98,27 +98,27 @@ var
 begin
   ListBox1.Clear;
   for I := 0 to ListDate.Count - 1 do
-    // originally was:
-    // Listbox1.Items.Add ((TObject(ListDate [I]) as TDate).Text);
+    // Originally was:
+    // Listbox1.Items.Add((TObject(ListDate[I]) as TDate).Text);
     // improved version
-    Listbox1.Items.Add (ListDate [I].Text);
+    Listbox1.Items.Add(ListDate[I].Text);
 end;
 
 type
-  TDateComparer = class (TComparer<TDate>)
+  TDateComparer = class(TComparer<TDate>)
     function Compare(const Left, Right: TDate): Integer; override;
   end;
 
 type
   TAnyDateComparer = TComparer<TDate>;
-  TMyDateComparer = class (TAnyDateComparer)
+  TMyDateComparer = class(TAnyDateComparer)
     function Compare(const Left, Right: TDate): Integer; override;
   end;
 
 procedure TForm1.ButtonSortClick(Sender: TObject);
 begin
   // ListDate.Sort;
-  ListDate.Sort (TDateComparer.Create);
+  ListDate.Sort(TDateComparer.Create);
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -129,8 +129,8 @@ end;
 
 procedure TForm1.ButtonWrongClick(Sender: TObject);
 begin
-  // add a button to the list
-  // ListDate.Add (Sender); // E2010 Incompatible types: 'TDate' and 'TObject'
+  // Add a button to the list
+  // ListDate.Add(Sender); // E2010 Incompatible types: 'TDate' and 'TObject'
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -138,7 +138,7 @@ var
   I: Integer;
 begin
   for I := 0 to ListDate.Count - 1 do
-    TObject(ListDate [I]).Free;
+    TObject(ListDate[I]).Free;
   ListDate.Free;
 end;
 
@@ -146,13 +146,13 @@ end;
 
 function TDateComparer.Compare(const Left, Right: TDate): Integer;
 var
-  ldate, rDate: TDateTime;
+  LDate, RDate: TDateTime;
 begin
-  lDate := EncodeDate(Left.Year, Left.Month, Left.Day);
-  rDate := EncodeDate(Right.Year, Right.Month, Right.Day);
-  if lDate = rDate then
+  LDate := EncodeDate(Left.Year, Left.Month, Left.Day);
+  RDate := EncodeDate(Right.Year, Right.Month, Right.Day);
+  if LDate = RDate then
     Result := 0
-  else if lDate < rDate then
+  else if LDate < RDate then
     Result := -1
   else
     Result := 1;
@@ -163,13 +163,13 @@ end;
 // duplicate code from above...
 function TMyDateComparer.Compare(const Left, Right: TDate): Integer;
 var
-  ldate, rDate: TDateTime;
+  LDate, RDate: TDateTime;
 begin
-  lDate := EncodeDate(Left.Year, Left.Month, Left.Day);
-  rDate := EncodeDate(Right.Year, Right.Month, Right.Day);
-  if lDate = rDate then
+  LDate := EncodeDate(Left.Year, Left.Month, Left.Day);
+  RDate := EncodeDate(Right.Year, Right.Month, Right.Day);
+  if LDate = RDate then
     Result := 0
-  else if lDate < rDate then
+  else if LDate < RDate then
     Result := -1
   else
     Result := 1;

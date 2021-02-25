@@ -35,8 +35,8 @@ uses
 
 procedure TFormAnonAjax.BtnReadClick(Sender: TObject);
 begin
-  AjaxCall (EdUrl.Text,
-    procedure (AResponseContent: TStringStream)
+  AjaxCall(EdUrl.Text,
+    procedure(AResponseContent: TStringStream)
     begin
       Memo1.Lines.Text := AResponseContent.DataString;
       Memo1.Lines.Insert(0, 'From URL: ' + EdUrl.Text);
@@ -45,13 +45,13 @@ end;
 
 procedure TFormAnonAjax.BtnLinksClick(Sender: TObject);
 begin
-  AjaxCall (EdUrl.Text,
-    procedure (AResponseContent: TStringStream)
+  AjaxCall(EdUrl.Text,
+    procedure(AResponseContent: TStringStream)
     begin
       ExtractLinks(AResponseContent.DataString,
-        procedure (const AUrl: string)
+        procedure(const AUrl: string)
         begin
-          Memo1.Lines.Add (AUrl + ' in ' + EdUrl.Text);
+          Memo1.Lines.Add(AUrl + ' in ' + EdUrl.Text);
         end);
     end);
 end;
@@ -61,25 +61,22 @@ var
   NHit: Integer;
 begin
   NHit := 0;
-  AjaxCall (EdUrl.Text,
-    procedure (AResponseContent: TStringStream)
+  AjaxCall(EdUrl.Text,
+    procedure(AResponseContent: TStringStream)
     begin
       ExtractImages(AResponseContent.DataString,
-        procedure (const AUrl: string)
+        procedure(const AUrl: string)
         begin
-          Inc (NHit);
-          Memo1.Lines.Add (IntToStr (NHit) + '.' +
-            AUrl + ' in ' + EdUrl.Text);
-          if nHit = 1 then // load the first
+          Inc(NHit);
+          Memo1.Lines.Add(IntToStr (NHit) + '.' + AUrl + ' in ' + EdUrl.Text);
+          if nHit = 1 then // Load the first
           begin
-            var RealURL := IfThen (AURL[1]='/',
-              EdUrl.Text + AURL, AURL);
-            AjaxCall (RealUrl,
-              procedure (AResponseContent: TStringStream)
+            var RealURL := IfThen(AURL[1]='/', EdUrl.Text + AURL, AURL);
+            AjaxCall(RealUrl,
+              procedure(AResponseContent: TStringStream)
               begin
-                // load image of the current type only
-                Image1.Picture.Graphic.
-                  LoadFromStream (AResponseContent);
+                // Load image of the current type only
+                Image1.Picture.Graphic.LoadFromStream(AResponseContent);
               end);
           end;
         end);

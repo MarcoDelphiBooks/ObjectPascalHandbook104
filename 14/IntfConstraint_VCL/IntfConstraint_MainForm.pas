@@ -19,7 +19,7 @@ type
     procedure BtnConstructorClick(Sender: TObject);
     procedure BtnValueButtonClick(Sender: TObject);
   private
-    procedure Log (const StrMsg: string);
+    procedure Log(const StrMsg: string);
   public
     { Public declarations }
   end;
@@ -38,32 +38,32 @@ type
   IGetValue = interface
     ['{60700EC4-2CDA-4CD1-A1A2-07973D9D2444}']
     function GetValue: Integer;
-    procedure SetValue (Value: Integer);
+    procedure SetValue(Value: Integer);
   end;
 
-  TGetValue = class (TSingletonImplementation, IGetValue)
+  TGetValue = class(TSingletonImplementation, IGetValue)
   private
     FValue: Integer;
   public
-    constructor Create (Value: Integer); // = 0);
+    constructor Create(Value: Integer); // = 0);
     function GetValue: Integer;
-    procedure SetValue (Value: Integer);
+    procedure SetValue(Value: Integer);
   end;
 
-  TButtonValue = class (TButton, IGetValue)
+  TButtonValue = class(TButton, IGetValue)
   public
     function GetValue: Integer;
-    procedure SetValue (Value: Integer);
-    class function MakeTButtonValue (
+    procedure SetValue(Value: Integer);
+    class function MakeTButtonValue(
       Owner: TComponent; Parent: TWinControl): TButtonValue;
   end;
 
-  TInftClass <T: IGetValue> = class
+  TInftClass<T: IGetValue> = class
   private
     FVal1, FVal2: T; // or IGetValue
   public
-    procedure Set1 (Val: T);
-    procedure Set2 (Val: T);
+    procedure Set1(Val: T);
+    procedure Set2(Val: T);
     function GetMin: Integer;
     function GetAverage: Integer;
     procedure IncreaseByTen;
@@ -73,23 +73,23 @@ type
   private
     FVal1, FVal2: IGetValue;
   public
-    procedure Set1 (Val: IGetValue);
-    procedure Set2 (Val: IGetValue);
+    procedure Set1(Val: IGetValue);
+    procedure Set2(Val: IGetValue);
     function GetMin: Integer;
     function GetAverage: Integer;
     procedure IncreaseByTen;
   end;
 
-  TConstrClass <T: class, constructor> = class
+  TConstrClass<T: class, constructor> = class
   private
-    val: T;
+    FVal: T;
   public
     constructor Create;
     function Get: T;
   end;
 
   // not used, code test only
-  TInftComp <T: TComponent, IGetValue> = class
+  TInftComp<T: TComponent, IGetValue> = class
   private
     FVal: T;
   public
@@ -118,7 +118,7 @@ end;
 
 function TInftClass<T>.GetAverage: Integer;
 begin
-  if Assigned (FVal1) and Assigned (FVal2) then
+  if Assigned(FVal1) and Assigned(FVal2) then
     Result := (FVal1.GetValue + FVal2.GetValue) div 2
   else
     Result := 0;
@@ -126,18 +126,18 @@ end;
 
 function TInftClass<T>.GetMin: Integer;
 begin
-  if Assigned (FVal1) and Assigned (FVal2) then
-    Result := Min (FVal1.GetValue, FVal2.GetValue)
+  if Assigned(FVal1) and Assigned(FVal2) then
+    Result := Min(FVal1.GetValue, FVal2.GetValue)
   else
     Result := 0;
 end;
 
 procedure TInftClass<T>.IncreaseByTen;
 begin
-  if Assigned (FVal1) and Assigned (FVal2) then
+  if Assigned(FVal1) and Assigned(FVal2) then
   begin
-    FVal1.SetValue (FVal1.GetValue + 10);
-    FVal2.SetValue (FVal2.GetValue + 10);
+    FVal1.SetValue(FVal1.GetValue + 10);
+    FVal2.SetValue(FVal2.GetValue + 10);
   end;
 end;
 
@@ -164,7 +164,7 @@ begin
   Result := TButtonValue.Create(Owner);
   Result.Parent := Parent;
   Result.SetBounds(
-    Random (Parent.Width), Random (Parent.Height),
+    Random(Parent.Width), Random(Parent.Height),
     Result.Width, Result.Height);
   Result.Caption := 'btnv';
 end;
@@ -179,12 +179,12 @@ var
   IClass: TInftClass<TButtonValue>;
 begin
   IClass := TInftClass<TButtonValue>.Create;
-  IClass.Set1 (TButtonValue.MakeTButtonValue (self, ScrollBox1));
-  IClass.Set2 (TButtonValue.MakeTButtonValue (self, ScrollBox1));
-  Log ('Average: ' + IntToStr (IClass.GetAverage));
-  Log ('Min: ' + IntToStr (IClass.GetMin));
+  IClass.Set1(TButtonValue.MakeTButtonValue(self, ScrollBox1));
+  IClass.Set2(TButtonValue.MakeTButtonValue(self, ScrollBox1));
+  Log('Average: ' + IntToStr(IClass.GetAverage));
+  Log('Min: ' + IntToStr(IClass.GetMin));
   IClass.IncreaseByTen;
-  Log ('New Average: ' + IntToStr (IClass.GetAverage));
+  Log('New Average: ' + IntToStr(IClass.GetAverage));
 end;
 
 procedure TFormIntfConstraint.BtnValueClick(Sender: TObject);
@@ -192,11 +192,11 @@ var
   IClass: TInftClass<TGetValue>;
 begin
   IClass := TInftClass<TGetValue>.Create;
-  IClass.Set1 (TGetValue.Create (5));
-  IClass.Set2 (TGetValue.Create (25));
-  Log ('Average: ' + IntToStr (IClass.GetAverage));
+  IClass.Set1 (TGetValue.Create(5));
+  IClass.Set2 (TGetValue.Create(25));
+  Log('Average: ' + IntToStr(IClass.GetAverage));
   IClass.IncreaseByTen;
-  Log ('Min: ' + IntToStr (IClass.GetMin));
+  Log('Min: ' + IntToStr(IClass.GetMin));
 end;
 
 procedure TFormIntfConstraint.BtnPlainIntfClick(Sender: TObject);
@@ -204,11 +204,11 @@ var
   AClass: TPlainInftClass;
 begin
   AClass := TPlainInftClass.Create;
-  AClass.Set1 (TGetValue.Create (5));
-  AClass.Set2 (TGetValue.Create (25));
-  Log ('Average: ' + IntToStr (AClass.GetAverage));
+  AClass.Set1 (TGetValue.Create(5));
+  AClass.Set2 (TGetValue.Create(25));
+  Log('Average: ' + IntToStr(AClass.GetAverage));
   AClass.IncreaseByTen;
-  Log ('Min: ' + IntToStr (AClass.GetMin));
+  Log('Min: ' + IntToStr(AClass.GetMin));
 end;
 
 type
@@ -222,7 +222,7 @@ type
   TParamConst = class
   public
     FValue: Integer;
-    constructor Create (I: Integer);
+    constructor Create(I: Integer);
   end;
 
 
@@ -232,10 +232,10 @@ var
   ParamCostObj: TConstrClass<TParamConst>;
 begin
   ConstructObj := TConstrClass<TSimpleConst>.Create;
-  Log ('Value 1: ' + IntToStr (ConstructObj.Get.FValue));
+  Log('Value 1: ' + IntToStr(ConstructObj.Get.FValue));
 
   ParamCostObj := TConstrClass<TParamConst>.Create;
-  Log ('Value 2: ' + IntToStr (ParamCostObj.Get.FValue));
+  Log('Value 2: ' + IntToStr(ParamCostObj.Get.FValue));
 
 //  with TParamConst.Create do
 //  begin
@@ -245,7 +245,7 @@ end;
 
 procedure TFormIntfConstraint.Log(const StrMsg: string);
 begin
-  Memo1.Lines.Add (StrMsg);
+  Memo1.Lines.Add(StrMsg);
 end;
 
 { TPlainInftClass }
@@ -257,13 +257,13 @@ end;
 
 function TPlainInftClass.GetMin: Integer;
 begin
-  Result := Min (FVal1.GetValue, FVal2.GetValue);
+  Result := Min(FVal1.GetValue, FVal2.GetValue);
 end;
 
 procedure TPlainInftClass.IncreaseByTen;
 begin
-  FVal1.SetValue (FVal1.GetValue + 10);
-  FVal2.SetValue (FVal2.GetValue + 10);
+  FVal1.SetValue(FVal1.GetValue + 10);
+  FVal2.SetValue(FVal2.GetValue + 10);
 end;
 
 procedure TPlainInftClass.Set1(Val: IGetValue);
@@ -280,12 +280,12 @@ end;
 
 constructor TConstrClass<T>.Create;
 begin
-  val := T.Create;
+  FVal := T.Create;
 end;
 
 function TConstrClass<T>.Get: T;
 begin
-  Result := val;
+  Result := FVal;
 end;
 
 { TSimpleCont }

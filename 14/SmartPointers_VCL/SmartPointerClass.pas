@@ -13,7 +13,7 @@ type
     function GetValue: T;
   private
     type
-      TFreeTheValue = class (TInterfacedObject)
+      TFreeTheValue = class(TInterfacedObject)
       private
         FObjectToFree: TObject;
       public
@@ -24,7 +24,7 @@ type
     constructor Create(AValue: T); overload;
     procedure Create; overload;
     class operator Implicit(AValue: T): TSmartPointer<T>;
-    class operator Implicit(smart: TSmartPointer <T>): T;
+    class operator Implicit(Smart: TSmartPointer<T>): T;
     property Value: T read GetValue;
   end;
 
@@ -40,17 +40,17 @@ end;
 
 procedure TSmartPointer<T>.Create;
 begin
-  TSmartPointer<T>.Create (T.Create);
+  TSmartPointer<T>.Create(T.Create);
 end;
 
 function TSmartPointer<T>.GetValue: T;
 begin
   if not Assigned(FFreeTheValue) then
-    self := TSmartPointer<T>.Create (T.Create);
+    self := TSmartPointer<T>.Create(T.Create);
   Result := FValue;
 end;
 
-class operator TSmartPointer<T>.Implicit(smart: TSmartPointer<T>): T;
+class operator TSmartPointer<T>.Implicit(Smart: TSmartPointer<T>): T;
 begin
   Result := Smart.Value;
 end;

@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (StrMessage: string);
+    procedure Show(StrMessage: string);
   end;
 
 var
@@ -48,7 +48,7 @@ begin
 
   AType := Context.GetType(TForm1);
   AMethod := AType.GetMethod('Show');
-  SetLength (TheValues, 1);
+  SetLength(TheValues, 1);
   TheValues[0] := AValue;
   AMethod.Invoke(self, TheValues);
 end;
@@ -64,11 +64,11 @@ begin
   AType := Context.GetType(TButton);
   AProperty := AType.GetProperty('Text');
   AValue := AProperty.GetValue(Sender);
-  Show (AValue.AsString);
+  Show(AValue.AsString);
 
   AField := AType.GetField('FDesignInfo');
   AValue := AField.GetValue(Sender);
-  Show (AValue.AsInteger.ToString);
+  Show(AValue.AsInteger.ToString);
 end;
 
 procedure TForm1.Show(StrMessage: string);

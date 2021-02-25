@@ -32,21 +32,21 @@ type
   public
     property Name: string read FName write SetName;
   public
-    class function Get (const aName: string): TAnimal;
-    class function GetAs<T: class> (const AName: string): T;
+    class function Get(const aName: string): TAnimal;
+    class function GetAs<T: class>(const AName: string): T;
     function ToString: string; override;
   end;
 
-  TDog = class (TAnimal)
+  TDog = class(TAnimal)
 
   end;
 
-  TCat = class (TAnimal)
+  TCat = class(TAnimal)
 
   end;
 
   TAnimalShop = class
-    class function GetAs<T: TAnimal, constructor> (const AName: string): T;
+    class function GetAs<T: TAnimal, constructor>(const AName: string): T;
   end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -55,15 +55,15 @@ var
   ADog: TDog;
 begin
   ACat := TCat.Get('Matisse') as TCat;
-  Memo1.Lines.Add (ACat.ToString);
+  Memo1.Lines.Add(ACat.ToString);
   ACat.Free;
 
   ADog := TDog.GetAs<TDog>('Pluto');
-  Memo1.Lines.Add (ADog.ToString);
+  Memo1.Lines.Add(ADog.ToString);
   ADog.Free;
 
   ADog := TAnimalShop.GetAs<TDog>('Pluto');
-  Memo1.Lines.Add (ADog.ToString);
+  Memo1.Lines.Add(ADog.ToString);
   ADog.Free;
 end;
 
@@ -79,8 +79,8 @@ class function TAnimal.GetAs<T>(const AName: string): T;
 var
   Res: TAnimal;
 begin
-  Res := Get (AName);
-  if Res.inheritsFrom (T) then
+  Res := Get(AName);
+  if Res.inheritsFrom(T) then
     Result := T(Res)
   else
     Result := nil;
@@ -93,7 +93,7 @@ end;
 
 function TAnimal.ToString: string;
 begin
-  Result := 'This ' + Copy (ClassName, 2, MaxInt) +
+  Result := 'This ' + Copy(ClassName, 2, MaxInt) +
     ' is called ' + FName;
 end;
 
@@ -106,7 +106,7 @@ end;
 //begin
 //  Res := T.Create;
 //  Res.Name := aName;
-//  if Res.inheritsFrom (T) then
+//  if Res.InheritsFrom(T) then
 //    Result := T(Res)
 //  else
 //    Result := nil;

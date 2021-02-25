@@ -17,7 +17,7 @@ type
   private
     { Private declarations }
   public
-    procedure Log (const StrMsg: string);
+    procedure Log(const StrMsg: string);
   end;
 
 var
@@ -37,15 +37,15 @@ var
   AProp: TRttiProperty;
 begin
   AProp := Context.GetType(TButton).GetProperty('Caption');
-  if Assigned (AProp) then
-    AProp.SetValue(BtnChange, StringOfChar ('*', Random (10) + 1));
+  if Assigned(AProp) then
+    AProp.SetValue(BtnChange, StringOfChar('*', Random (10) + 1));
 end;
 
 procedure TFormRttiIntro.BtnInfoClick(Sender: TObject);
 var
   Context: TRttiContext;
 begin
-  Log (Context.
+  Log(Context.
     GetType(TButton).
     GetProperty(Edit1.Text).
     GetValue(Sender).ToString);
@@ -53,7 +53,7 @@ end;
 
 procedure TFormRttiIntro.Log(const StrMsg: string);
 begin
-  Memo1.Lines.Add (StrMsg);
+  Memo1.Lines.Add(StrMsg);
 end;
 
 end.

@@ -25,7 +25,7 @@ type
     { Private declarations }
   public
     procedure Clear;
-    procedure ShowTypeDetails (typename: string);
+    procedure ShowTypeDetails(typename: string);
   end;
 
 var
@@ -47,7 +47,7 @@ begin
   LVFields.Items.Clear;
 end;
 
-function VisibilityToken (MV: TMemberVisibility): string;
+function VisibilityToken(MV: TMemberVisibility): string;
 begin
   case MV of
     mvPrivate: Result := '[pri]';
@@ -75,15 +75,14 @@ begin
   for AProperty in AType.GetProperties do
     FormTypeInfo.LVProperties.Items.Add.Text := AProperty.Name +
       ': ' + AProperty.PropertyType.Name + ' ' +
-      VisibilityToken (AProperty.Visibility);
+      VisibilityToken(AProperty.Visibility);
   for AMethod in AType.GetMethods do
     LVMethods.Items.Add.Text := AMethod.Name + ' ' +
-      VisibilityToken (AMethod.Visibility);
+      VisibilityToken(AMethod.Visibility);
   for AField in AType.GetFields do
     LVFields.Items.Add.Text := AField.Name + ': ' +
       AField.FieldType.Name + ' ' +
-      VisibilityToken (AField.Visibility);
-
+      VisibilityToken(AField.Visibility);
 end;
 
 end.

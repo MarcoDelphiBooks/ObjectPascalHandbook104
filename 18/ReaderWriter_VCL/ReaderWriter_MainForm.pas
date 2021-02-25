@@ -46,11 +46,11 @@ type
     FWriter: TTextWriter;
     FNodes: TStack<string>;
   public
-    constructor Create (aWriter: TTextWriter);
+    constructor Create(AWriter: TTextWriter);
     destructor Destroy; override;
-    procedure WriteStartElement (const sName: string);
+    procedure WriteStartElement(const SName: string);
     procedure WriteEndElement;
-    procedure WriteString (const sValue: string);
+    procedure WriteString(const SValue: string);
   end;
 
 
@@ -62,9 +62,9 @@ var
 begin
   SW := TStringWriter.Create;
   try
-    SW.WriteLine ('Hello, world');
-    SW.WriteLine ('Have a nice day');
-    SW.WriteLine (Left);
+    SW.WriteLine('Hello, world');
+    SW.WriteLine('Have a nice day');
+    SW.WriteLine(Left);
     TheString := SW.ToString;
   finally
     SW.Free;
@@ -73,7 +73,7 @@ begin
   SR := TStringReader.Create(TheString);
   try
     while SR.Peek <> -1 do
-      Memo1.Lines.Add (SR.ReadLine);
+      Memo1.Lines.Add(SR.ReadLine);
   finally
     SR.Free;
   end;
@@ -83,12 +83,11 @@ procedure TFormReaderWriter.BtnWriteClick(Sender: TObject);
 var
   SW: TStreamWriter;
 begin
-  SW := TStreamWriter.Create(
-    'test.txt', False, TEncoding.UTF8);
+  SW := TStreamWriter.Create('test.txt', False, TEncoding.UTF8);
   try
-    SW.WriteLine ('Hello, world');
-    SW.WriteLine ('Have a nice day');
-    SW.WriteLine (Left);
+    SW.WriteLine('Hello, world');
+    SW.WriteLine('Have a nice day');
+    SW.WriteLine(Left);
   finally
     SW.Free;
   end;
@@ -131,7 +130,7 @@ var
 begin
   SW := TStringWriter.Create;
   try
-    TXW := TTrivialXmlWriter.Create (SW);
+    TXW := TTrivialXmlWriter.Create(SW);
     try
       TXW.WriteStartElement('book');
         TXW.WriteStartElement('title');
@@ -156,17 +155,17 @@ var
   FS: TFileStream;
   Str: AnsiString;
 begin
-  if FileExists ('test.txt') then
+  if FileExists('test.txt') then
     FS := TFileStream.Create('test.txt', fmCreate)
   else
     FS := TFileStream.Create('test.txt', fmOpenReadWrite);
   try
     Str := 'Hello, world';
-    FS.write (Str[1], Length (Str));
+    FS.Write(Str[1], Length(Str));
     Str := sLineBreak;
-    FS.write (Str[1], Length (Str));
+    FS.Write(Str[1], Length(Str));
     Str := IntToStr (Left);
-    FS.write (Str[1], Length (Str));
+    FS.Write(Str[1], Length(Str));
   finally
     FS.Free;
   end;
@@ -187,9 +186,9 @@ end;
 
 { TTrivialXmlWriter }
 
-constructor TTrivialXmlWriter.Create(aWriter: TTextWriter);
+constructor TTrivialXmlWriter.Create(AWriter: TTextWriter);
 begin
-  FWriter := aWriter;
+  FWriter := AWriter;
   FNodes := TStack<string>.Create;
 end;
 
@@ -206,15 +205,15 @@ begin
   FWriter.Write('</' + FNodes.Pop + '>');
 end;
 
-procedure TTrivialXmlWriter.WriteStartElement(const sName: string);
+procedure TTrivialXmlWriter.WriteStartElement(const SName: string);
 begin
-  FWriter.Write('<' + sName + '>');
-  FNodes.Push (sname);
+  FWriter.Write('<' + SName + '>');
+  FNodes.Push(Sname);
 end;
 
-procedure TTrivialXmlWriter.WriteString(const sValue: string);
+procedure TTrivialXmlWriter.WriteString(const SValue: string);
 begin
-  FWriter.Write(sValue);
+  FWriter.Write(SValue);
 end;
 
 end.

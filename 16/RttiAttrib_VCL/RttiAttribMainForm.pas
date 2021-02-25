@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Log (const StrMsg: string);
+    procedure Log(const StrMsg: string);
   end;
 
 type
@@ -66,7 +66,7 @@ end;
 type
   TCustomAttributeClass = class of TCustomAttribute;
 
-function HasAttribute (AMethod: TRttiMethod; AttribClass: TCustomAttributeClass): Boolean;
+function HasAttribute(AMethod: TRttiMethod; AttribClass: TCustomAttributeClass): Boolean;
 var
   Attributes: TArray<TCustomAttribute>;
   Attrib: TCustomAttribute;
@@ -74,7 +74,7 @@ begin
   Result := False;
   Attributes := AMethod.GetAttributes;
   for Attrib in Attributes do
-     if Attrib.InheritsFrom (AttribClass) then
+     if Attrib.InheritsFrom(AttribClass) then
        Exit (True);
 end;
 
@@ -90,7 +90,7 @@ begin
   try
     AType := Context.GetType(ATarget.ClassType);
     for AMethod in AType.GetMethods do
-      if HasAttribute (AMethod, SimpleAttribute) then
+      if HasAttribute(AMethod, SimpleAttribute) then
         AMethod.Invoke(ATarget, ZeroParams);
   finally
     ATarget.Free;
@@ -105,15 +105,15 @@ var
 begin
   AType := Context.GetType(TMyClass);
 
-  Log ('Methods marked with [Simple] attribute');
+  Log('Methods marked with [Simple] attribute');
   for AMethod in AType.GetMethods do
-    if HasAttribute (AMethod, SimpleAttribute) then
+    if HasAttribute(AMethod, SimpleAttribute) then
       Log (AMethod.name);
 
-  Log ('');
-  Log ('Methods marked with any attribute');
+  Log('');
+  Log('Methods marked with any attribute');
   for AMethod in AType.GetMethods do
-    if HasAttribute (AMethod, TCustomAttribute) then
+    if HasAttribute(AMethod, TCustomAttribute) then
       Log (AMethod.name);
 end;
 
@@ -130,13 +130,13 @@ begin
   begin
     Form39.Log(Attrib.ClassName);
     if Attrib is ValueAttribute then
-      Form39.Log(' -' + IntToStr (ValueAttribute(Attrib).Value));
+      Form39.Log(' -' + IntToStr(ValueAttribute(Attrib).Value));
   end;
 end;
 
 procedure TMyClass.Three;
 begin
-  ShowMessage ('three');
+  ShowMessage('Three');
 end;
 
 procedure TMyClass.Two;
@@ -154,7 +154,7 @@ end;
 
 procedure TForm39.Log(const StrMsg: string);
 begin
-  Memo1.Lines.Add (StrMsg);
+  Memo1.Lines.Add(StrMsg);
 end;
 
 end.

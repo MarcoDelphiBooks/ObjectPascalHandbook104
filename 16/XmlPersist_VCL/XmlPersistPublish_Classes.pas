@@ -17,7 +17,7 @@ type
     property Country: string read FCountry write FCountry;
   end;
 
-  TCompany = class (TPersistent)
+  TCompany = class(TPersistent)
   private
     FName: string;
     FCountry: string;

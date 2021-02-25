@@ -14,8 +14,7 @@ type
     BtnTypesList: TButton;
     ListView1: TListView;
     procedure BtnTypesListClick(Sender: TObject);
-    procedure ListView1ItemClick(const Sender: TObject;
-      const AItem: TListViewItem);
+    procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
   private
     { Private declarations }
   public
@@ -61,8 +60,7 @@ begin
   end;
 end;
 
-procedure TForm1.ListView1ItemClick(const Sender: TObject;
-  const AItem: TListViewItem);
+procedure TForm1.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
 begin
   FormTypeInfo.Clear;
   FormTypeInfo.ShowTypeDetails(AItem.Text);

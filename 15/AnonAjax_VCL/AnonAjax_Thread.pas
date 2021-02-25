@@ -6,10 +6,10 @@ uses
   Classes, SysUtils, StrUtils, System.Net.HttpClient;
 
 type
-  TAjaxCallback = reference to procedure (aResponseContent: TStringStream);
-  TLinkCallback = reference to procedure (const strLink: string);
+  TAjaxCallback = reference to procedure(aResponseContent: TStringStream);
+  TLinkCallback = reference to procedure(const strLink: string);
 
-  TAjaxThread = class (TThread)
+  TAjaxThread = class(TThread)
   private
     FHttp: THTTPClient;
     FURL: string;
@@ -17,33 +17,30 @@ type
   protected
     procedure Execute; override;
   public
-    constructor Create (const StrUrl: string;
-      AjaxCallback: TAjaxCallback);
+    constructor Create(const StrUrl: string; AjaxCallback: TAjaxCallback);
     destructor Destroy; override;
   end;
 
-procedure AjaxCall (const StrUrl: string; AjaxCallback: TAjaxCallback);
-procedure ExtractLinks (StrData: string; ProcLink: TLinkCallback);
-procedure ExtractImages (StrData: string; ProcLink: TLinkCallback);
+procedure AjaxCall(const StrUrl: string; AjaxCallback: TAjaxCallback);
+procedure ExtractLinks(StrData: string; ProcLink: TLinkCallback);
+procedure ExtractImages(StrData: string; ProcLink: TLinkCallback);
 
 
 implementation
 
-procedure AjaxCall (const StrUrl: string;
-  AjaxCallback: TAjaxCallback);
+procedure AjaxCall(const StrUrl: string; AjaxCallback: TAjaxCallback);
 begin
-  TAjaxThread.Create (StrUrl, AjaxCallback);
+  TAjaxThread.Create(StrUrl, AjaxCallback);
 end;
 
 { TAjaxThread }
 
-constructor TAjaxThread.Create(const StrUrl: string;
-  AjaxCallback: TAjaxCallback);
+constructor TAjaxThread.Create(const StrUrl: string; AjaxCallback: TAjaxCallback);
 begin
   FHttp := THTTPClient.Create;
   FURL := StrUrl;
   FAjaxCallback := AjaxCallBack;
-  inherited Create (False);
+  inherited Create(False);
   FreeOnTerminate := True;
 end;
 
@@ -59,56 +56,56 @@ var
 begin
   AResponseContent := TStringStream.Create;
   try
-    FHttp.Get (FURL, AResponseContent);
+    FHttp.Get(FURL, AResponseContent);
     AResponseContent.Position := 0;
-    FAjaxCallback (AResponseContent);
+    FAjaxCallback(AResponseContent);
   finally
     AResponseContent.Free;
   end;
 end;
 
-procedure ExtractLinks (StrData: string; ProcLink: TLinkCallback);
+procedure ExtractLinks(StrData: string; ProcLink: TLinkCallback);
 var
   StrAddr: string;
   NBegin, NEnd: Integer;
 begin
-  StrData := LowerCase (StrData);
+  StrData := LowerCase(StrData);
   NBegin := 1;
   repeat
-    NBegin := PosEx ('href="http', StrData, NBegin);
+    NBegin := PosEx('href="http', StrData, NBegin);
     if NBegin <> 0 then
     begin
-      // find the end of the reference
+      // Find the end of the reference
       NBegin := NBegin + 6;
-      NEnd := PosEx ('"', StrData, NBegin);
-      StrAddr := Copy (StrData, NBegin, NEnd - NBegin);
-      // move on
+      NEnd := PosEx('"', StrData, NBegin);
+      StrAddr := Copy(StrData, NBegin, NEnd - NBegin);
+      // Move on
       NBegin := NEnd + 1;
-      // execute anon method
-      ProcLink (StrAddr)
+      // Execute anon method
+      ProcLink(StrAddr)
     end;
   until NBegin = 0;
 end;
 
-procedure ExtractImages (StrData: string; ProcLink: TLinkCallback);
+procedure ExtractImages(StrData: string; ProcLink: TLinkCallback);
 var
   StrAddr: string;
   NBegin, NEnd: Integer;
 begin
-  StrData := LowerCase (StrData);
+  StrData := LowerCase(StrData);
   NBegin := 1;
   repeat
-    NBegin := PosEx ('<img src="', StrData, NBegin);
+    NBegin := PosEx('<img src="', StrData, NBegin);
     if NBegin <> 0 then
     begin
-      // find the end of the reference
+      // Find the end of the reference
       NBegin := NBegin + 10;
-      NEnd := PosEx ('"', StrData, NBegin);
-      StrAddr := Copy (StrData, NBegin, NEnd - NBegin);
-      // move on
+      NEnd := PosEx('"', StrData, NBegin);
+      StrAddr := Copy(StrData, NBegin, NEnd - NBegin);
+      // Move on
       NBegin := NEnd + 1;
-      // execute anon method
-      ProcLink (StrAddr)
+      // Execute anon method
+      ProcLink(StrAddr)
     end;
   until NBegin = 0;
 end;

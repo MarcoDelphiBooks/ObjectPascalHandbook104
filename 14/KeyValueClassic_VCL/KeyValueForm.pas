@@ -42,7 +42,7 @@ end;
 
 procedure TForm2.Button3Click(Sender: TObject);
 begin
-  ShowMessage ('[' + FKV.Key + ',' + FKV.Value.ClassName + ']');
+  ShowMessage('[' + FKV.Key + ',' + FKV.Value.ClassName + ']');
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);

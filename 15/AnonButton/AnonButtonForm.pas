@@ -19,8 +19,7 @@ type
   public
     procedure Click; override;
   public
-    property AnonClick: TAnonNotif
-      read FAnonClick write SetAnonClick;
+    property AnonClick: TAnonNotif read FAnonClick write SetAnonClick;
   end;
 
 type
@@ -34,7 +33,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -51,17 +50,17 @@ end;
 
 procedure TButton.Click;
 begin
-  if Assigned (FAnonClick) then
-    FAnonClick (self);
+  if Assigned(FAnonClick) then
+    FAnonClick(self);
   inherited;
 end;
 
 procedure TForm1.BtnAssignClick(Sender: TObject);
 begin
   btnInvoke.AnonClick :=
-    procedure (Sender: TObject)
+    procedure(Sender: TObject)
     begin
-      ShowMessage ((Sender as TButton).Text);
+      ShowMessage((Sender as TButton).Text);
     end;
 end;
 
@@ -70,10 +69,9 @@ var
   ACompRef: TComponent;
 begin
   ACompRef := Sender as TComponent;
-  btnInvoke.AnonClick :=
-    procedure (Sender: TObject)
+  btnInvoke.AnonClick := procedure(Sender: TObject)
     begin
-      ShowMessage ((Sender as TButton).Text +
+      ShowMessage((Sender as TButton).Text +
         ' assigned by ' + ACompRef.Name);
     end;
 end;

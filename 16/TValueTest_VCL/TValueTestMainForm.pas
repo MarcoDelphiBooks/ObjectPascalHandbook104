@@ -15,7 +15,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    procedure Log (const StrMsg: string);
+    procedure Log(const StrMsg: string);
   end;
 
 var
@@ -35,15 +35,15 @@ begin
   //V1 := 100;
   V1 := TValue.From<Integer>(100);
   if V1.IsOrdinal then
-    Log (IntToStr (V1.AsInteger));
+    Log(IntToStr(V1.AsInteger));
   if V1.IsType<string> then
-    Log (V1.AsString);
-  Log (V1.ToString);
+    Log(V1.AsString);
+  Log(V1.ToString);
 end;
 
 procedure TForm39.Log(const StrMsg: string);
 begin
-  Memo1.Lines.Add (StrMsg);
+  Memo1.Lines.Add(StrMsg);
 end;
 
 end.

@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -32,9 +32,9 @@ uses
   System.Diagnostics;
 
 const
-  MaxLoop = 2000000; // two million
+  MaxLoop = 2000000; // Two million
 
-function TimeCode (NLoops: Integer; Proc: TProc): string;
+function TimeCode(NLoops: Integer; Proc: TProc): string;
 var
   T1: TStopwatch;
   I: Integer;
@@ -52,9 +52,8 @@ var
 begin
   Str1 := 'Marco ';
   Str2 := 'Cantu ';
-  Show ('Concatenation: ' +
-    TimeCode (MaxLoop,
-      procedure ()
+  Show('Concatenation: ' +
+    TimeCode(MaxLoop, procedure
       begin
         Str1 := Str1 + Str2;
       end));
@@ -70,9 +69,8 @@ begin
   Str2 := 'Cantu ';
   SBuilder := TStringBuilder.Create (Str1);
   try
-    Show ('StringBuilder: ' +
-      TimeCode (MaxLoop,
-        procedure ()
+    Show('StringBuilder: ' +
+      TimeCode(MaxLoop, procedure
         begin
           SBuilder.Append(Str2);
         end));
@@ -80,7 +78,7 @@ begin
   finally
     SBuilder.Free;
   end;
-  Show('Length: ' + IntToStr (Str1.Length));
+  Show('Length: ' + IntToStr(Str1.Length));
 end;
 
 procedure TForm1.Show(const Msg: string);

@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Log (const StrMsg: string);
+    procedure Log(const StrMsg: string);
   end;
 
 var
@@ -29,23 +29,23 @@ implementation
 {$R *.dfm}
 
 type
-  TSampleClass <T: class> = class
+  TSampleClass<T: class> = class
   private
     FData: T;
   public
     procedure One;
     function ReadT: T;
-    procedure SetT (T1: T);
+    procedure SetT(T1: T);
   end;
 
 { TSampleClass<T> }
 
 procedure TSampleClass<T>.One;
 begin
-  if Assigned (FData) then
+  if Assigned(FData) then
   begin
     Form30.Log('ClassName: ' + FData.ClassName);
-    Form30.Log('Size: ' + IntToStr (FData.InstanceSize));
+    Form30.Log('Size: ' + IntToStr(FData.InstanceSize));
     Form30.Log('ToString: ' + FData.ToString);
   end;
 end;
@@ -63,7 +63,7 @@ end;
 { TForm30 }
 
 type
-  TMyButton = class (TButton)
+  TMyButton = class(TButton)
   public
     function ToString: string; override;
   end;
@@ -75,11 +75,11 @@ var
   MB: TMybutton;
 begin
   MB := TMyButton.Create(self);
-  MB.Caption := 'hello';
+  MB.Caption := 'Hello';
 
   Sample1 := TSampleClass<TButton>.Create;
   try
-    Sample1.SetT (MB);
+    Sample1.SetT(MB);
     Sample1.One;
   finally
     Sample1.Free;
@@ -87,7 +87,7 @@ begin
 
   Sample2 := TSampleClass<TMyButton>.Create;
   try
-    Sample2.SetT (MB);
+    Sample2.SetT(MB);
     Sample2.One;
   finally
     Sample2.Free;
@@ -102,7 +102,7 @@ var
 begin
   Sample1 := TSampleClass<TButton>.Create;
   try
-    Sample1.SetT (Sender as TButton);
+    Sample1.SetT(Sender as TButton);
     Sample1.One;
   finally
     Sample1.Free;
@@ -110,7 +110,7 @@ begin
 
   Sample2 := TSampleClass<TStrings>.Create;
   try
-    Sample2.SetT (Memo1.Lines);
+    Sample2.SetT(Memo1.Lines);
     Sample2.One;
   finally
     Sample2.Free;
@@ -119,7 +119,7 @@ end;
 
 procedure TForm30.Log(const StrMsg: string);
 begin
-  Memo1.Lines.Add (StrMsg);
+  Memo1.Lines.Add(StrMsg);
 end;
 
 procedure TForm30.wrongClick(Sender: TObject);
@@ -127,7 +127,7 @@ procedure TForm30.wrongClick(Sender: TObject);
 //  Sample3: TSampleClass<Integer>;
 //  // E2511 Type parameter 'T' must be a class type
 begin
-  // nothing do to
+  // Nothing do to
 end;
 
 { TMyButton }

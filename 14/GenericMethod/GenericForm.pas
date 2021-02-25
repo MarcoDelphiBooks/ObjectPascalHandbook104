@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const msg: string);
+    procedure Show(const msg: string);
   end;
 
 var
@@ -34,7 +34,7 @@ uses
 type
   TGenericFunction = class
   public
-    function WithParam <T> (T1: T): string;
+    function WithParam<T>(T1: T): string;
   end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -43,12 +43,12 @@ var
 begin
   GF := TGenericFunction.Create;
   try
-    Show (GF.WithParam<string>('foo'));
-    Show (GF.WithParam<Integer> (122));
-    Show (GF.WithParam('hello'));
-    Show (GF.WithParam (122));
-    Show (GF.WithParam(Button1));
-    Show (GF.WithParam<TObject>(Button1));
+    Show(GF.WithParam<string>('foo'));
+    Show(GF.WithParam<Integer> (122));
+    Show(GF.WithParam('hello'));
+    Show(GF.WithParam(122));
+    Show(GF.WithParam(Button1));
+    Show(GF.WithParam<TObject>(Button1));
   finally
     GF.Free;
   end;
@@ -61,9 +61,9 @@ begin
   GF := TGenericFunction.Create;
   try
     // these 3 are all wrong
-    // Show (GF.WithParam<Integer>('foo'));
-    // Show (GF.WithParam<string> (122));
-    // Show (GF.WithParam<TButton>(self));
+    // Show(GF.WithParam<Integer>('foo'));
+    // Show(GF.WithParam<string>(122));
+    // Show GF.WithParam<TButton>(self));
   finally
     GF.Free;
   end;
@@ -78,8 +78,8 @@ end;
 
 function TGenericFunction.WithParam<T>(T1: T): string;
 begin
-  Result := GetTypeName (TypeInfo (T));
-  // if IsManagedType (T) then
+  Result := GetTypeName(TypeInfo(T));
+  // if IsManagedType(T) then
   //   Result := Result + ' managed';
 end;
 

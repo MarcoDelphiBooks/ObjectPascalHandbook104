@@ -17,7 +17,7 @@ type
     procedure BtnSmartClick(Sender: TObject);
     procedure BtnSmartShortClick(Sender: TObject);
     procedure BtnImplicitCreateClick(Sender: TObject);
-    procedure Log (const StrMsg: string);
+    procedure Log(const StrMsg: string);
   private
     { Private declarations }
   public
@@ -39,18 +39,18 @@ var
   SmartP: TSmartPointer<TStringList>;
 begin
 //  SmartP.Create;
-  SmartP.Value.Add('foo');
-  Log ('Count: ' + IntToStr (SmartP.Value.Count));
+  SmartP.Value.Add('Foo');
+  Log('Count: ' + IntToStr(SmartP.Value.Count));
 end;
 
 procedure TFormSmartPointers.BtnLeakClick(Sender: TObject);
 var
   SL: TStringList;
 begin
-  // memory leak
+  // Memory leak
   SL := TStringList.Create;
-  SL.Add('foo');
-  Log ('Count: ' + IntToStr (SL.Count));
+  SL.Add('Foo');
+  Log('Count: ' + IntToStr(SL.Count));
 end;
 
 procedure TFormSmartPointers.BtnSmartClick(Sender: TObject);
@@ -60,8 +60,8 @@ var
 begin
   SL := TStringList.Create;
   SmartP := SL;
-  SL.Add('foo');
-  Log ('Count: ' + IntToStr (SL.Count));
+  SL.Add('Foo');
+  Log('Count: ' + IntToStr(SL.Count));
 end;
 
 procedure TFormSmartPointers.BtnSmartShortClick(Sender: TObject);
@@ -69,14 +69,14 @@ var
   SmartP: TSmartPointer<TStringList>;
 begin
   SmartP := TStringList.Create;
-  SmartP.Value.Add('foo');
-  TStringList(SmartP).Add('foo2');
-  Log ('Count: ' + IntToStr (TStringList(SmartP).Count));
+  SmartP.Value.Add('Foo');
+  TStringList(SmartP).Add('Foo2');
+  Log('Count: ' + IntToStr(TStringList(SmartP).Count));
 end;
 
 procedure TFormSmartPointers.Log(const StrMsg: string);
 begin
-  Memo1.Lines.Add (StrMsg);
+  Memo1.Lines.Add(StrMsg);
 end;
 
 initialization

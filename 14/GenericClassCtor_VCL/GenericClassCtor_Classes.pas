@@ -6,7 +6,7 @@ uses
   Classes;
 
 type
-  TGenericWithClassCtor <T> = class
+  TGenericWithClassCtor<T> = class
   private
     FData: T;
     procedure SetData(const Value: T);
@@ -28,7 +28,7 @@ var // one for the unit (shared by all geenrics)
 
 function ListSequence: TStringList;
 begin
-  if not Assigned (SListSequence) then
+  if not Assigned(SListSequence) then
     SListSequence := TStringList.Create;
   Result := SListSequence;
 end;
@@ -36,9 +36,9 @@ end;
 // uncomment to show a double initialization
 //procedure Useless;
 //var
-//  GenStr: TGenericWithClassCtor <string>;
+//  GenStr: TGenericWithClassCtor<string>;
 //begin
-//  GenStr := TGenericWithClassCtor <string>.Create;
+//  GenStr := TGenericWithClassCtor<string>.Create;
 //  GenStr.Data := '100';
 //  GenStr.Free;
 //end;
@@ -47,7 +47,7 @@ end;
 
 class constructor TGenericWithClassCtor<T>.Create;
 begin
-  DataSize := SizeOf (T);
+  DataSize := SizeOf(T);
   ListSequence.Add(ClassName);
 end;
 

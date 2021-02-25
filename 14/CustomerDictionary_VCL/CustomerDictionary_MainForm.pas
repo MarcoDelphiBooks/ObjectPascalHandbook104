@@ -42,7 +42,7 @@ begin
   begin
     ListItem := ListView1.Items.Add;
     ListItem.Caption := Custkey.Company;
-    ListItem.SubItems.Add(FloatTOStr (Custkey.CustNo));
+    ListItem.SubItems.Add(FloatToStr(Custkey.CustNo));
     ListItem.Data := Custkey;
   end;
 end;
@@ -57,8 +57,8 @@ procedure TFormCustomerDictionary.ListView1SelectItem(Sender: TObject;
 var
   ACustomer: TCustomer;
 begin
-  ACustomer := CustDict.Items [Item.Data];
-  Item.SubItems.Add(IfThen (ACustomer.State <> '',
+  ACustomer := CustDict.Items[Item.Data];
+  Item.SubItems.Add(IfThen(ACustomer.State <> '',
     ACustomer.State + ', ' + ACustomer.Country, ACustomer.Country));
 end;
 

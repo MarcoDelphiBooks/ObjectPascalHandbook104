@@ -43,7 +43,7 @@ begin
   // add a company
   ACompany := TCompany.Create;
   ACompany.Name := 'ACME Inc.';
-  ACompany.ID := IntToStr (GetTickCount);
+  ACompany.ID := IntToStr(GetTickCount);
   ACompany.Country := 'Worldwide';
   FObjectsList.Add(ACompany);
 
@@ -53,7 +53,7 @@ begin
   UpdateList;
 end;
 
-function TypeHasDescription (AType: TRttiType): Boolean;
+function TypeHasDescription(AType: TRttiType): Boolean;
 var
   Attrib: TCustomAttribute;
 begin
@@ -77,7 +77,7 @@ begin
   for AnObject in FObjectsList do
   begin
     AType := Context.GetType(AnObject.ClassInfo);
-    if TypeHasDescription (AType) then
+    if TypeHasDescription(AType) then
     begin
       for AMethod in AType.GetMethods do
         for Attrib in AMethod.GetAttributes do

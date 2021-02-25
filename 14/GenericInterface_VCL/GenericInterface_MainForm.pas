@@ -17,7 +17,7 @@ type
     procedure BtnIValueClick(Sender: TObject);
     procedure BtnValueButtonClick(Sender: TObject);
   private
-    procedure Log (const StrMsg: string);
+    procedure Log(const StrMsg: string);
   public
     { Public declarations }
   end;
@@ -38,21 +38,21 @@ type
     procedure SetValue (Value: T);
   end;
 
-  TGetValue<T> = class (TInterfacedObject, IGetValue<T>)
+  TGetValue<T> = class(TInterfacedObject, IGetValue<T>)
   private
     FValue: T;
   public
-    constructor Create (Value: T);
+    constructor Create(Value: T);
     destructor Destroy; override;
     function GetValue: T;
-    procedure SetValue (Value: T);
+    procedure SetValue(Value: T);
   end;
 
-  TButtonValue = class (TButton, IGetValue<Integer>)
+  TButtonValue = class(TButton, IGetValue<Integer>)
   public
     function GetValue: Integer;
-    procedure SetValue (Value: Integer);
-    class function MakeTButtonValue (
+    procedure SetValue(Value: Integer);
+    class function MakeTButtonValue(
       Owner: TComponent; Parent: TWinControl): TButtonValue;
   end;
 
@@ -91,7 +91,7 @@ begin
   Result := TButtonValue.Create(Owner);
   Result.Parent := Parent;
   Result.SetBounds(
-    Random (Parent.Width), Random (Parent.Height),
+    Random(Parent.Width), Random(Parent.Height),
     Result.Width, Result.Height);
   Result.Caption := 'btnv';
 end;
@@ -105,17 +105,17 @@ procedure TFormGenericInterface.BtnValueButtonClick(Sender: TObject);
 var
   IVal: IGetValue<Integer>;
 begin
-  IVal := TButtonValue.MakeTButtonValue (self, ScrollBox1);
-  Log ('Button value: ' + IntToStr (IVal.GetValue));
+  IVal := TButtonValue.MakeTButtonValue(self, ScrollBox1);
+  Log('Button value: ' + IntToStr(IVal.GetValue));
 end;
 
 procedure TFormGenericInterface.BtnValueClick(Sender: TObject);
 var
   AVal: TGetValue<string>;
 begin
-  AVal := TGetValue<string>.Create (Caption);
+  AVal := TGetValue<string>.Create(Caption);
   try
-    Log ('TGetValue value: ' + AVal.GetValue);
+    Log('TGetValue value: ' + AVal.GetValue);
   finally
     AVal.Free;
   end;
@@ -125,14 +125,14 @@ procedure TFormGenericInterface.BtnIValueClick(Sender: TObject);
 var
   AVal: IGetValue<string>;
 begin
-  AVal := TGetValue<string>.Create (Caption);
-  Log ('IGetValue value: ' + AVal.GetValue);
-  // freed automatically, as it is reference counted
+  AVal := TGetValue<string>.Create(Caption);
+  Log('IGetValue value: ' + AVal.GetValue);
+  // Freed automatically, as it is reference counted
 end;
 
 procedure TFormGenericInterface.Log(const StrMsg: string);
 begin
-  Memo1.Lines.Add (StrMsg);
+  Memo1.Lines.Add(StrMsg);
 end;
 
 initialization

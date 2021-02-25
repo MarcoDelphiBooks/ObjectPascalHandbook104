@@ -30,7 +30,7 @@ implementation
 {$R *.dfm}
 
 const
-  MaxCount = 1000000; // one million
+  MaxCount = 1000000; // One million
   StrSampleShort = 'This is a sample string';
   StrSampleLong = 'This is a slightly longer sample string that should be causing some more trouble in .NET when copied over and over so many times in memory, if you use the String class instead of StringBuilder class';
 
@@ -48,16 +48,16 @@ begin
   // actual code
   StrB := StringBuilder.Create;
   if RBShort.Checked then
-    StrB.Append (strSampleShort)
+    StrB.Append(StrSampleShort)
   else
-    StrB.Append (strSampleLong);
+    StrB.Append(StrSampleLong);
   for I := 1 to maxCount do
   begin
     NPos := I mod StrB.Length;
     StrB.Remove(NPos, 1);
-    StrB.Insert(NPos, StrB [(I*2) mod StrB.Length]);
+    StrB.Insert(NPos, StrB[(I*2) mod StrB.Length]);
   end;
-  ListBox1.Items.Add (StrB.ToString);
+  ListBox1.Items.Add(StrB.ToString);
   // end of actual code
 
   // added
@@ -75,23 +75,23 @@ var
 begin
   ATime := Now;
 
-  // actual code
+  // Actual code
   if RBShort.Checked then
-    Str := strSampleShort
+    Str := StrSampleShort
   else
-    Str := strSampleLong;
+    Str := StrSampleLong;
 
   for I := 1 to maxCount do
   begin
-    NPos := I mod Length (Str);
-    Delete (Str, NPos + 1, 1);
-    Insert(Str [(I*2) mod Length (Str) + 1], Str, NPos + 1);
+    NPos := I mod Length(Str);
+    Delete(Str, NPos + 1, 1);
+    Insert(Str[(I*2) mod Length(Str) + 1], Str, NPos + 1);
   end;
-  ListBox1.Items.Add (Str);
-  // end of actual code
+  ListBox1.Items.Add(Str);
+  // End of actual code
 
   ATime := Now - ATime;
-  ListBox1.Items.Add('BtnStringClick: ' + FormatDateTime ('ss.zzz', ATime));
+  ListBox1.Items.Add('BtnStringClick: ' + FormatDateTime('ss.zzz', ATime));
 end;
 
 end.

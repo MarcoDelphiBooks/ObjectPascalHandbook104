@@ -48,8 +48,8 @@ end;
 
 procedure TForm2.Button3Click(Sender: TObject);
 begin
-  // ShowMessage ('[' + FKV.Key + ',' + FKV.Value.ClassName + ']');
-  ShowMessage ('[' + FKV.Key + ',' + FKV.Value.Name + ']');
+  // ShowMessage('[' + FKV.Key + ',' + FKV.Value.ClassName + ']');
+  ShowMessage('[' + FKV.Key + ',' + FKV.Value.Name + ']');
 end;
 
 procedure TForm2.Button4Click(Sender: TObject);
@@ -61,7 +61,7 @@ begin
     KVO.Key := 'object';
     KVO.Value := Sender;
     KVO.Value := self;
-    ShowMessage ('[' + KVO.Key + ',' +
+    ShowMessage('[' + KVO.Key + ',' +
       KVO.Value.ClassName + ']');
   finally
     KVO.Free;
@@ -77,8 +77,8 @@ begin
     KVI.Key := 'object';
     KVI.Value := 100;
     KVI.Value := Left;
-    ShowMessage ('[' + KVI.Key + ',' +
-      IntToStr (KVI.Value) + ']');
+    ShowMessage('[' + KVI.Key + ',' +
+      IntToStr(KVI.Value) + ']');
   finally
     KVI.Free;
   end;
@@ -93,7 +93,7 @@ begin
     KVO.Key := 'object';
     KVO.Value := Sender as TComponent;
     KVO.Value := self;
-    ShowMessage ('[' + KVO.Key + ',' +
+    ShowMessage('[' + KVO.Key + ',' +
       KVO.Value.Name + ']');
   finally
     KVO.Free;

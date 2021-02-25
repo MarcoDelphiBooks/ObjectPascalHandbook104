@@ -33,7 +33,7 @@ type
     FPerson1: TPerson;
     FVmi: TVirtualMethodInterceptor;
   public
-    procedure Log (const StrMsg: string);
+    procedure Log(const StrMsg: string);
   end;
 
 var
@@ -49,7 +49,7 @@ uses
 procedure TFormIntercept.BtnDisconnectClick(Sender: TObject);
 begin
   // PPointer(Person1)^ := vmi.OriginalClass;
-  FVmi.Unproxify(FPerson1); // xe2 only
+  FVmi.Unproxify(FPerson1);
 end;
 
 procedure TFormIntercept.BtnInterceptClick(Sender: TObject);
@@ -76,10 +76,10 @@ end;
 procedure TFormIntercept.BtnUseClick(Sender: TObject);
 begin
   // use object
-  Log ('Age: ' + IntToStr (FPerson1.Age));
-  Log ('Person: ' + FPerson1.ToString);
-  Log ('Class: ' + FPerson1.ClassName);
-  Log ('Base Class: ' + FPerson1.ClassParent.ClassName);
+  Log('Age: ' + IntToStr(FPerson1.Age));
+  Log('Person: ' + FPerson1.ToString);
+  Log('Class: ' + FPerson1.ClassName);
+  Log('Base Class: ' + FPerson1.ClassParent.ClassName);
 end;
 
 { TPerson }
@@ -101,19 +101,19 @@ end;
 
 function TPerson.ToString: string;
 begin
-  Result := FName + ' is ' + IntToStr (Age) + ' years old';
+  Result := FName + ' is ' + IntToStr(Age) + ' years old';
 end;
 
 procedure TFormIntercept.FormCreate(Sender: TObject);
 begin
   FPerson1 := TPerson.Create;
   FPerson1.Name := 'Mark';
-  FPerson1.BirthDate := EncodeDate (1984, 5, 14);
+  FPerson1.BirthDate := EncodeDate(1984, 5, 14);
 end;
 
 procedure TFormIntercept.Log(const StrMsg: string);
 begin
-  Memo1.Lines.Add (StrMsg);
+  Memo1.Lines.Add(StrMsg);
 end;
 
 end.

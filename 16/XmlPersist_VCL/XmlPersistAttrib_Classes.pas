@@ -10,7 +10,7 @@ uses
 type
   TAttrPerson = class
   private
-    [xml ('Name')]
+    [xml('Name')]
     FName: string;
     [xml]
     FCountry: string;
@@ -21,12 +21,12 @@ type
 
   TAttrCompany = class
   private
-    [xml ('CompanyName')]
+    [xml('CompanyName')]
     FName: string;
-    [xml ('Country')]
+    [xml('Country')]
     FCountry: string;
     FID: string; // omitted
-    [xml ('TheBoss')]
+    [xml('TheBoss')]
     FPerson: TAttrPerson;
   published
     property Name: string read FName write FName;

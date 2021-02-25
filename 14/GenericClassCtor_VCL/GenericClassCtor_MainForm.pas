@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Log (const StrMsg: string);
+    procedure Log(const StrMsg: string);
   end;
 
 var
@@ -31,30 +31,30 @@ implementation
 uses GenericClassCtor_Classes;
 
 type
-  TGenDouble = TGenericWithClassCtor <Double>;
+  TGenDouble = TGenericWithClassCtor<Double>;
 
 procedure TFormGenericClassCtor.BtnIntClick(Sender: TObject);
 var
-  GenInt: TGenericWithClassCtor <SmallInt>;
+  GenInt: TGenericWithClassCtor<SmallInt>;
 begin
-  GenInt := TGenericWithClassCtor <SmallInt>.Create;
+  GenInt := TGenericWithClassCtor<SmallInt>.Create;
   GenInt.Data := 100;
-  Log ('Size: ' + IntToStr (GenInt.DataSize));
+  Log('Size: ' + IntToStr(GenInt.DataSize));
   GenInt.Free;
 end;
 
 procedure TFormGenericClassCtor.BtnSequenceClick(Sender: TObject);
 begin
-  Log (Trim(ListSequence.Text));
+  Log(Trim(ListSequence.Text));
 end;
 
 procedure TFormGenericClassCtor.BtnStringClick(Sender: TObject);
 var
-  GenStr: TGenericWithClassCtor <string>;
+  GenStr: TGenericWithClassCtor<string>;
 begin
-  GenStr := TGenericWithClassCtor <string>.Create;
+  GenStr := TGenericWithClassCtor<string>.Create;
   GenStr.Data := '100';
-  Log ('Size: ' + IntToStr (GenStr.DataSize));
+  Log('Size: ' + IntToStr(GenStr.DataSize));
   GenStr.Free;
 end;
 

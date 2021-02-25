@@ -43,26 +43,26 @@ var
   StrPath: string;
   NTotal, NFound: Integer;
 begin
-  FreeAndNil (SFilesList); // disable ListBox OnClick
-  if TDirectory.Exists (EdBaseFolder.Text) then
+  FreeAndNil(SFilesList); // disable ListBox OnClick
+  if TDirectory.Exists(EdBaseFolder.Text) then
   begin
     ListBox1.Items.Clear;
     NTotal := 0;
     NFound := 0;
     PathList := TDirectory.GetDirectories(EdBaseFolder.Text,
       TSearchOption.soAllDirectories,
-      function (const Path: string; const SearchRec: TSearchRec): Boolean
+      function(const Path: string; const SearchRec: TSearchRec): Boolean
       begin
         Result := not (SearchRec.Name = '__history') and
           not (SearchRec.Name[1] = '.');
-        Inc (NTotal);
+        Inc(NTotal);
         if Result then
-          Inc (NFound);
-        StatusBar1.SimpleText := Format ('Folders %d/%d', [NFound, NTotal]);
+          Inc(NFound);
+        StatusBar1.SimpleText := Format('Folders %d/%d', [NFound, NTotal]);
         Application.ProcessMessages;
       end);
     for StrPath in PathList do
-      ListBox1.Items.Add (StrPath);
+      ListBox1.Items.Add(StrPath);
   end;
 end;
 
@@ -72,9 +72,9 @@ var
   StrPath, StrFile: string;
   NTotal, NFound: Integer;
 begin
-  if TDirectory.Exists (EdBaseFolder.Text) then
+  if TDirectory.Exists(EdBaseFolder.Text) then
   begin
-    if not Assigned (SFilesList) then
+    if not Assigned(SFilesList) then
       SFilesList := TStringList.Create
     else
       SFilesList.Clear;
@@ -92,22 +92,22 @@ begin
         Application.ProcessMessages;
       end);
     // add the current folder
-    SetLength(PathList, Length (PathList) + 1);
+    SetLength(PathList, Length(PathList) + 1);
     PathList[High(PathList)] := EdBaseFolder.Text;
 
     for StrPath in PathList do
     begin
-      FilesList := TDirectory.GetFiles (StrPath, '*.*',
-        function (const Path: string; const SearchRec: TSearchRec): Boolean
+      FilesList := TDirectory.GetFiles(StrPath, '*.*',
+        function(const Path: string; const SearchRec: TSearchRec): Boolean
         var
           StrExt: string;
         begin
           StrExt := TPath.GetExtension(SearchRec.Name);
           Result := (StrExt = '.pas') or (StrExt = '.dpr');
-          Inc (NTotal);
+          Inc(NTotal);
           if Result then
-            Inc (NFound);
-          StatusBar1.SimpleText := Format ('Files %d/%d', [NFound, NTotal]);
+            Inc(NFound);
+          StatusBar1.SimpleText := Format('Files %d/%d', [NFound, NTotal]);
           Application.ProcessMessages;
         end);
       for StrFile in FilesList do
@@ -116,7 +116,7 @@ begin
 
     // now copy the file names only (no path) to a listbox
     for StrFile in SFilesList do
-      ListBox1.Items.Add (TPath.GetFileName(StrFile));
+      ListBox1.Items.Add(TPath.GetFileName(StrFile));
   end;end;
 
 procedure TFormIoFiles.BtnPasFilesClick(Sender: TObject);
@@ -124,9 +124,9 @@ var
   PathList, FilesList: TStringDynArray;
   StrPath, StrFile: string;
 begin
-  if TDirectory.Exists (EdBaseFolder.Text) then
+  if TDirectory.Exists(EdBaseFolder.Text) then
   begin
-    if not Assigned (SFilesList) then
+    if not Assigned(SFilesList) then
       SFilesList := TStringList.Create
     else
       SFilesList.Clear;
@@ -135,7 +135,7 @@ begin
     ListBox1.Items.Clear;
 
     // search in the given folder
-    FilesList := TDirectory.GetFiles (EdBaseFolder.Text, '*.pas');
+    FilesList := TDirectory.GetFiles(EdBaseFolder.Text, '*.pas');
     for StrFile in FilesList do
       SFilesList.Add(StrFile);
 
@@ -144,14 +144,14 @@ begin
       TSearchOption.soAllDirectories, nil);
     for StrPath in PathList do
     begin
-      FilesList := TDirectory.GetFiles (StrPath, '*.pas');
+      FilesList := TDirectory.GetFiles(StrPath, '*.pas');
       for StrFile in FilesList do
         SFilesList.Add(StrFile);
     end;
 
     // now copy the file names only (no path) to a listbox
     for StrFile in SFilesList do
-      ListBox1.Items.Add (TPath.GetFileName(StrFile));
+      ListBox1.Items.Add(TPath.GetFileName(StrFile));
   end;
 end;
 
@@ -160,14 +160,14 @@ var
   PathList: TStringDynArray;
   StrPath: string;
 begin
-  FreeAndNil (SFilesList); // disable ListBox OnClick
-  if TDirectory.Exists (EdBaseFolder.Text) then
+  FreeAndNil(SFilesList); // disable ListBox OnClick
+  if TDirectory.Exists(EdBaseFolder.Text) then
   begin
     ListBox1.Items.Clear;
     PathList := TDirectory.GetDirectories(EdBaseFolder.Text,
       TSearchOption.soAllDirectories, nil);
     for StrPath in PathList do
-      ListBox1.Items.Add (StrPath);
+      ListBox1.Items.Add(StrPath);
   end;
 end;
 
@@ -175,27 +175,27 @@ procedure TFormIoFiles.FormCreate(Sender: TObject);
 var
   SzBufferW: string;
 begin
-  SetLength (SzBufferW, MAX_PATH);
-  OleCheck (SHGetFolderPath (Handle, CSIDL_MYDOCUMENTS, 0, 0, PChar(SzBufferW)));
-  edBaseFolder.Text := string (SzBufferW);
+  SetLength(SzBufferW, MAX_PATH);
+  OleCheck(SHGetFolderPath(Handle, CSIDL_MYDOCUMENTS, 0, 0, PChar(SzBufferW)));
+  edBaseFolder.Text := string(SzBufferW);
 end;
 
 procedure TFormIoFiles.FormDestroy(Sender: TObject);
 begin
-  FreeAndNil (SFilesList);
+  FreeAndNil(SFilesList);
 end;
 
 procedure TFormIoFiles.ListBox1Click(Sender: TObject);
 var
   StrFileName: string;
 begin
-  if not Assigned (SFilesList) then
+  if not Assigned(SFilesList) then
     Exit;
   StrFileName := SFilesList[ListBox1.ItemIndex];
   lblFileInfo.Caption := StrFileName + sLineBreak +
-    'Creation: ' + DateTimeToStr (TFile.GetCreationTime(StrFileName)) + sLineBreak +
-    'LastAccess: ' + DateTimeToStr (TFile.GetLastAccessTime (StrFileName)) + sLineBreak +
-    'LastWrite: ' + DateTimeToStr (TFile.GetLastWriteTime(StrFileName));
+    'Creation: ' + DateTimeToStr(TFile.GetCreationTime(StrFileName)) + sLineBreak +
+    'LastAccess: ' + DateTimeToStr(TFile.GetLastAccessTime(StrFileName)) + sLineBreak +
+    'LastWrite: ' + DateTimeToStr(TFile.GetLastWriteTime(StrFileName));
 end;
 
 initialization

@@ -39,22 +39,22 @@ var
   SS: TStringStream;
   XmlWri: TTrivialXmlWriter;
 begin
-  // create a person
+  // Create a person
   APerson := TAttrPerson.Create;
   APerson.Name := 'Wiley';
   APerson.Country := 'Desert';
 
-  // create a company and add person to it
+  // Create a company and add person to it
   ACompany := TAttrCompany.Create;
   ACompany.Name := 'ACME Inc.';
-  ACompany.ID := IntToStr (GetTickCount);
+  ACompany.ID := IntToStr(GetTickCount);
   ACompany.Country := 'Worldwide';
   ACompany.Boss := APerson;
 
-  // stream the company (and person)
+  // Stream the company (and person)
   SS := TStringStream.Create;
   try
-    XmlWri := TTrivialXmlWriter.Create (SS);
+    XmlWri := TTrivialXmlWriter.Create(SS);
     try
       XmlWri.WriteStartElement('company');
       XmlWri.WriteObjectAttrib(ACompany);
@@ -62,9 +62,9 @@ begin
     finally
        XmlWri.Free;
     end;
-    // reset and laod stream
+    // Reset and laod stream
     SS.Position := 0;
-    Memo1.Lines.LoadFromStream (SS);
+    Memo1.Lines.LoadFromStream(SS);
   finally
     SS.Free;
   end;
@@ -77,22 +77,22 @@ var
   SS: TStringStream;
   XmlWri: TTrivialXmlWriter;
 begin
-  // create a person
+  // Create a person
   APerson := TPerson.Create;
   APerson.Name := 'Wiley';
   APerson.Country := 'Desert';
 
-  // create a company and add person to it
+  // Create a company and add person to it
   ACompany := TCompany.Create;
   ACompany.Name := 'ACME Inc.';
-  ACompany.ID := IntToStr (GetTickCount);
+  ACompany.ID := IntToStr(GetTickCount);
   ACompany.Country := 'Worldwide';
   ACompany.Boss := APerson;
 
-  // stream the company (and person)
+  // Stream the company (and person)
   SS := TStringStream.Create;
   try
-    XmlWri := TTrivialXmlWriter.Create (SS);
+    XmlWri := TTrivialXmlWriter.Create(SS);
     try
       XmlWri.WriteStartElement('company');
       XmlWri.WriteObjectPublished(ACompany);
@@ -100,9 +100,9 @@ begin
     finally
        XmlWri.Free;
     end;
-    // reset and laod stream
+    // Reset and laod stream
     SS.Position := 0;
-    Memo1.Lines.LoadFromStream (SS);
+    Memo1.Lines.LoadFromStream(SS);
   finally
     SS.Free;
   end;
@@ -115,19 +115,19 @@ var
   SS: TStringStream;
   XmlWri: TTrivialXmlWriter;
 begin
-  // create a person
+  // Create a person
   APerson := TNewPerson.Create;
   APerson.Name := 'Wiley';
   APerson.Country := 'Desert';
 
-  // create a company and add person to it
+  // Create a company and add person to it
   ACompany := TNewCompany.Create;
   ACompany.Name := 'ACME Inc.';
-  ACompany.ID := IntToStr (GetTickCount);
+  ACompany.ID := IntToStr(GetTickCount);
   ACompany.Country := 'Worldwide';
   ACompany.Boss := APerson;
 
-  // stream the company (and person)
+  // Stream the company (and person)
   SS := TStringStream.Create;
   try
     XmlWri := TTrivialXmlWriter.Create (SS);
@@ -138,9 +138,9 @@ begin
     finally
        XmlWri.Free;
     end;
-    // reset and laod stream
+    // Reset and laod stream
     SS.Position := 0;
-    Memo1.Lines.LoadFromStream (SS);
+    Memo1.Lines.LoadFromStream(SS);
   finally
     SS.Free;
   end;
