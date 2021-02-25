@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, adapter_intf;
+  StdCtrls, AdapterIntf;
 
 type
   TEdit = class(StdCtrls.TEdit, ITextAndValue)
@@ -32,7 +32,7 @@ end;
 
 function TEdit.GetValue: Integer;
 begin
-  Result := StrToIntDef (Text, 0);
+  Result := StrToIntDef(Text, 0);
 end;
 
 procedure TEdit.SetText(const Value: string);
@@ -42,7 +42,7 @@ end;
 
 procedure TEdit.SetValue(const Value: Integer);
 begin
-  Text := IntToStr (Value);
+  Text := IntToStr(Value);
 end;
 
 end.

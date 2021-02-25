@@ -12,7 +12,7 @@ type
     FKind: string;
   end;
 
-  TDog = class (TAnimal)
+  TDog = class(TAnimal)
   public
     constructor Create;
     function Voice: string; override;

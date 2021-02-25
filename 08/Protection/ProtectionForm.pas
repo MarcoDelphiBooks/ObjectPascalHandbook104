@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -37,13 +37,13 @@ var
 begin
   Obj := TTest.Create;
   Obj.FPublicData := 10;
-//  Obj.FProtectedData := 20;  //won't compile
-  Show (Obj.GetValue);
+//  Obj.FProtectedData := 20;  // Won't compile
+  Show(Obj.GetValue);
   Obj.Free;
 end;
 
 type
-  TFake = class (TTest);
+  TFake = class(TTest);
 
 procedure TForm1.Button2Click(Sender: TObject);
 var
@@ -51,8 +51,8 @@ var
 begin
   Obj := TTest.Create;
   Obj.FPublicData := 10;
-  TFake (Obj).FProtectedData := 20; // compiles!
-  Show (Obj.GetValue);
+  TFake(Obj).FProtectedData := 20; // Compiles!
+  Show(Obj.GetValue);
   Obj.Free;
 end;
 

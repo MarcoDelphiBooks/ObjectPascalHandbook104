@@ -33,21 +33,22 @@ procedure TFormLeakTest.Button1Click(Sender: TObject);
 var
   P: Pointer;
 begin
-  GetMem (P, 100);
+  GetMem(P, 100);
 end;
 
 procedure TFormLeakTest.Button2Click(Sender: TObject);
 begin
-  TButton.Create (nil);
+  TButton.Create(nil);
 end;
 
 procedure TFormLeakTest.FormCreate(Sender: TObject);
 begin
   // global allocation
-  GetMem (GlobalPointer, 200);
+  GetMem(GlobalPointer, 200);
   RegisterExpectedMemoryLeak(GlobalPointer);
 end;
 
 initialization
   ReportMemoryLeaksOnShutdown := True;
+
 end.

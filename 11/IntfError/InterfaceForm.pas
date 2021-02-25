@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -30,7 +30,7 @@ type
     procedure Show;
   end;
 
-  TMyIntfObject = class (TInterfacedObject, IMyInterface)
+  TMyIntfObject = class(TInterfacedObject, IMyInterface)
   public
     procedure Show;
   end;
@@ -39,7 +39,7 @@ implementation
 
 {$R *.fmx}
 
-procedure ShowThat (AnIntf: IMyInterface);
+procedure ShowThat(AnIntf: IMyInterface);
 begin
   AnIntf.Show;
 end;
@@ -50,7 +50,7 @@ var
 begin
   AnObj := TMyIntfObject.Create;
   try
-    ShowThat (AnObj);
+    ShowThat(AnObj);
   finally
     AnObj.Free;
   end;
@@ -61,7 +61,7 @@ var
   AnObj: IMyInterface;
 begin
   AnObj := TMyIntfObject.Create;
-  ShowThat (AnObj);
+  ShowThat(AnObj);
 end;
 
 procedure TForm1.Show(const Msg: string);
@@ -77,7 +77,7 @@ begin
 end;
 
 initialization
-  // check we are not leaking objects
+  // Check we are not leaking objects
   ReportMemoryLeaksOnShutdown := True;
 
 end.

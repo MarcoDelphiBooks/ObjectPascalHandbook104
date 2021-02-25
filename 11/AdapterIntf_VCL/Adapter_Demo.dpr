@@ -3,7 +3,7 @@ program Adapter_Demo;
 uses
   Forms,
   mainform in 'mainform.pas' {FormAdapter},
-  adapter_intf in 'adapter_intf.pas';
+  AdapterIntf in 'AdapterIntf.pas';
 
 {$R *.RES}
 

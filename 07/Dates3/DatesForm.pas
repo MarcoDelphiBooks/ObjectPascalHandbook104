@@ -20,7 +20,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -40,7 +40,7 @@ type
   public
     constructor Create;
     constructor CreateFromValues(m, d, y: Integer);
-    procedure SetValue (m, d, y: Integer);
+    procedure SetValue(m, d, y: Integer);
     function LeapYear: Boolean;
     function GetText: string;
     procedure Increase;
@@ -51,19 +51,19 @@ begin
   FDate := Today;
 end;
 
-constructor TDate.CreateFromValues (m, d, y: Integer);
+constructor TDate.CreateFromValues(m, d, y: Integer);
 begin
-  FDate := EncodeDate (y, m, d);
+  FDate := EncodeDate(y, m, d);
 end;
 
-procedure TDate.SetValue (m, d, y: Integer);
+procedure TDate.SetValue(m, d, y: Integer);
 begin
-  FDate := EncodeDate (y, m, d);
+  FDate := EncodeDate(y, m, d);
 end;
 
 function TDate.GetText: string;
 begin
-  Result := DateToStr (FDate);
+  Result := DateToStr(FDate);
 end;
 
 procedure TDate.Increase;
@@ -73,11 +73,11 @@ end;
 
 function TDate.LeapYear: Boolean;
 begin
-  // call IsLeapYear in SysUtils and YearOf in DateUtils
-  Result := IsLeapYear (YearOf (FDate));
+  // Call IsLeapYear in SysUtils and YearOf in DateUtils
+  Result := IsLeapYear(YearOf(FDate));
 end;
 
-// class demostrating destructors and resource management
+// Class demostrating destructors and resource management
 
 type
   TPerson = class
@@ -85,9 +85,9 @@ type
     FName: string;
     FBirthDate: TDate;
   public
-    constructor Create (name: string);
+    constructor Create(name: string);
     destructor Destroy; override;
-    // some actual methods
+    // Some actual methods
     function Info: string;
   end;
 
@@ -96,18 +96,18 @@ procedure TForm1.Button1Click(Sender: TObject);
 var
   ADay: TDate;
 begin
-  // create
+  // Create
   ADay := TDate.Create; // today
 
   // use
   ADay.Increase;
 
   if ADay.LeapYear then
-    Show ('Leap year: ' + ADay.GetText)
+    Show('Leap year: ' + ADay.GetText)
   else
-    Show ('Not a leap year: ' + ADay.GetText);
+    Show('Not a leap year: ' + ADay.GetText);
 
-  // free the memory (for non ARC platforms)
+  // Free the memory
   ADay.Free;
 end;
 
@@ -115,16 +115,16 @@ procedure TForm1.Button2Click(Sender: TObject);
 var
   ADay: TDate;
 begin
-  // create
-  ADay := TDate.CreateFromValues (1, 1, 2016);
+  // Create
+  ADay := TDate.CreateFromValues(1, 1, 2021);
 
-  // use
+  // Use
   ADay.Increase;
 
   if ADay.LeapYear then
-    Show ('Leap year: ' + ADay.GetText);
+    Show('Leap year: ' + ADay.GetText);
 
-  // free the memory (for non ARC platforms)
+  // Free the memory
   ADay.Free;
 end;
 

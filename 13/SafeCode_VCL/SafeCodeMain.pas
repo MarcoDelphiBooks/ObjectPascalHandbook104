@@ -39,7 +39,7 @@ type
   private
     FList: TList;
   public
-    constructor Create (PositiveNumber: Integer);
+    constructor Create(PositiveNumber: Integer);
     destructor Destroy; override;
     procedure Show;
   end;
@@ -47,21 +47,21 @@ type
   IMyInterface = interface
     procedure Show;
     function GetAnother: IMyInterface;
-    procedure SetAnother (value: IMyInterface);
+    procedure SetAnother(value: IMyInterface);
     property Another: IMyInterface read GetAnother write SetAnother;
   end;
 
-  TMyIntfObject = class (TInterfacedObject, IMyInterface)
+  TMyIntfObject = class(TInterfacedObject, IMyInterface)
   private
     FAnother: IMyInterface;
   public
     procedure Show;
     function GetAnother: IMyInterface;
-    procedure SetAnother (Value: IMyInterface);
+    procedure SetAnother(Value: IMyInterface);
     destructor Destroy; override;
   end;
 
-  procedure ShowThat (AnIntf: IMyInterface);
+  procedure ShowThat(AnIntf: IMyInterface);
   begin
     AnIntf.Show;
   end;
@@ -77,9 +77,9 @@ begin
 //    (TObject(list[1]) as TButton).Caption := 'ouch';
 //    if TObject(list[1]) is TButton then
 //      TButton(list[1]).Caption := 'ouch';
-    if IsPointerToObject (list[1]) then
+    if IsPointerToObject(list[1]) then
       (TObject(list[1]) as TButton).Caption := 'ouch';
-    if IsPointerToObject (list[0]) then
+    if IsPointerToObject(list[0]) then
       (TObject(list[0]) as TButton).Caption := 'ouch';
   finally
     list.Free;
@@ -90,7 +90,7 @@ procedure TForm1.BtnConstructorClick(Sender: TObject);
 var
   anObj: TUnsafeDesctructor;
 begin
-  anObj := TUnsafeDesctructor.Create (-10);
+  anObj := TUnsafeDesctructor.Create(-10);
   try
 
   finally
@@ -105,15 +105,15 @@ begin
   inherited Create;
 
   if PositiveNumber <= 0 then
-    raise Exception.Create ('Not a positive number');
+    raise Exception.Create('Not a positive number');
   FList := TList.Create;
-  FList.Add (Pointer(PositiveNumber)); // don't do this!
+  FList.Add(Pointer(PositiveNumber)); // Don't do this!
 end;
 
 destructor TUnsafeDesctructor.Destroy;
 begin
-  // uncomment to fix the program
-  // if assigned (FList) then
+  // Uncomment to fix the program
+  // if Assigned(FList) then
     FList.Clear;
   FList.Free;
   inherited;
@@ -121,15 +121,15 @@ end;
 
 procedure TUnsafeDesctructor.Show;
 begin
-  ShowMessage ('Show');
-  FList.Add (Self);
+  ShowMessage('Show');
+  FList.Add(Self);
 end;
 
 { TMyIntfObject }
 
 destructor TMyIntfObject.Destroy;
 begin
-  ShowMessage ('TMyIntfObject.Destroy');
+  ShowMessage('TMyIntfObject.Destroy');
   inherited;
 end;
 
@@ -145,7 +145,7 @@ end;
 
 procedure TMyIntfObject.Show;
 begin
-  ShowMessage ('Whatever...');
+  ShowMessage('Whatever...');
 end;
 
 procedure TForm1.BtnMixedClick(Sender: TObject);
@@ -154,9 +154,9 @@ var
   // AnObj: TMyIntfObject;
 begin
 //  AnObj := TMyIntfObject.Create;
-  AnIntf  := TMyIntfObject.Create;
+  AnIntf := TMyIntfObject.Create;
 //  try
-    ShowThat (AnIntf);
+    ShowThat(AnIntf);
 //  finally
 //    AnObj.Free;
 //  end;
@@ -192,8 +192,8 @@ begin
   try
     A2 := TAClass.Create;
     try
-      A1.FWhatever := 'one';
-      A2.FWhatever := 'two';
+      A1.FWhatever := 'One';
+      A2.FWhatever := 'Two';
     finally
      A2.Free;
     end;

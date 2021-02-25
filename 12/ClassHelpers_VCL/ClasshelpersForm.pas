@@ -38,11 +38,11 @@ procedure TForm4.Button1Click(Sender: TObject);
 var
   N: Integer;
 begin
-  ShowMessage (ListBox1.SelText);
+  ShowMessage(ListBox1.SelText);
   N := 3;
   Caption := N.AsString;
 
-  Caption := Integer (12).AsString;
+  Caption := Integer(12).AsString;
 end;
 
 { TMylistBox }
@@ -56,7 +56,7 @@ end;
 
 function TMyInt.AsString: string;
 begin
-  Result := IntToStr (self);
+  Result := IntToStr(self);
 end;
 
 procedure TForm4.FormCreate(Sender: TObject);

@@ -16,7 +16,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -72,7 +72,7 @@ end;
 
 procedure TMyIntegerClass.SetNumber(var Value: Integer);
 begin
-  Inc (Value); // side effect
+  Inc(Value); // side effect
   FNumber := Value;
 end;
 

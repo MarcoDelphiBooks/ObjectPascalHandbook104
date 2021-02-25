@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  Unit1;
+  Unit1, FMX.Controls.Presentation;
 
 type
   TForm2 = class(TForm1)
@@ -35,7 +35,7 @@ end;
 procedure TForm2.Button2Click(Sender: TObject);
 begin
   inherited;
-  ShowMessage ('Hello from Form2');
+  ShowMessage('Hello from Form2');
 end;
 
 procedure TForm2.Button3Click(Sender: TObject);

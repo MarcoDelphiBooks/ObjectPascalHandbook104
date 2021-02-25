@@ -26,7 +26,7 @@ type
   private
     FMyAnimal: TAnimal;
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -37,19 +37,19 @@ implementation
 {$R *.fmx}
 
 const
-  SoundsFolder = '..\..\'; // windows only
+  SoundsFolder = '..\..\'; // Windows only
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   if FMyAnimal is TDog then
-    Show (TDog(FMyAnimal).Eat)
+    Show(TDog(FMyAnimal).Eat)
   else if FMyAnimal is TCat then
-    Show (TCat(FMyAnimal).Eat);
+    Show(TCat(FMyAnimal).Eat);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-  Show (FMyAnimal.Voice);
+  Show(FMyAnimal.Voice);
   MediaPlayer1.FileName := SoundsFolder + FMyAnimal.Voice + '.wav';
   MediaPlayer1.Play;
 end;

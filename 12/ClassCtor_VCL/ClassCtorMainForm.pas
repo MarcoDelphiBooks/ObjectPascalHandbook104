@@ -35,11 +35,9 @@ type
     class destructor Destroyer;
   end;
 
-
-
 procedure TForm39.Button1Click(Sender: TObject);
 begin
-  ShowMessage (TimeToStr (TTestClass.StartTime));
+  ShowMessage(TimeToStr(TTestClass.StartTime));
 end;
 
 { TTestClass }
@@ -56,13 +54,13 @@ end;
 
 //class constructor TTestClass.Foo;
 //begin
-//  ShowMessage ('Foo');
+//  ShowMessage('Foo');
 //end;
 
 initialization
-  ShowMessage (TimeToStr (TTestClass.StartTime));
+  ShowMessage(TimeToStr(TTestClass.StartTime));
 
 finalization
-  ShowMessage (TimeToStr (TTestClass.EndTime));
+  ShowMessage(TimeToStr(TTestClass.EndTime));
 
 end.

@@ -30,17 +30,17 @@ type
   private
     FCurrCur: TCursor;
   public
-    class operator Initialize (out ADest: THourglassCursor);
-    class operator Finalize (var ADest: THourglassCursor);
+    class operator Initialize(out ADest: THourglassCursor);
+    class operator Finalize(var ADest: THourglassCursor);
   end;
 
-class operator THourglassCursor.Initialize (out ADest: THourglassCursor);
+class operator THourglassCursor.Initialize(out ADest: THourglassCursor);
 begin
   ADest.FCurrCur := Screen.Cursor;
   Screen.Cursor := crHourGlass;
 end;
 
-class operator THourglassCursor.Finalize (var ADest: THourglassCursor);
+class operator THourglassCursor.Finalize(var ADest: THourglassCursor);
 begin
   Screen.Cursor := ADest.FCurrCur;
 end;
@@ -51,8 +51,8 @@ begin
   var CurrCur := Screen.Cursor;
   Screen.Cursor := crHourGlass;
   try
-    // some slow operation
-    Sleep (5000);
+    // Some slow operation
+    Sleep(5000);
   finally
     Screen.Cursor := CurrCur;
   end;
@@ -61,8 +61,8 @@ end;
 procedure TForm42.Button2Click(Sender: TObject);
 begin
   var HC: THourglassCursor;
-  // some slow operation
-  Sleep (5000);
+  // Some slow operation
+  Sleep(5000);
 end;
 
 end.

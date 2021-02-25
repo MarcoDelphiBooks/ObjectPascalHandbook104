@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -28,35 +28,35 @@ implementation
 
 {$R *.fmx}
 
-function DividePlusOne (A, B: Integer): Integer;
+function DividePlusOne(A, B: Integer): Integer;
 begin
   try
-    Result := A div B; // raises exception if B equals 0
-    Inc (Result);
+    Result := A div B; // Raises exception if B equals 0
+    Inc(Result);
   except
     Result := 0;
   end;
-  //more
+  // More
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
   N: Integer;
 begin
-  N := DividePlusOne (10, Random(3));
-  Show (N.ToString);
+  N := DividePlusOne(10, Random(3));
+  Show(N.ToString);
 end;
 
-function DividePlusOneBis (A, B: Integer): Integer;
+function DividePlusOneBis(A, B: Integer): Integer;
 begin
   try
-    Result := A div B; // error if B equals 0
+    Result := A div B; // Error if B equals 0
     Result := Result + 1;
   except
     on E: EDivByZero do
     begin
       Result := 0;
-      ShowMessage (E.Message);
+      ShowMessage(E.Message);
     end;
   end;
 end;
@@ -65,8 +65,8 @@ procedure TForm1.Button2Click(Sender: TObject);
 var
   N: Integer;
 begin
-  N := DividePlusOneBis (10, Random(3));
-  Show (N.ToString);
+  N := DividePlusOneBis(10, Random(3));
+  Show(N.ToString);
 end;
 
 procedure TForm1.Show(const Msg: string);
@@ -75,6 +75,6 @@ begin
 end;
 
 initialization
-  Randomize; // make the random sequence start with a new seed
+  Randomize; // Make the random sequence start with a new seed
 
 end.

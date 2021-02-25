@@ -15,7 +15,7 @@ type
     procedure BtnTestClick(Sender: TObject);
   private
   public
-    procedure Show (const msg: string);
+    procedure Show(const msg: string);
   end;
 
 var
@@ -45,7 +45,7 @@ begin
   Test1 := TMyTestClass.Create;
   try
     Test1.Value := 22;
-    Memo1.Lines.Add (GetPropValue (Test1, 'Value'));
+    Memo1.Lines.Add(GetPropValue(Test1, 'Value'));
   finally
     Test1.Free;
   end;

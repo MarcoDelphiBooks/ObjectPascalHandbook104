@@ -17,7 +17,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Text: string);
+    procedure Show(const Text: string);
   end;
 
 var
@@ -39,21 +39,21 @@ var
   Mi: MyInt;
 begin
   Mi := 10;
-  Show (Mi.asString);
-  //Show (mi.toString);
-  Show (Integer(Mi).ToString)
+  Show(Mi.asString);
+  //Show(Mi.toString);
+  Show(Integer(Mi).ToString)
 end;
 
 procedure TForm1.Show(const Text: string);
 begin
-  Memo1.Lines.Add (Text);
+  Memo1.Lines.Add(Text);
 end;
 
 { TMyIntHelper }
 
 function TMyIntHelper.AsString: string;
 begin
-  Result := IntToStr (self);
+  Result := IntToStr(self);
 end;
 
 end.

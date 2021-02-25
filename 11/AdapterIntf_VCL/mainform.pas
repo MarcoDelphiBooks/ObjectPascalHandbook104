@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  ComCtrls, StdCtrls, adapter_intf, IProgressBar, IEdit, ILabel;
+  ComCtrls, StdCtrls, AdapterIntf, IProgressBar, IEdit, ILabel;
 
 type
   TFormAdapter = class(TForm)
@@ -41,14 +41,14 @@ var
   I: integer;
 begin
   for I := 0 to ComponentCount - 1 do
-    if Supports (Components [I], ITextAndValue, Intf) then
+    if Supports(Components [I], ITextAndValue, Intf) then
       Intf.Value := 50;
 end;
 
 procedure TFormAdapter.Button2Click(Sender: TObject);
 begin
-  ShowMessage (Label1.ClassName);
-  ShowMessage (Label1.ClassParent.ClassName);
+  ShowMessage(Label1.ClassName);
+  ShowMessage(Label1.ClassParent.ClassName);
 end;
 
 procedure TFormAdapter.Button3Click(Sender: TObject);

@@ -16,7 +16,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const msg: string);
+    procedure Show(const msg: string);
   end;
 
 var
@@ -34,20 +34,20 @@ type
   private
     FDate: TDateTime;
   public
-    procedure SetValue (M, D, Y: Integer);
+    procedure SetValue(M, D, Y: Integer);
     function LeapYear: Boolean;
     function GetText: string;
     procedure Increase;
   end;
 
-procedure TDate.SetValue (M, D, Y: Integer);
+procedure TDate.SetValue(M, D, Y: Integer);
 begin
-  FDate := EncodeDate (Y, M, D);
+  FDate := EncodeDate(Y, M, D);
 end;
 
 function TDate.GetText: string;
 begin
-  Result := DateToStr (FDate);
+  Result := DateToStr(FDate);
 end;
 
 procedure TDate.Increase;
@@ -57,25 +57,25 @@ end;
 
 function TDate.LeapYear: Boolean;
 begin
-  // call IsLeapYear in SysUtils and YearOf in DateUtils
-  Result := IsLeapYear (YearOf (FDate));
+  // Call IsLeapYear in SysUtils and YearOf in DateUtils
+  Result := IsLeapYear(YearOf(FDate));
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
   ADay: TDate;
 begin
-  // create
+  // Create
   ADay := TDate.Create;
 
-  // use
-  ADay.SetValue (1, 1, 2016);
+  // Use
+  ADay.SetValue(1, 1, 2021);
   ADay.Increase;
 
   if ADay.LeapYear then
-    Show ('Leap year: ' + ADay.GetText);
+    Show('Leap year: ' + ADay.GetText);
 
-  // free the memory (for non ARC platforms)
+  // Free the memory (for non ARC platforms)
   ADay.Free;
 end;
 

@@ -29,17 +29,17 @@ implementation
 
 procedure TFormDynamic.BtnNewClick(Sender: TObject);
 begin
-  ShowMessage ('You selected ' + (Sender as TButton).Text)
+  ShowMessage('You selected ' + (Sender as TButton).Text)
 end;
 
 procedure TFormDynamic.BtnTest2Click(Sender: TObject);
 begin
-  ShowMessage ('Test message, again');
+  ShowMessage('Test message, again');
 end;
 
 procedure TFormDynamic.BtnTestClick(Sender: TObject);
 begin
-  ShowMessage ('Test message');
+  ShowMessage('Test message');
   BtnTest.OnClick := BtnTest2Click;
 end;
 
@@ -48,11 +48,11 @@ procedure TFormDynamic.FormMouseDown(Sender: TObject; Button: TMouseButton;
 var
   AButton: TButton;
 begin
-  AButton := TButton.Create(Self);
-  AButton.Parent := Self;
+  AButton := TButton.Create(self);
+  AButton.Parent := self;
   AButton.SetBounds(X, Y, 100, 40);
-  Inc (FCounter);
-  AButton.Text := 'Button' + IntToStr (FCounter);
+  Inc(FCounter);
+  AButton.Text := 'Button' + FCounter.ToString;
   AButton.OnClick := BtnNewClick;
 end;
 

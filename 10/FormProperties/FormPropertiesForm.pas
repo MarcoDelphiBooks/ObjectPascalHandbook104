@@ -4,7 +4,8 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls;
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Controls.Presentation;
 
 type
   TFormProp = class(TForm)
@@ -19,8 +20,7 @@ type
     function GetStatusText: string;
     { Private declarations }
   public
-    property Clicks: Integer
-      read FClicks write SetClicks;
+    property Clicks: Integer read FClicks write SetClicks;
     property StatusText: string read GetStatusText write SetStatusText;
   end;
 

@@ -7,9 +7,9 @@ type
   private
     FSomeData: Integer;
   public
-    // nested constant
+    // Nested constant
     const Foo = 12;
-    // nested type
+    // Nested type
     type TInside = class
       type TInsideInside = class
         procedure Two;
@@ -43,9 +43,9 @@ var
 begin
   Ins := TInside.Create;
   try
-    Ins.FMsg := 'hi';
+    Ins.FMsg := 'Hi';
     Ins.InsideHello;
-    Show ('constant is ' + IntToStr (foo));
+    Show('Constant is ' + IntToStr (foo));
   finally
     Ins.Free;
   end;
@@ -55,8 +55,8 @@ end;
 
 procedure TOne.TInside.InsideHello;
 begin
-   FMsg := 'new msg';
-   Show ('internal call');
+   FMsg := 'New msg';
+   Show('Internal call');
    if not Assigned (FInsIns) then
      FInsIns := TInsideInside.Create;
    FInsIns.Two;
@@ -66,7 +66,7 @@ end;
 
 procedure TOne.TInside.TInsideInside.Two;
 begin
-  Show ('this is a method of a nested/nested class');
+  Show('This is a method of a nested/nested class');
 end;
 
 end.

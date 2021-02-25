@@ -18,7 +18,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -33,7 +33,7 @@ type
   private
     FStringList: TStringList;
   public
-    constructor Create (Value: Integer);
+    constructor Create(Value: Integer);
     destructor Destroy; override;
   end;
 
@@ -42,11 +42,11 @@ procedure TForm1.BtnNoExceptionClick(Sender: TObject);
 var
   Obj: TObjectWithList;
 begin
-  Obj := TObjectWithList.Create (10);
+  Obj := TObjectWithList.Create(10);
   try
-    // do something
+    // Do something
   finally
-    Show ('Freeing object');
+    Show('Freeing object');
     Obj.Free;
   end;
 end;
@@ -57,9 +57,9 @@ var
 begin
   Obj := TObjectWithList.Create (-10);
   try
-    // do something
+    // Do something
   finally
-    Show ('Freeing object');
+    Show('Freeing object');
     Obj.Free;
   end;
 
@@ -78,13 +78,13 @@ begin
     raise Exception.Create('Negative value not allowed');
 
   FStringList := TStringList.Create;
-  FStringList.Add('one');
+  FStringList.Add('One');
 end;
 
 destructor TObjectWithList.Destroy;
 begin
-  // remove the if assinged test to see the error
-  if Assigned (FStringList) then
+  // Remove the if assinged test to see the error
+  if Assigned(FStringList) then
   begin
     FStringList.Clear;
     FreeAndNil(FStringList);

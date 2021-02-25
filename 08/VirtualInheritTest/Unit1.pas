@@ -27,7 +27,7 @@ implementation
 {$R *.fmx}
 
 uses
-  unit2;
+  Unit2;
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
@@ -36,7 +36,7 @@ end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-  ShowMessage ('Hello from Form1');
+  ShowMessage('Hello from Form1');
 end;
 
 end.

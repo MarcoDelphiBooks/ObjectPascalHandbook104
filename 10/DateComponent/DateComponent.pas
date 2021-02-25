@@ -6,7 +6,7 @@ uses
   Classes, SysUtils;
 
 type
-  TDate = class (TComponent)
+  TDate = class(TComponent)
   private
     FDate: TDateTime;
     FOnChange: TNotifyEvent;
@@ -19,13 +19,13 @@ type
   protected
     procedure DoChange; virtual;
   public
-    constructor Create (AOwner: TComponent); overload; override;
-    constructor Create (y, m, d: Integer); reintroduce; overload;
-    procedure SetValue (y, m, d: Integer); overload;
-    procedure SetValue (NewDate: TDateTime); overload;
+    constructor Create(AOwner: TComponent); overload; override;
+    constructor Create(y, m, d: Integer); reintroduce; overload;
+    procedure SetValue(y, m, d: Integer); overload;
+    procedure SetValue(NewDate: TDateTime); overload;
     function LeapYear: Boolean;
-    procedure Increase (NumberOfDays: Integer = 1);
-    procedure Decrease (NumberOfDays: Integer = 1);
+    procedure Increase(NumberOfDays: Integer = 1);
+    procedure Decrease(NumberOfDays: Integer = 1);
     function GetText: string; virtual;
     property Text: string read GetText;
   published
@@ -37,16 +37,16 @@ type
   end;
 
   // custom exception
-  EDateOutOfRange = class (Exception)
+  EDateOutOfRange = class(Exception)
   end;
 
 procedure Register;
 
 implementation
 
-procedure TDate.SetValue (y, m, d: Integer);
+procedure TDate.SetValue(y, m, d: Integer);
 begin
-  fDate := EncodeDate (y, m, d);
+  FDate := EncodeDate(y, m, d);
   // fire the event
   DoChange;
 end;
@@ -64,49 +64,49 @@ begin
     LeapYear := True;
 end;
 
-procedure TDate.Increase (NumberOfDays: Integer = 1);
+procedure TDate.Increase(NumberOfDays: Integer = 1);
 begin
-  fDate := fDate + NumberOfDays;
-  // fire the event
+  FDate := FDate + NumberOfDays;
+  // Fire the event
   DoChange;
 end;
 
 function TDate.GetText: string;
 begin
-  GetText := DateToStr (fDate);
+  GetText := DateToStr(FDate);
 end;
 
 procedure TDate.Decrease (NumberOfDays: Integer = 1);
 begin
-  fDate := fDate - NumberOfDays;
-  // fire the event
+  FDate := FDate - NumberOfDays;
+  // Fire the event
   DoChange;
 end;
 
 constructor TDate.Create (y, m, d: Integer);
 begin
   inherited Create (nil);
-  fDate := EncodeDate (y, m, d);
+  FDate := EncodeDate(y, m, d);
 end;
 
 constructor TDate.Create (AOwner: TComponent);
 begin
   inherited Create (AOwner);
   // today...
-  fDate := Date;
+  FDate := Date;
 end;
 
 function TDate.GetYear: Integer;
 var
   y, m, d: Word;
 begin
-  DecodeDate (fDate, y, m, d);
+  DecodeDate(FDate, y, m, d);
   Result := y;
 end;
 
 procedure TDate.SetValue(NewDate: TDateTime);
 begin
-  fDate := NewDate;
+  FDate := NewDate;
   // fire the event
   DoChange;
 end;
@@ -115,7 +115,7 @@ function TDate.GetDay: Integer;
 var
   y, m, d: Word;
 begin
-  DecodeDate (fDate, y, m, d);
+  DecodeDate (FDate, y, m, d);
   Result := d;
 end;
 
@@ -123,38 +123,38 @@ function TDate.GetMonth: Integer;
 var
   y, m, d: Word;
 begin
-  DecodeDate (fDate, y, m, d);
+  DecodeDate(FDate, y, m, d);
   Result := m;
 end;
 
 procedure TDate.SetDay(const Value: Integer);
 begin
   if (Value < 1) or (Value > 31) then
-    raise EDateOutOfRange.Create ('Invalid day');
-  SetValue (Year, Month, Value);
+    raise EDateOutOfRange.Create('Invalid day');
+  SetValue(Year, Month, Value);
 end;
 
 procedure TDate.SetMonth(const Value: Integer);
 begin
   if (Value < 1) or (Value > 12) then
-    raise EDateOutOfRange.Create ('Invalid month');
-  SetValue (Year, Value, Day);
+    raise EDateOutOfRange.Create('Invalid month');
+  SetValue(Year, Value, Day);
 end;
 
 procedure TDate.SetYear(const Value: Integer);
 begin
-  SetValue (Value, Month, Day);
+  SetValue(Value, Month, Day);
 end;
 
 procedure TDate.DoChange;
 begin
-  if Assigned (FOnChange) then
-    FOnChange (Self);
+  if Assigned(FOnChange) then
+    FOnChange(Self);
 end;
 
 procedure Register;
 begin
-  RegisterComponents ('Sample', [TDate]);
+  RegisterComponents('Sample', [TDate]);
 end;
 
 end.

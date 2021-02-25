@@ -19,7 +19,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Text: string);
+    procedure Show(const Text: string);
   end;
 
 var
@@ -38,31 +38,31 @@ type
     procedure Add (const Text: string); virtual;
   end;
 
-  TMyMemo = class (TMemo)
-    procedure Add (const Text: string); override;
+  TMyMemo = class(TMemo)
+    procedure Add(const Text: string); override;
   end;
 
 function TListBoxHelper.ItemIndexValue: string;
 begin
   Result := '';
   if ItemIndex >= 0 then
-    Result := Items [ItemIndex];
+    Result := Items[ItemIndex];
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   if ListBox1.ItemIndex > 0 then
-    Show (ListBox1.Items[ListBox1.ItemIndex]);
+    Show(ListBox1.Items[ListBox1.ItemIndex]);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-  Show (ListBox1.ItemIndexValue);
+  Show(ListBox1.ItemIndexValue);
 end;
 
 procedure TForm1.Show(const Text: string);
 begin
-  Memo1.Add (Text);
+  Memo1.Add(Text);
 end;
 
 { TMemoHelper }
@@ -76,7 +76,7 @@ end;
 
 procedure TMyMemo.Add(const Text: string);
 begin
-  Add (Text + ' ' + TimeToStr (Now));
+  Add(Text + ' ' + TimeToStr(Now));
 end;
 
 end.

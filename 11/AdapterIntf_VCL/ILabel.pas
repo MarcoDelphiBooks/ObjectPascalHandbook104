@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, adapter_intf;
+  StdCtrls, AdapterIntf;
 
 type
   TLabel = class(StdCtrls.TLabel, ITextAndValue)
@@ -32,7 +32,7 @@ end;
 
 function TLabel.GetValue: Integer;
 begin
-  Result := StrToIntDef (Caption, 0);
+  Result := StrToIntDef(Caption, 0);
 end;
 
 procedure TLabel.SetText(const Value: string);
@@ -42,7 +42,7 @@ end;
 
 procedure TLabel.SetValue(const Value: Integer);
 begin
-  Caption := IntToStr (Value);
+  Caption := IntToStr(Value);
 end;
 
 end.

@@ -16,7 +16,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -29,7 +29,7 @@ implementation
 type
   TDate = class
     FMonth, FDay, FYear: Integer;
-    procedure SetValue (M, D, Y: Integer);
+    procedure SetValue(M, D, Y: Integer);
     function LeapYear: Boolean;
   end;
 
@@ -53,8 +53,8 @@ end;
 
 function TDate.LeapYear: Boolean;
 begin
-  // call IsLeapYear in SysUtils.pas
-  Result := IsLeapYear (FYear);
+  // Call IsLeapYear in SysUtils.pas
+  Result := IsLeapYear(FYear);
 end;
 
 
@@ -62,15 +62,15 @@ procedure TForm1.Button1Click(Sender: TObject);
 var
   ADay: TDate;
 begin
-  // create
+  // Create
   ADay := TDate.Create;
 
-  // use
-  ADay.SetValue (1, 1, 2016);
+  // Use
+  ADay.SetValue(1, 1, 2021);
   if ADay.LeapYear then
-    Show ('Leap year: ' + IntToStr (ADay.FYear));
+    Show('Leap year: ' + IntToStr(ADay.FYear));
 
-  // free the memory (for non ARC platforms)
+  // Free the memory (for non ARC platforms)
   ADay.Free;
 end;
 

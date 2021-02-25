@@ -22,7 +22,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -33,7 +33,7 @@ type
     ['{0876F200-AAD3-11D2-8551-CCA30C584521}']
     function Walk: string;
     function Run: string;
-    procedure SetPos (Value: Integer);
+    procedure SetPos(Value: Integer);
     function GetPos: Integer;
 
     property Position: Integer
@@ -44,35 +44,35 @@ type
     ['{0876F201-AAD3-11D2-8551-CCA30C584521}']
     function Jump: string;
     function Walk: string;
-    procedure SetPos (Value: Integer);
+    procedure SetPos(Value: Integer);
     function GetPos: Integer;
 
     property Position: Integer
       read GetPos write SetPos;
   end;
 
-  TRunner = class (TInterfacedObject, IWalker)
+  TRunner = class(TInterfacedObject, IWalker)
   private
     FPos: Integer;
   public
     function Walk: string;
     function Run: string;
-    procedure SetPos (Value: Integer);
+    procedure SetPos(Value: Integer);
     function GetPos: Integer;
   end;
 
-  TJumperImpl = class (TAggregatedObject, IJumper)
+  TJumperImpl = class(TAggregatedObject, IJumper)
   private
     FPos: Integer;
   public
     function Jump: string;
     function Walk: string;
-    procedure SetPos (Value: Integer);
+    procedure SetPos(Value: Integer);
     function GetPos: Integer;
     property Position: Integer Read GetPos Write SetPos;
   end;
 
-  TMyJumper = class (TInterfacedObject, IJumper)
+  TMyJumper = class(TInterfacedObject, IJumper)
   private
     FJumpImpl: TJumperImpl;
   public
@@ -92,7 +92,7 @@ type
     function Run: string; virtual;
     function Walk1: string; virtual;
     function IWalker.Walk = Walk1;
-    procedure SetPos (Value: Integer);
+    procedure SetPos(Value: Integer);
     function GetPos: Integer;
 
     property Jumper: TJumperImpl
@@ -110,9 +110,9 @@ var
 begin
   Intf := TRunner.Create;
   Intf.Position := 0;
-  Show (Intf.Walk);
-  Show (Intf.Run);
-  Show (Intf.Run);
+  Show(Intf.Walk);
+  Show(Intf.Run);
+  Show(Intf.Run);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -121,9 +121,9 @@ var
 begin
   Intf := TMyJumper.Create;
   Intf.Position := 0;
-  Show (Intf.Walk);
-  Show (Intf.Jump);
-  Show (Intf.Walk);
+  Show(Intf.Walk);
+  Show(Intf.Jump);
+  Show(Intf.Walk);
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
@@ -132,9 +132,9 @@ var
 begin
   Intf := TAthlete.Create;
   Intf.Position := 0;
-  Show (Intf.Walk);
-  Show (Intf.Run);
-  Show ((Intf as IJumper).Jump);
+  Show(Intf.Walk);
+  Show(Intf.Run);
+  Show((Intf as IJumper).Jump);
 end;
 
 procedure TForm1.Button4Click(Sender: TObject);
@@ -143,11 +143,11 @@ var
   WalkIntf: IWalker;
 begin
   Intf := TAthlete.Create;
-  if Supports (Intf, IWalker, WalkIntf) then
-    Show (WalkIntf.Walk);
+  if Supports(Intf, IWalker, WalkIntf) then
+    Show(WalkIntf.Walk);
 
   if Intf.QueryInterface (IWalker, WalkIntf) = S_OK then
-    Show (WalkIntf.Walk);
+    Show(WalkIntf.Walk);
 end;
 
 procedure TForm1.Show(const Msg: string);
@@ -165,7 +165,7 @@ end;
 
 function TRunner.Run: string;
 begin
-  Inc (FPos, 2);
+  Inc(FPos, 2);
   Result := FPos.ToString + ': Run';
 end;
 
@@ -176,7 +176,7 @@ end;
 
 function TRunner.Walk: string;
 begin
-  Inc (FPos);
+  Inc(FPos);
   Result := FPos.ToString + ': Walk';
 end;
 
@@ -189,7 +189,7 @@ end;
 
 function TJumperImpl.Jump: string;
 begin
-  Inc (FPos, 3);
+  Inc(FPos, 3);
   Result := FPos.ToString + ': Jump';
 end;
 
@@ -200,7 +200,7 @@ end;
 
 function TJumperImpl.Walk: string;
 begin
-  Inc (FPos);
+  Inc(FPos);
   Result := FPos.ToString + ': Walk';
 end;
 
@@ -208,7 +208,7 @@ end;
 
 constructor TMyJumper.Create;
 begin
-  FJumpImpl := TJumperImpl.Create (self);
+  FJumpImpl := TJumperImpl.Create(self);
 end;
 
 destructor TMyJumper.Destroy;
@@ -221,7 +221,7 @@ end;
 
 constructor TAthlete.Create;
 begin
-  FJumpImpl := TJumperImpl.Create (self);
+  FJumpImpl := TJumperImpl.Create(self);
 end;
 
 destructor TAthlete.Destroy;
@@ -238,7 +238,7 @@ end;
 function TAthlete.Run: string;
 begin
   FJumpImpl.Position := FJumpImpl.Position + 2;
-  Result := IntToStr (FJumpImpl.Position) + ': Run';
+  Result := IntToStr(FJumpImpl.Position) + ': Run';
 end;
 
 procedure TAthlete.SetPos(Value: Integer);
@@ -249,11 +249,11 @@ end;
 function TAthlete.Walk1: string;
 begin
   FJumpImpl.Position := FJumpImpl.Position + 1;
-  Result := IntToStr (FJumpImpl.Position) + ': Walk';
+  Result := IntToStr(FJumpImpl.Position) + ': Walk';
 end;
 
 initialization
-  // check we are not leaking objects
+  // Check we are not leaking objects
   ReportMemoryLeaksOnShutdown := True;
 
 end.

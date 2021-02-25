@@ -18,7 +18,7 @@ uses
 
 function TTest.GetValue: string;
 begin
-  Result := Format ('Public: %d, Protected: %d',
+  Result := Format('Public: %d, Protected: %d',
     [FPublicData, FProtectedData]);
 end;
 

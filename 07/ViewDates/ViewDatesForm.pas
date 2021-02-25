@@ -29,7 +29,7 @@ type
   private
     FDay: TDate;
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -45,14 +45,14 @@ uses
 procedure TDateForm.BtnLeapyearClick(Sender: TObject);
 begin
   if FDay.LeapYear then
-    Show ('Leap year: ' + FDay.GetText)
+    Show('Leap year: ' + FDay.GetText)
   else
-    Show ('Not a leap year: ' + FDay.GetText);
+    Show('Not a leap year: ' + FDay.GetText);
 end;
 
 procedure TDateForm.BtnSubtract10Click(Sender: TObject);
 begin
-  FDay.Decrease (10);
+  FDay.Decrease(10);
   LabelDate.Text := FDay.GetText;
 end;
 
@@ -64,8 +64,8 @@ end;
 
 procedure TDateForm.FormCreate(Sender: TObject);
 begin
-  // create
-  FDay := TDate.Create; // today
+  // Create
+  FDay := TDate.Create; // Today
   LabelDate.Text := FDay.GetText;
 end;
 
@@ -76,7 +76,7 @@ end;
 
 procedure TDateForm.BtnAdd10Click(Sender: TObject);
 begin
-  FDay.Increase (10);
+  FDay.Increase(10);
   LabelDate.Text := FDay.GetText;
 end;
 

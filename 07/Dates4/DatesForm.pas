@@ -20,7 +20,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -39,9 +39,9 @@ type
     FDate: TDateTime;
   public
     constructor Create; overload;
-    constructor Create (Month, Day, Year: Integer); overload;
-    procedure SetValue (Month, Day, Year: Integer); overload;
-    procedure SetValue (NewDate: TDateTime); overload;
+    constructor Create(Month, Day, Year: Integer); overload;
+    procedure SetValue(Month, Day, Year: Integer); overload;
+    procedure SetValue(NewDate: TDateTime); overload;
     function LeapYear: Boolean;
     function GetText: string;
     procedure Increase;
@@ -52,19 +52,19 @@ begin
   FDate := Today;
 end;
 
-constructor TDate.Create (Month, Day, Year: Integer);
+constructor TDate.Create(Month, Day, Year: Integer);
 begin
-  FDate := EncodeDate (Year, Month, Day);
+  FDate := EncodeDate(Year, Month, Day);
 end;
 
-procedure TDate.SetValue (Month, Day, Year: Integer);
+procedure TDate.SetValue(Month, Day, Year: Integer);
 begin
-  FDate := EncodeDate (Year, Month, Day);
+  FDate := EncodeDate(Year, Month, Day);
 end;
 
 function TDate.GetText: string;
 begin
-  Result := DateToStr (FDate);
+  Result := DateToStr(FDate);
 end;
 
 procedure TDate.Increase;
@@ -74,8 +74,8 @@ end;
 
 function TDate.LeapYear: Boolean;
 begin
-  // call IsLeapYear in SysUtils and YearOf in DateUtils
-  Result := IsLeapYear (YearOf (FDate));
+  // Call IsLeapYear in SysUtils and YearOf in DateUtils
+  Result := IsLeapYear(YearOf(FDate));
 end;
 
 procedure TDate.SetValue(NewDate: TDateTime);
@@ -83,7 +83,7 @@ begin
   FDate := NewDate;
 end;
 
-// class demostrating destructors and resource management
+// Class demostrating destructors and resource management
 
 type
   TPerson = class
@@ -91,9 +91,9 @@ type
     FName: string;
     FBirthDate: TDate;
   public
-    constructor Create (Name: string);
+    constructor Create(Name: string);
     destructor Destroy; override;
-    // some actual methods
+    // Some actual methods
     function Info: string;
   end;
 
@@ -102,18 +102,18 @@ procedure TForm1.Button1Click(Sender: TObject);
 var
   ADay: TDate;
 begin
-  // create
+  // Create
   ADay := TDate.Create; // today
 
-  // use
+  // Use
   ADay.Increase;
 
   if ADay.LeapYear then
-    Show ('Leap year: ' + ADay.GetText)
+    Show('Leap year: ' + ADay.GetText)
   else
-    Show ('Not a leap year: ' + ADay.GetText);
+    Show('Not a leap year: ' + ADay.GetText);
 
-  // free the memory (for non ARC platforms)
+  // Free the memory
   ADay.Free;
 end;
 
@@ -121,16 +121,16 @@ procedure TForm1.Button2Click(Sender: TObject);
 var
   ADay: TDate;
 begin
-  // create
-  ADay := TDate.Create (1, 1, 2016);
+  // Create
+  ADay := TDate.Create(1, 1, 2016);
 
-  // use
+  // Use
   ADay.Increase;
 
   if ADay.LeapYear then
-    Show ('Leap year: ' + ADay.GetText);
+    Show('Leap year: ' + ADay.GetText);
 
-  // free the memory (for non ARC platforms)
+  // Free the memory
   ADay.Free;
 end;
 
@@ -138,8 +138,8 @@ procedure TForm1.Button3Click(Sender: TObject);
 var
   Person: TPerson;
 begin
-  Person := TPerson.Create ('John');
-  // use the class and its internal object
+  Person := TPerson.Create('John');
+  // Use the class and its internal object
   Show (Person.Info);
   Person.Free;
 end;

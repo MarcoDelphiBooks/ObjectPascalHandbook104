@@ -27,19 +27,20 @@ implementation
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  TButton.Create (nil);
+  TButton.Create(nil);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 var
   Pch1: PChar;
 begin
-  GetMem (Pch1, 5);
+  GetMem(Pch1, 5);
   GetWindowText(Handle, Pch1, Length(Caption));
-  ShowMessage (Pch1);
-  FreeMem (Pch1);
+  ShowMessage(Pch1);
+  FreeMem(Pch1);
 end;
 
 initialization
   // ReportMemoryLeaksOnShutdown := True;
+
 end.

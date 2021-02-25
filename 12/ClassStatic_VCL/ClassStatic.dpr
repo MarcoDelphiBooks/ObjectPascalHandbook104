@@ -15,29 +15,29 @@ type
     class procedure One;
     class procedure Two; static;
     class function GetMyName: string; static;
-    class procedure SetMyName (Value: string); static;
+    class procedure SetMyName(Value: string); static;
     class property MyName: string read GetMyName write SetMyName;
     class property DirectName: string read FMyName write FMyName;
   end;
 
-// replace class data with local data
-//var
-//  FMyName: string;
+// Replace class data with local data
+// var
+//   FMyName: string;
 
 class procedure TBase.One;
 begin
   // Error: Instance member 'FTmp' inaccessible here
-  // writeln (FTmp);
-  writeln ('one');
-  writeln (self.ClassName);
+  // Writeln (FTmp);
+  Writeln('One');
+  Writeln(self.ClassName);
 end;
 
 class procedure TBase.Two;
 begin
-  writeln ('two');
-  // error: Undeclared identifier: 'self'
-  // writeln (self.ClassName);
-  writeln (ClassName);
+  Writeln ('Two');
+  // Error: Undeclared identifier: 'self'
+  // Writeln (self.ClassName);
+  Writeln (ClassName);
 end;
 
 class function TBase.GetMyName: string;
@@ -45,7 +45,7 @@ begin
   Result := FMyName;
 end;
 
-class procedure TBase.SetMyName (Value: string);
+class procedure TBase.SetMyName(Value: string);
 begin
   FMyName := Value;
 end;
@@ -62,7 +62,7 @@ begin
   Base.One;
   Base.Two;
 
-  // Writeln (Base.MyName);
+  // Writeln(Base.MyName);
 
   Readln;
 end.

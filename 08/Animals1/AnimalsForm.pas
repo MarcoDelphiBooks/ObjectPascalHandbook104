@@ -23,7 +23,7 @@ type
   private
     FMyAnimal: TAnimal;
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -36,7 +36,7 @@ implementation
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-  Show (FMyAnimal.GetKind);
+  Show(FMyAnimal.GetKind);
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);

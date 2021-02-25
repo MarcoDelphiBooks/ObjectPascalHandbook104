@@ -49,7 +49,7 @@ var
   NewName: String;
 begin
   // create the control
-  NewCtrl := FControlType.Create (Self);
+  NewCtrl := FControlType.Create(Self);
   // hide it temporarily, to avoid flickering
   NewCtrl.Visible := False;
   // set parent and position
@@ -57,9 +57,9 @@ begin
   NewCtrl.Position.X := X;
   NewCtrl.Position.Y := Y;
   // compute the unique name (and text)
-  Inc (FControlNo);
+  Inc(FControlNo);
   NewName := FControlType.ClassName + FControlNo.ToString;
-  Delete (NewName, 1, 1);
+  Delete(NewName, 1, 1);
   NewCtrl.Name := NewName;
   // now show it
   NewCtrl.Visible := True;

@@ -46,7 +46,7 @@ begin
   try
     Bitmap1.Map(TMapAccess.Write, BD1);
     Col := claBlack; // only to avoid warning
-    GetMemoryMap (AMemoryMap);
+    GetMemoryMap(AMemoryMap);
     for I := Low(aMemoryMap) to High(aMemoryMap) do
     begin
       CS := AMemoryMap[I];

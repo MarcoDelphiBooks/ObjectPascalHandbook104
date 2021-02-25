@@ -20,7 +20,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -31,12 +31,12 @@ implementation
 {$R *.fmx}
 
 type
-  EArrayFull = class (Exception);
+  EArrayFull = class(Exception);
 
-procedure AddToArray (i: Integer);
+procedure AddToArray(I: Integer);
 begin
-  if I > 10 then // not that this makes much sense...
-    raise EArrayFull.Create ('Array full');
+  if I > 10 then // Not that this makes much sense...
+    raise EArrayFull.Create('Array full');
 end;
 
 procedure TForm1.BtnWrongClick(Sender: TObject);
@@ -46,12 +46,12 @@ begin
   Caption := 'Calculating';
 
   J := 0;
-  // long (and wrong) computation...
+  // Long (and wrong) computation...
   for I := 1000 downto 0 do
     J := J + J div I;
 
   Caption := 'Finished';
-  Show ('Total: ' + J.ToString);
+  Show('Total: ' + J.ToString);
 end;
 
 procedure TForm1.BtnTryTryClick(Sender: TObject);
@@ -61,15 +61,15 @@ begin
   Caption := 'Calculating';
   J := 0;
   try try
-    // long (and wrong) computation...
+    // Long (and wrong) computation...
     for I := 1000 downto 0 do
       J := J + J div I;
-    Show ('Total: ' + J.ToString);
+    Show('Total: ' + J.ToString);
   except
     on E: EDivByZero do
     begin
-      // re-raise the exception with a new message
-      raise Exception.Create ('Error in Algorithm');
+      // Re-raise the exception with a new message
+      raise Exception.Create('Error in Algorithm');
     end;
   end;
   finally
@@ -84,10 +84,10 @@ begin
   Caption := 'Calculating';
   J := 0;
   try
-    // long (and wrong) computation...
+    // Long (and wrong) computation...
     for I := 1000 downto 0 do
       J := J + J div I;
-    Show ('Total: ' + J.ToString);
+    Show('Total: ' + J.ToString);
   finally
     Caption := 'Finished';
   end;

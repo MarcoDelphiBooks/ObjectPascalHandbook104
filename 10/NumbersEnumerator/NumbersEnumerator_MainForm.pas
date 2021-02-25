@@ -16,7 +16,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -32,7 +32,7 @@ type
       NPos: Integer;
       FRange: TNumbersRange;
     public
-      constructor Create (ARange: TNumbersRange);
+      constructor Create(ARange: TNumbersRange);
       function MoveNext: Boolean;
       function GetCurrent: Integer;
       property Current: Integer read GetCurrent;
@@ -47,10 +47,8 @@ type
     procedure Set_NEnd(const Value: Integer);
     procedure Set_NStart(const Value: Integer);
 
-    property NStart: Integer
-      read FNStart write Set_NStart;
-    property NEnd: Integer
-      read FNEnd write Set_NEnd;
+    property NStart: Integer read FNStart write Set_NStart;
+    property NEnd: Integer read FNEnd write Set_NEnd;
   end;
 
 implementation
@@ -67,7 +65,7 @@ begin
   ARange.NEnd := 23;
 
   for I in ARange do
-    Show (IntToStr (I));
+    Show (I.ToString);
 end;
 
 procedure TForm1.Show(const Msg: string);
@@ -79,7 +77,7 @@ end;
 
 function TNumbersRange.GetEnumerator: TNumbersRangeEnum;
 begin
-  Result := TNumbersRangeEnum.Create (self);
+  Result := TNumbersRangeEnum.Create(self);
 end;
 
 constructor TNumbersRange.TNumbersRangeEnum.Create(
@@ -97,7 +95,7 @@ end;
 
 function TNumbersRange.TNumbersRangeEnum.MoveNext: Boolean;
 begin
-  Inc (NPos);
+  Inc(NPos);
   Result := NPos <= FRange.NEnd;
 end;
 

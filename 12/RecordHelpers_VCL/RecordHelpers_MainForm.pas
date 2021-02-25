@@ -62,14 +62,14 @@ end;
 
 function TIntHelper.ToString: string;
 begin
-  Result := IntToStr (self);
+  Result := IntToStr(self);
 end;
 
 { TShortHelper }
 
 function TByteHelper.ToString: string;
 begin
-  Result := IntToStr (self);
+  Result := IntToStr(self);
 end;
 
 end.

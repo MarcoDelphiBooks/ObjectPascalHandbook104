@@ -20,7 +20,7 @@ type
   private
     [weak] MySimple: IMySimpleInterface;
   public
-    procedure Log (const StrMsg: string);
+    procedure Log(const StrMsg: string);
   end;
 
 var
@@ -46,8 +46,8 @@ var
   MyComplex: IMyComplexInterface;
 begin
   MyComplex := TMyComplexClass.Create;
-  Log ('Complex = ' + MyComplex.RefCount.ToString);
-  MyComplex.GetSimple.DoSomething (False);
+  Log('Complex = ' + MyComplex.RefCount.ToString);
+  MyComplex.GetSimple.DoSomething(False);
 end;
 
 procedure TForm3.BtnGetWeakClick(Sender: TObject);
@@ -55,21 +55,21 @@ var
   MyComplex: IMyComplexInterface;
 begin
   MyComplex := TMyComplexClass.Create;
-  MyComplex.GetSimple.DoSomething (False);
+  MyComplex.GetSimple.DoSomething(False);
   MySimple := MyComplex.GetSimple;
 end;
 
 procedure TForm3.BtnUseWeakClick(Sender: TObject);
 begin
-  if Assigned (MySimple) then
+  if Assigned(MySimple) then
     MySimple.DoSomething(False)
   else
-    Log ('Nil weak reference');
+    Log('Nil weak reference');
 end;
 
 procedure TForm3.Log(const StrMsg: string);
 begin
-  Memo1.Lines.Add (StrMsg);
+  Memo1.Lines.Add(StrMsg);
 end;
 
 initialization

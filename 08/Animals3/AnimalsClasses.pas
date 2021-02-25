@@ -12,14 +12,14 @@ type
     FKind: string;
   end;
 
-  TDog = class (TAnimal)
+  TDog = class(TAnimal)
   public
     constructor Create;
     function Voice: string; override;
     function Eat: string; virtual;
   end;
 
-  TCat = class (TAnimal)
+  TCat = class(TAnimal)
   public
     constructor Create;
     function Voice: string; override;

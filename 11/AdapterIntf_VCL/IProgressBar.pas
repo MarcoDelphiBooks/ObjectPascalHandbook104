@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  ComCtrls, adapter_intf;
+  ComCtrls, AdapterIntf;
 
 type
   TProgressBar = class(ComCtrls.TProgressBar, ITextAndValue)
@@ -27,7 +27,7 @@ implementation
 
 function TProgressBar.GetText: string;
 begin
-  Result := IntToStr (Position);
+  Result := IntToStr(Position);
 end;
 
 function TProgressBar.GetValue: Integer;
@@ -37,7 +37,7 @@ end;
 
 procedure TProgressBar.SetText(const Value: string);
 begin
-  Position := StrToIntDef (Value, 0);
+  Position := StrToIntDef(Value, 0);
 end;
 
 procedure TProgressBar.SetValue(const Value: Integer);

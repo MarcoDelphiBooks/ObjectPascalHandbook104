@@ -28,13 +28,13 @@ procedure TForm1.FormMouseDown(Sender: TObject; Button: TMouseButton;
 var
   Btn: TButton;
 begin
-  Btn := TButton.Create (Self);
+  Btn := TButton.Create(Self);
   Btn.Parent := Self;
   Btn.Position.X := X;
   Btn.Position.Y := Y;
   Btn.Height := 35;
   Btn.Width := 135;
-  Btn.Text := Format ('At %d, %d', [Round(X), Round(Y)]);
+  Btn.Text := Format('At %d, %d', [Round(X), Round(Y)]);
 end;
 
 end.

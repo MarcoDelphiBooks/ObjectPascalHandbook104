@@ -16,7 +16,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -28,7 +28,7 @@ type
     ['{0876F200-AAD3-11D2-8551-CCA30C584521}']
     function Walk: string;
     function Run: string;
-    procedure SetPos (Value: Integer);
+    procedure SetPos(Value: Integer);
     function GetPos: Integer;
 
     property Position: Integer
@@ -39,30 +39,30 @@ type
     ['{0876F201-AAD3-11D2-8551-CCA30C584521}']
     function Jump: string;
     function Walk: string;
-    procedure SetPos (Value: Integer);
+    procedure SetPos(Value: Integer);
     function GetPos: Integer;
 
     property Position: Integer
       read GetPos write SetPos;
   end;
 
-  TRunner = class (TInterfacedObject, IWalker)
+  TRunner = class(TInterfacedObject, IWalker)
   private
     FPos: Integer;
   public
     function Walk: string;
     function Run: string;
-    procedure SetPos (Value: Integer);
+    procedure SetPos(Value: Integer);
     function GetPos: Integer;
   end;
 
-  TJumperImpl = class (TInterfacedObject, IJumper)
+  TJumperImpl = class(TInterfacedObject, IJumper)
   private
     FPos: Integer;
   public
     function Jump: string;
     function Walk: string;
-    procedure SetPos (Value: Integer);
+    procedure SetPos(Value: Integer);
     function GetPos: Integer;
   end;
 
@@ -86,7 +86,7 @@ end;
 
 function TRunner.Run: string;
 begin
-  Inc (FPos, 2);
+  Inc(FPos, 2);
 end;
 
 procedure TRunner.SetPos(Value: Integer);
@@ -96,7 +96,7 @@ end;
 
 function TRunner.Walk: string;
 begin
-  Inc (FPos);
+  Inc(FPos);
 end;
 
 { TJumperImpl }
@@ -108,7 +108,7 @@ end;
 
 function TJumperImpl.Jump: string;
 begin
-  Inc (FPos, 3);
+  Inc(FPos, 3);
 end;
 
 procedure TJumperImpl.SetPos(Value: Integer);
@@ -118,11 +118,11 @@ end;
 
 function TJumperImpl.Walk: string;
 begin
-  Inc (FPos);
+  Inc(FPos);
 end;
 
 initialization
-  // check we are not leaking objects
+  // Check we are not leaking objects
   ReportMemoryLeaksOnShutdown := True;
 
 end.

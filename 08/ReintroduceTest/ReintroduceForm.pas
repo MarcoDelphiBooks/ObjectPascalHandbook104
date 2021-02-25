@@ -16,7 +16,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
@@ -27,7 +27,7 @@ implementation
 {$R *.fmx}
 
 
-procedure Show (const Msg: string);
+procedure Show(const Msg: string);
 begin
   Form1.Show(Msg);
 end;
@@ -35,36 +35,36 @@ end;
 type
   TMyClass = class
     procedure One; overload; virtual;
-    procedure One (I: Integer); overload;
+    procedure One(I: Integer); overload;
   end;
 
-  TMySubClass = class (TMyClass)
+  TMySubClass = class(TMyClass)
     procedure One; overload; override;
-    procedure One (S: string); reintroduce; overload;
+    procedure One(S: string); reintroduce; overload;
   end;
 
 { MyClass }
 
 procedure TMyClass.One;
 begin
-  Show ('MyClass.One');
+  Show('MyClass.One');
 end;
 
 procedure TMyClass.One(I: Integer);
 begin
-  Show ('Integer: ' + IntToStr (I));
+  Show('Integer: ' + I.ToString);
 end;
 
 { MySubClass }
 
 procedure TMySubClass.One;
 begin
-  Show ('MySubClass.One');
+  Show('MySubClass.One');
 end;
 
 procedure TMySubClass.One(S: string);
 begin
-  Show ('String: ' + S);
+  Show('String: ' + S);
 end;
 
 
@@ -74,8 +74,8 @@ var
 begin
   Obj := TMySubClass.Create;
   Obj.One;
-  Obj.One (10);
-  Obj.One ('Hello');
+  Obj.One(10);
+  Obj.One('Hello');
   Obj.Free;
 end;
 

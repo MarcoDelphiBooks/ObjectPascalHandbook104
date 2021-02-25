@@ -1,4 +1,4 @@
-unit adapter_intf;
+unit AdapterIntf;
 
 interface
 

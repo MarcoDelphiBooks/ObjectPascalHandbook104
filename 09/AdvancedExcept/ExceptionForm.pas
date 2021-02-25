@@ -22,7 +22,7 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
 
     procedure ClassicReraise;
     procedure MethodWithNestedException;
@@ -37,7 +37,7 @@ implementation
 {$R *.fmx}
 
 type
-  ECustomException = class (Exception)
+  ECustomException = class(Exception)
   protected
     procedure RaisingException(P: PExceptionRecord); override;
   end;
@@ -49,12 +49,12 @@ begin
   except
     on E: Exception do
     begin
-      Show ('Message: ' + E.Message);
-      Show ('ToString: ' + E.ToString);
-      if Assigned (E.BaseException) then
-        Show ('BaseException Message: ' + E.BaseException.Message);
-      if Assigned (E.InnerException) then
-        Show ('InnerException Message: ' + E.InnerException.Message);
+      Show('Message: ' + E.Message);
+      Show('ToString: ' + E.ToString);
+      if Assigned(E.BaseException) then
+        Show('BaseException Message: ' + E.BaseException.Message);
+      if Assigned(E.InnerException) then
+        Show('InnerException Message: ' + E.InnerException.Message);
     end;
   end;
 end;
@@ -70,7 +70,7 @@ begin
     ClassicReraise;
   except
     on E: Exception do
-      Show ('Message: ' + E.Message);
+      Show('Message: ' + E.Message);
   end;
 end;
 
@@ -81,12 +81,12 @@ begin
   except
     on E: Exception do
     begin
-      Show ('Message: ' + E.Message);
-      Show ('ToString: ' + E.ToString);
+      Show('Message: ' + E.Message);
+      Show('ToString: ' + E.ToString);
       if Assigned (E.BaseException) then
-        Show ('BaseException Message: ' + E.BaseException.Message);
+        Show('BaseException Message: ' + E.BaseException.Message);
       if Assigned (E.InnerException) then
-        Show ('InnerException Message: ' + E.InnerException.Message);
+        Show('InnerException Message: ' + E.InnerException.Message);
     end;
   end;
 end;
@@ -94,10 +94,10 @@ end;
 procedure TFormExceptions.ClassicReraise;
 begin
   try
-    // do something...
+    // Do something...
     raise Exception.Create('Hello');
   except on E: Exception do
-    // try some fix...
+    // Try some fix...
     raise Exception.Create('Another: ' + E.Message);
   end;
 end;
@@ -107,7 +107,7 @@ begin
   try
     raise Exception.Create('Hello');
   except
-    Exception.RaiseOuterException (Exception.Create('Another'));
+    Exception.RaiseOuterException(Exception.Create('Another'));
   end;
 end;
 
@@ -118,9 +118,9 @@ begin
   except
     begin
       try
-        Exception.RaiseOuterException (Exception.Create('Another'));
+        Exception.RaiseOuterException(Exception.Create('Another'));
       except
-        Exception.RaiseOuterException (Exception.Create('A third'));
+        Exception.RaiseOuterException(Exception.Create('A third'));
       end;
     end;
   end;
@@ -136,14 +136,14 @@ end;
 procedure ECustomException.RaisingException(P: PExceptionRecord);
 begin
   // Show exception information (to file would be smarter!)
-  FormExceptions.Show('Exception Addr: ' + IntToHex (
+  FormExceptions.Show('Exception Addr: ' + IntToHex(
     Integer(P.ExceptionAddress), 8));
   FormExceptions.Show('Exception Mess: ' + Message);
 
-  // modify the message
+  // Modify the message
   Message := Message + ' (filtered)';
 
-  // standard processing
+  // Standard processing
   inherited;
 end;
 

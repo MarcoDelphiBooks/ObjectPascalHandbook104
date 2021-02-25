@@ -16,14 +16,14 @@ type
   private
     { Private declarations }
   public
-    procedure Show (const Msg: string);
+    procedure Show(const Msg: string);
   end;
 
 var
   Form1: TForm1;
 
-// display function for secondary unit
-procedure Show (const Msg: string);
+// Display function for secondary unit
+procedure Show(const Msg: string);
 
 implementation
 
@@ -32,7 +32,7 @@ implementation
 uses
   NestedClass;
 
-procedure Show (const Msg: string);
+procedure Show(const Msg: string);
 begin
   if Assigned (Form1) then
     Form1.Show(Msg);

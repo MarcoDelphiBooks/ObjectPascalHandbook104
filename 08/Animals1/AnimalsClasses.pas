@@ -11,7 +11,7 @@ type
     FKind: string;
   end;
 
-  TDog = class (TAnimal)
+  TDog = class(TAnimal)
   public
     constructor Create;
   end;

@@ -40,7 +40,7 @@ type
       NPos: Integer;
       FControl: TWinControl;
     public
-      constructor Create (AControl: TWinControl);
+      constructor Create(AControl: TWinControl);
       function MoveNext: Boolean;
       function GetCurrent: TControl;
       property Current: TControl read GetCurrent;
@@ -58,7 +58,7 @@ implementation
 
 function TControlsEnumHelper.GetEnumerator: TControlsEnum;
 begin
-  Result := TControlsEnum.Create (self);
+  Result := TControlsEnum.Create(self);
 end;
 
 { TControlsEnumHelper.TControlsEnum }
@@ -82,10 +82,10 @@ end;
 
 procedure TControlEnumForm.BtnButtonChildClick(Sender: TObject);
 begin
-  Memo1.Lines.Add ('Button Child');
+  Memo1.Lines.Add('Button Child');
   for var ACtrl in BtnButtonChild do
-    Memo1.Lines.Add (ACtrl.Name);
-  Memo1.Lines.Add ('');
+    Memo1.Lines.Add(ACtrl.Name);
+  Memo1.Lines.Add('');
 end;
 
 procedure TControlEnumForm.BtnFormChildClick(Sender: TObject);
@@ -98,18 +98,18 @@ end;
 
 procedure TControlEnumForm.BtnFormCompsClick(Sender: TObject);
 begin
-  Memo1.Lines.Add ('Form Components');
+  Memo1.Lines.Add('Form Components');
   for var AComp in TComponent(self) do
-    Memo1.Lines.Add (AComp.Name);
-  Memo1.Lines.Add ('');
+    Memo1.Lines.Add(AComp.Name);
+  Memo1.Lines.Add('');
 end;
 
 procedure TControlEnumForm.BtnPanelChildClick(Sender: TObject);
 begin
-  Memo1.Lines.Add ('Panel Child');
+  Memo1.Lines.Add('Panel Child');
   for var ACtrl in Panel1 do
-    Memo1.Lines.Add (ACtrl.Name);
-  Memo1.Lines.Add ('');
+    Memo1.Lines.Add(ACtrl.Name);
+  Memo1.Lines.Add('');
 end;
 
 end.
