@@ -41,7 +41,10 @@ type
     procedure SetValue(Value: Integer);
   end;
 
-  TGetValue = class(TSingletonImplementation, IGetValue)
+  // preDelphi 11:
+  // TGetValue = class(TSingletonImplementation, IGetValue)
+  // Delphi 11:
+  TGetValue = class(TNoRefCountObject, IGetValue)
   private
     FValue: Integer;
   public
